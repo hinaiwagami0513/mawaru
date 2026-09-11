@@ -1,0 +1,34 @@
+/* brand-ui.css — キャラクター廃止にともなう差し替え部品
+   1. .info-mark  … ヘルプ/AI/気づきの印。
+   2. .mwl        … 全画面ローディング。ロゴマークが回る。
+   どちらも色はトークンから引く。新しい色を足さない。 */
+
+/* ---- インフォメーションマーク ---- */
+.info-mark{width:1em;height:1em;flex:none;color:var(--color-primary);
+  display:inline-block;vertical-align:-0.15em;}
+.info-mark svg{width:100%;height:100%;display:block;}
+/* 地は敷かない。線画のマークだけを置く。 */
+.hint .info-mark{width:26px;height:26px;margin-top:1px;}
+.hint.sm .info-mark{width:20px;height:20px;}
+.info-mark.sm{width:18px;height:18px;}
+.info-mark.md{width:22px;height:22px;}
+.info-mark.lg{width:26px;height:26px;}
+
+/* ---- AIの印 ---- */
+/* ⓘ（情報）とは別物。AIが生成・提案しているものにだけ付ける。
+   アイコンは既存で169箇所使われている ti-sparkles に揃える。 */
+.ai-mark{display:inline-flex;align-items:center;justify-content:center;
+  width:1em;height:1em;flex:none;color:var(--color-primary);font-size:20px;}
+.ai-mark .ti{font-size:inherit;line-height:1;}
+.ai-mark.sm{font-size:17px;}
+.ai-mark.lg{font-size:24px;}
+
+/* ---- ロゴのローディング ---- */
+.mwl{display:flex;align-items:center;justify-content:center;padding:8px 0;}
+.mwl-mark{width:84px;height:84px;display:block;
+  animation:mwl-spin 1.6s cubic-bezier(.5,.1,.5,.9) infinite;transform-origin:50% 50%;}
+@keyframes mwl-spin{to{transform:rotate(360deg);}}
+@media (prefers-reduced-motion:reduce){
+  .mwl-mark{animation:mwl-pulse 1.8s ease-in-out infinite;}
+  @keyframes mwl-pulse{0%,100%{opacity:1}50%{opacity:.45}}
+}

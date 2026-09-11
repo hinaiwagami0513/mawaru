@@ -61,75 +61,78 @@
 .ti-users:before{content:"\ebf2"}
 
 :root {
-  --color-secondary: #0077ff;
-  --color-secondary-subtle: #f1f7ff;
-  --color-secondary-deep: #0070f0;
-  --st-done-s: #f3fcf6;
-  --st-done-b: #cff4dc;
-  --st-done-a: #00ac2f;
-  --st-done-n: #008a24;
-  --st-sched-s: #fff5f1;
-  --st-sched-b: #ffd6c4;
-  --st-sched-a: #fe7235;
-  --st-sched-n: #fe5106;
-  --st-draft-s: #f1f7ff;
-  --st-draft-b: #c4e0ff;
-  --st-draft-a: #0077ff;
-  --st-draft-n: #298dff;
-  --st-wait-s: #fff9f1;
-  --st-wait-b: #ffe6c4;
-  --st-wait-a: #fea735;
-  --st-wait-n: #d57901;
-  --color-navy: #00347a;
-  --color-navy-subtle: #f1f7ff;
-  --color-primary-deep: #d54101;
-  --color-primary: #fe7235;
-  --color-primary-hover: #d54101;
-  --color-primary-light: #fea735;
-  --color-primary-subtle: #fff5f1;
-  --color-on-primary: #ffffff;
-  --color-background: #fcf5ef;
-  --color-surface: #fffdfb;
-  --color-card: #ffffff;
-  --color-foreground: #2a2826;
-  --color-muted-foreground: #757575;
-  --color-border: #efe7df;
-  --color-border-strong: #ddd0c4;
-  --color-input: #ffffff;
-  --color-ring: #fe7235;
-  --color-success: #008a24; --color-success-vivid: #00ac2f;
-  --color-success-subtle: #f3fcf6;
-  --color-warning: #ad6201;
-  --color-warning-border: #ffe6c4;
-  --color-warning-subtle: #fff9f1;
-  --color-info: #0070f0;
-  --color-info-subtle: #f1f7ff;
-  --color-destructive: #e90c2a;
-  --color-on-destructive: #ffffff;
-  --color-destructive-subtle: #feeef1;
-  --color-like: #ef3a58;
-  --color-like-subtle: #feeef1;
-  --color-accent-purple: #9724ba;
-  --color-accent-purple-subtle: #f5e7f8;
+  --color-secondary: #122651;
+  --color-secondary-subtle: #EDF2FA;
+  --color-secondary-deep: #0B76B2;
+  --st-done-s: #F3FCF6;
+  --st-done-b: #CFF4DC;
+  --st-done-a: #008623;
+  --st-done-n: #008623;
+  --st-sched-s: #EDF2FA;
+  --st-sched-b: #A9C8E9;
+  --st-sched-a: #2E5AB0;
+  --st-sched-n: #2E5AB0;
+  --st-draft-s: #F2F1F0;
+  --st-draft-b: #DCDAD6;
+  --st-draft-a: #6E6A66;
+  --st-draft-n: #55524E;
+  --st-wait-s: #FFF9F1;
+  --st-wait-b: #FFE6C4;
+  --st-wait-a: #AB6101;
+  --st-wait-n: #AB6101;
+  --color-navy: #122651;
+  --color-navy-subtle: #EDF2FA;
+  --color-primary-deep: #1B3C7E;
+  --color-primary: #2E5AB0;
+  --color-primary-hover: #234A96;
+  --color-primary-light: #7DABDE;
+  --color-primary-subtle: #EDF2FA;
+  --color-on-primary: #FFFFFF;
+  --color-background: #F2F1F0;
+  --color-surface: #FBFAF8;
+  --color-card: #FFFFFF;
+  --color-foreground: #2A2826;
+  --color-muted-foreground: #6E6A66;
+  --color-border: #E9E8E6;
+  --color-border-strong: #CFCDC9;
+  --color-input: #FFFFFF;
+  --color-ring: #2E5AB0;
+  --color-tertiary: #7DABDE;
+  --color-tertiary-subtle: #DCE8F7;
+  --color-border-input: #99948C;
+  --color-success: #008623; --color-success-vivid: #00A62D;
+  --color-success-subtle: #F3FCF6;
+  --color-warning: #AB6101;
+  --color-warning-border: #FFE6C4;
+  --color-warning-subtle: #FFF9F1;
+  --color-info: #0B76B2;
+  --color-info-subtle: #ECF6FD;
+  --color-destructive: #D81028;
+  --color-on-destructive: #FFFFFF;
+  --color-destructive-subtle: #FDEEF0;
+  --color-like: #D7213D;
+  --color-like-subtle: #FDEFF1;
+  --color-accent-purple: #8B2FB8;
+  --color-accent-purple-subtle: #F5E9F9;
   /* primary 起点のオレンジ単一色相ランプ。DESIGN.md「グラフの色」が正。
      2026-08-21: 青ランプ（#0058c4〜）で上書きされていたのを戻した。 */
   /* グラフは primary 起点のオレンジ単一色相ランプ（DESIGN.md「グラフの色」）。
      多い系列ほど濃い。2026-08-21: 青ランプ（#0058c4〜）で上書きされていたので戻した。
-     値は現行パレットの primary(#fe7235) / primary-light(#fea735) を起点に、
+     値は現行パレットの primary(#2E5AB0) / primary-light(#7DABDE) を起点に、
      chart-3/4 はその間を等分した中間色。chart-5 は最も薄い段。 */
-  --chart-1: #fe7235;
-  --chart-2: #fea735;
-  --chart-3: #febb6b;
-  --chart-4: #fdd0a0;
-  --chart-5: #fde4d6;
-  --color-sns-instagram: #b02a78;
-  --color-sns-instagram-subtle: #fce7f3;
-  --color-sns-x: #2a2826;
-  --color-sns-x-subtle: #fcf5ef;
-  --color-sns-tiktok: #0a6f66;
-  --color-sns-tiktok-subtle: #e5fbf7;
-  --color-sns-youtube: #c4302b;
-  --color-sns-youtube-subtle: #fcebeb;
+  --chart-1: #2E5AB0;
+  --chart-2: #7DABDE;
+  --chart-3: #7DABDE;
+  --chart-4: #A9C8E9;
+  --chart-5: #E9E8E6;
+  --color-sns-instagram: #B02A78;
+  --color-sns-instagram-subtle: #FCE7F3;
+  --color-sns-x: #2A2826;
+  --color-sns-x-subtle: #F2F1F0;
+  --color-sns-tiktok: #0A6F66;
+  --color-sns-tiktok-subtle: #E5FBF7;
+  --color-sns-youtube: #C4302B;
+  --color-sns-youtube-subtle: #FCEBEB;
   --font-display: "Noto Sans JP";
   --font-h1: "Noto Sans JP";
   --font-h2: "Noto Sans JP";
@@ -172,10 +175,10 @@
   --spacing-xl: 24px;
   --spacing-2xl: 32px;
   --spacing-3xl: 48px;
-  --color-secondary-light: #00c3ff;
+  --color-secondary-light: #7DABDE;
 }
 *{box-sizing:border-box;margin:0;padding:0;font-family:var(--font-body),'Hiragino Sans','Meiryo',sans-serif;-webkit-font-smoothing:antialiased;}
-body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
+body {background:#F2F1F0;padding:0;color:var(--color-foreground);}
 .app{width:100%;background:var(--color-card);border-radius:0;overflow:hidden;display:flex;height:100vh;position:relative;}
 .ti{line-height:1;}
 /* ===== サイドバー ===== */
@@ -209,7 +212,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .upg .ub{width:100%;display:flex;align-items:center;justify-content:center;gap:6px;background:linear-gradient(135deg,var(--color-primary),var(--color-primary-light));color:#fff;border:none;border-radius:var(--radius-md);padding:9px;font-size:var(--text-label);font-weight:var(--font-weight-body-strong);cursor:pointer;}
 .upg .ub .ti{font-size:14px;}
 .switcher{display:flex;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--color-border-strong);border-radius:var(--radius-md);background:var(--color-card);cursor:pointer;}
-.switcher .pic{width:34px;height:34px;flex:none;border-radius:var(--radius-md);background:#ffe6dc;color:var(--color-primary);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.switcher .pic{width:34px;height:34px;flex:none;border-radius:var(--radius-md);background:#EDF2FA;color:var(--color-primary);display:flex;align-items:center;justify-content:center;font-size:18px;}
 .switcher .tx{min-width:0;flex:1;}
 .switcher .pn{font-size:var(--text-body);font-weight:var(--font-weight-body-strong);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .switcher .an{font-size:var(--text-meta);color:var(--color-muted-foreground);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
@@ -332,13 +335,14 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
    ボタンに見える。字だけ置いて、面はカード側に持たせる。 */
 .db-sec-h .ic,.db-mini .mh .ic{color:var(--color-muted-foreground);}
 /* 状況カードの色は [[post-list-page]] の状態色に合わせる。
-   投稿した=success / 予約済み=primary（一覧の予約済みタブがオレンジ強調）/ 下書き=info（作成中）/ 確認待ち=warning。
+   投稿した=success / 予約済み=primary / 下書き=ニュートラル（未着手）/ 確認待ち=warning。
+   primary が青になり info と衝突するため、下書きは無彩色に寄せた。面・枠・アイコン・数字は同系統で揃える。
    カード自体が押せるので、オレンジが1枚混じっても「押せる色」の意味は壊れない。 */
 /* （旧ベタ塗り版はここにあった。淡い面方式に置き換え） */
 /* 要対応。1画面でここだけが色を持つので、視線が最初にここへ行く */
 .db-sec-h .ic.act,.db-mini .mh .ic.act{color:var(--color-warning);}
 /* ベタ塗りの上では .act も他のチップと同じ白半透明。「要対応」は面の色が担う */
-.db-stat .ic.act{background:rgb(255 255 255 / .22);color:#fff;}
+.db-stat.wait .ic.act{background:rgb(255 255 255 / .22);color:#fff;}
 /* ミニカードの .tt(16px) と同名で2サイズを兼ねていたので分けた（監査 F7） */
 .db-sec-h .sec-tt{font-size:var(--text-h2);font-weight:var(--font-weight-h2);}
 .db-sec-h .cnt{font-size:var(--text-label);font-weight:var(--font-weight-body-strong);color:#fff;background:var(--color-muted-foreground);border-radius:var(--radius-full);padding:2px 10px;}
@@ -350,7 +354,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 /* ページの主役。カードにも面にも載せず、ページに直接置く。
    箱で囲うと下のカード群と同じ「並んでいるもの」に見えるので、囲わないことで主役として立たせる。 */
 .db-hello{display:flex;align-items:center;gap:16px;padding:0 2px;margin-bottom:20px;}
-.db-hello .fox{width:104px;height:104px;flex:none;object-fit:contain;}
+.db-hello .info-mark{width:104px;height:104px;flex:none;object-fit:contain;}
 .db-hello .hello-tx{flex:1 1 auto;min-width:0;}
 /* セクション見出し(20px/700)と同じ声量だったので h1 まで上げる（監査 F4） */
 .db-hello .hi{font-size:var(--text-h1);font-weight:var(--font-weight-h1);line-height:1.2;margin-bottom:4px;}
@@ -544,7 +548,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
    左は1つだけなので auto、右は3つを均等に伸ばすので 1fr。 */
 .db-bottom{border-top:1px solid var(--color-border);padding-top:14px;margin-top:2px;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;}
 .db-bt{display:flex;align-items:center;gap:10px;min-width:0;}
-.db-bt .fox{width:34px;height:34px;flex:none;object-fit:contain;}
+.db-bt .info-mark{width:34px;height:34px;flex:none;object-fit:contain;}
 .db-bt .lb{font-size:var(--text-label);color:var(--color-muted-foreground);white-space:nowrap;}
 .db-fbtn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;border:1.5px solid var(--color-primary);color:var(--color-primary);background:transparent;border-radius:var(--radius-md);padding:10px 16px;font-family:inherit;font-size:var(--text-body);font-weight:var(--font-weight-body-strong);cursor:pointer;white-space:nowrap;}
 .db-fbtn i{font-size:18px;}
@@ -642,31 +646,31 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
   /* この画面固有のSP調整。シェル共通（サイドバー→下ナビ・ヘッダー）は shell-sp.css。
 
      あいさつ枠は縦386px＝画面(844px)の46%を占めていた。縦を詰める:
-     ・キツネを上に積まず本文の横に戻す（76→56px）
+     ・ⓘを上に積まず本文の横に戻す（76→56px）
      ・見出しは h1(30px) だと2行になるので h3(16px) で1行に収める
      ・CTAだけを独立行に落とす（flex-basis:100%）
-     本文に flex:1 1 0 を与えるのが要。これが無いとキツネだけが単独行に残る。 */
+     本文に flex:1 1 0 を与えるのが要。これが無いとⓘだけが単独行に残る。 */
   .db-hello{flex-wrap:wrap;align-items:flex-start;gap:12px;padding:14px 16px;}
-  .db-hello .fox{width:56px;height:56px;}
+  .db-hello .info-mark{width:56px;height:56px;}
   .db-hello .hello-tx{flex:1 1 0;min-width:0;}
   /* 16px に落とすので weight も 700 まで下げる。900 は 30px 以上専用（DESIGN.md §Typography）で、
      小さい字に当てると潰れて黒い塊になる。 */
   .db-hello .hi{font-size:var(--text-h3);font-weight:var(--font-weight-h3);line-height:1.3;margin-bottom:3px;}
   .db-cta{flex-basis:100%;margin-left:0;width:auto;justify-content:center;padding:13px 20px;}
 
-  /* 横に並べるのはキツネと「こんにちは、◯◯さん」だけ。その下の提案文は全幅で使う。
-     提案文は .hello-tx の中にあるので、flex のままだとキツネ(56)+gap(12)=68px ぶん
+  /* 横に並べるのはⓘと「こんにちは、◯◯さん」だけ。その下の提案文は全幅で使う。
+     提案文は .hello-tx の中にあるので、flex のままだとⓘ(56)+gap(12)=68px ぶん
      右にずれた位置から始まり、左に誰も居ない余白が残る。
 
      負のマージンで68px引き戻す手もあるが、それだと横は直っても縦が回り込まず、
-     提案文の1行目がキツネに重なる。キツネを float にして、提案文に clear をかける。
-     こうすると「挨拶はキツネの横／提案文はキツネの下から全幅」が、
-     キツネの大きさに依存する数値を1つも持たずに決まる。 */
+     提案文の1行目がⓘに重なる。ⓘを float にして、提案文に clear をかける。
+     こうすると「挨拶はⓘの横／提案文はその下から全幅」が、
+     ⓘの大きさに依存する数値を1つも持たずに決まる。 */
   .db-hello{display:block;}
-  .db-hello .fox{float:left;margin-right:12px;}
+  .db-hello .info-mark{float:left;margin-right:12px;}
   .db-hello .rec{clear:left;}
   /* .db-hello が block になったので flex-basis:100% は効かない。
-     block レベルの flex にして幅いっぱいに伸ばす。clear はキツネの右へ回り込ませないため。
+     block レベルの flex にして幅いっぱいに伸ばす。clear はⓘの右へ回り込ませないため。
      ⚠️ block 化で flex の gap:12px も効かなくなり、最後のおすすめチップと
      この0px密着していた。おすすめ案から作るのと、まっさらから作るのは別の行為なので、
      チップ同士(9px)より広い16px（DESIGN.md のセクション内の間隔）を空けて切り離す。 */
@@ -701,8 +705,8 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
   /* 「プロに頼みたいときは」の行は、ラベルと広告作成が同じ行に残り、発注相談と出張撮影だけが
      次の行に落ちて、ラベルがどのボタンに掛かるのか読めなくなっていた。
      ラベルに1行渡して、3つのボタンをその下に揃える。3つを1行に収めるため余白と字も詰める。
-     ラベルを独立行にするのは3つ並ぶ2つ目のブロックだけ。1つ目（キツネ＋やり方に迷ったら＋
-     使い方を見る）まで巻き込むと、キツネ・ラベル・ボタンで3行使ってしまう。 */
+     ラベルを独立行にするのは3つ並ぶ2つ目のブロックだけ。1つ目（ⓘ＋やり方に迷ったら＋
+     使い方を見る）まで巻き込むと、ⓘ・ラベル・ボタンで3行使ってしまう。 */
   .db-bt+.db-bt .lb{flex-basis:100%;}
   .db-bt .db-fbtn{padding:10px 8px;font-size:var(--text-label);gap:5px;}
   .db-bt .db-fbtn i{font-size:16px;}
@@ -758,7 +762,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .db-stat.done .ic{background:var(--st-done-a);}
 .db-stat.sched .ic{background:var(--st-sched-a);}
 .db-stat.draft .ic{background:var(--st-draft-a);}
-.db-stat.wait .ic,.db-stat .ic.act{background:var(--st-wait-a);}
+.db-stat.wait .ic,.db-stat.wait .ic.act{background:var(--st-wait-a);}
 .db-stat:hover{border-color:var(--color-primary);box-shadow:var(--shadow-raised);}
 
 
@@ -777,12 +781,12 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .corner{right:26px;bottom:26px;}
 
 /* ===== サイドバーの文字を白に =====
-   地の #fe7235 に白は 2.74 で、15px の本文には足りない。
+   地の #2E5AB0 に白は 2.74 で、15px の本文には足りない。
    文字を白にすると決めた以上、地の側を下げてコントラストを作る。
-   以前は縦グラデーション（#fe7235→#e85513→#d54101）で「上は鮮やかなまま」を
+   以前は縦グラデーション（#2E5AB0→#234A96→#234A96）で「上は鮮やかなまま」を
    残していたが、SPではサイドバーが高さ60pxの帯になるため、180度の階調が
    その中に圧縮されて帯状のムラに見え、古く見える原因になっていた（2026-08-28）。
-   ベタの primary-deep(#d54101) に統一。白文字で 4.58 なので本文でも AA を満たす。 */
+   ベタの primary-deep(#234A96) に統一。白文字で 4.58 なので本文でも AA を満たす。 */
 .sb{background:var(--color-primary-deep);}
 .sb .logo{filter:brightness(0) invert(1);opacity:.96;}
 .sb .ni{color:rgba(255,255,255,.88);}
@@ -796,8 +800,8 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 /* 選択中は「薄い白」の面に反転させる（2026-08-21）。
    もとは 24%白 + 白文字で、地のオレンジとの差が出ず沈んでいた（白文字は 2.67）。
    ベタ白だと「投稿作成」ボタンと同じ強さになって重いので 80% に落とす。
-   ただし 80%白の面（rgb(251,222,209)）に #d54101 は 3.59 で AA に足りないので、
-   文字だけ1段濃い #a33200 にして 5.47 を確保する。地を薄くしたぶんは文字で補う。 */
+   ただし 80%白の面（rgb(251,222,209)）に #234A96 は 3.59 で AA に足りないので、
+   文字だけ1段濃い #1B3C7E にして 5.47 を確保する。地を薄くしたぶんは文字で補う。 */
 .sb .ni.on{background:rgba(255,255,255,.22);color:#fff;}
 .sb .ni.on .ti{color:#fff;}
 .sb .ni.on .cv{color:#fff;}
@@ -811,16 +815,17 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .sb .switcher{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.30);}
 .sb .switcher .pn,.sb .switcher .nm{color:#fff;}
 .sb .switcher .an,.sb .switcher .cv{color:rgba(255,255,255,.72);}
-.sb .switcher .pic{background:#fff;color:#d54101;}
+.sb .switcher .pic{background:#fff;color:#234A96;}
 .sb .upg{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.30);}
 .sb .upg .ut{color:#fff;}
-.sb .upg .ub{background:#fff !important;color:#d54101 !important;}
+.sb .upg .ub{background:#fff !important;color:#234A96 !important;}
 .sb .upg .ub:hover{filter:brightness(.94);}
-.create{background:#fff !important;color:#d54101 !important;}
+.create{background:#fff !important;color:#234A96 !important;}
 .create:hover{background:#fff !important;filter:brightness(.96);}
 </style>
 <!-- SP対応。インラインCSSの後に置く（@media は詳細度を上げないので後勝ちにする） -->
 <link rel="stylesheet" href="./shell-sp.css">
+<link rel="stylesheet" href="./brand-ui.css">
 </head><body>
 <div class="app">
   <!-- サイドバー -->
@@ -857,9 +862,9 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
       <div class="pop" id="clientPop">
         <div class="searchbox"><i class="ti ti-search"></i><input placeholder="クライアントを検索"></div>
         <div class="plbl">クライアント</div>
-        <div class="swi cur"><div class="swic" style="background:#ffe6dc;color:var(--color-primary)"><i class="ti ti-coffee"></i></div><span class="nm">犬カフェOne</span><i class="ti ti-check ck"></i></div>
+        <div class="swi cur"><div class="swic" style="background:#EDF2FA;color:var(--color-primary)"><i class="ti ti-coffee"></i></div><span class="nm">犬カフェOne</span><i class="ti ti-check ck"></i></div>
         <div class="swi"><div class="swic" style="background:#ffe6f0;color:var(--color-sns-instagram)"><i class="ti ti-building-store"></i></div><span class="nm">すみか不動産</span></div>
-        <div class="swi"><div class="swic" style="background:#f1f7ff;color:var(--color-info)"><i class="ti ti-paw"></i></div><span class="nm">ねこ用品ラボ</span></div>
+        <div class="swi"><div class="swic" style="background:#EDF2FA;color:var(--color-info)"><i class="ti ti-paw"></i></div><span class="nm">ねこ用品ラボ</span></div>
         <div class="swi"><div class="swic" style="background:#f3fcf6;color:var(--color-success)"><i class="ti ti-building-store"></i></div><span class="nm">グリーン薬局</span></div>
         <div class="swact"><i class="ti ti-plus"></i>新しいクライアントを追加</div>
         <div class="swdiv"></div>
@@ -928,7 +933,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 
       <!-- あいさつ：今日の状況を1行で言い切る -->
       <div class="db-hello">
-        <img class="fox" src="./assets/mawaru-fox-sit.png" alt="">
+        
         <div class="hello-tx">
           <div class="hi">こんにちは、犬カフェOne さん</div>
           <!-- おすすめ：今日の切り口 + 具体案。押すと投稿作成にその案が入った状態で入る -->
@@ -1155,7 +1160,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
            人に頼む側だけオレンジ塗り＝主。使い方は枠線＝副（[[orange-only-interaction]]）。 -->
       <div class="db-bottom">
         <div class="db-bt">
-          <img class="fox" src="./assets/mawaru-fox-face.png" alt="">
+          <span class="info-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="7.6" r="1.1" fill="currentColor" stroke="none"/></svg></span>
           <span class="lb">やり方に迷ったら</span>
           <button class="db-fbtn"><i class="ti ti-school"></i>使い方を見る</button>
         </div>

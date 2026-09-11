@@ -1,16 +1,16 @@
 /**
- * fox-alert.js — キツネアラートを×で閉じられるようにする
+ * hint.js — ヒントを×で閉じられるようにする
  *
- * 使い方: 各画面で <script src="./fox-alert.js"></script> を1行足すだけ。
+ * 使い方: 各画面で <script src="./hint.js"></script> を1行足すだけ。
  *   HTML側は今まで通り（DESIGN.md §Alert のまま）でよく、×はこのファイルが差し込む。
  *   すでに手で <button class="x"> を書いてある箱（settings_wire の運用目的）は
  *   作り直さず、その1個をそのまま使う。
  *
- * 対象は2つ。どちらも「キツネが話しかけている文」で、キツネが数値の横に表情アイコンと
- * して付いているだけのもの（analysis_metrics の .summary-fox / .mc-fox、
+ * 対象は2つ。どちらも「ヒントとして出す文」で、ⓘが数値の横に
+ * して付いているだけのもの（analysis_metrics の .summary-hint / .mc-hint、
  * analysis_account の .trend-row）は喋っていないので対象外。
- *   .fox-alert  吹き出しの箱を持つ本体（DESIGN.md §Alert）
- *   .fox-say    箱を持たない一言（AIレポートのスライド下の「リーチが課題やな！」など）
+ *   .hint  吹き出しの箱を持つ本体（DESIGN.md §Alert）
+ *   .hint-inline    箱を持たない一言（AIレポートのスライド下の「リーチが課題やな！」など）
  *
  * 設計の根拠:
  *   - アラートは「据え置き」なので、一度読んだ人には毎回同じ文が居座る。
@@ -19,7 +19,7 @@
  *   - 消すのは任意。既定では出したままで、押した人にだけ消える。
  *     出さない判断（data-keep）は書き手が明示したときだけ。
  *   - ×は吹き出しの外に置く。DESIGN.md §Alert「吹き出しの外に出していいのは、
- *     キツネと右端のボタン（.sp）と閉じるボタン（.x）だけ」に合わせる。
+ *     ⓘと右端のボタン（.sp）と閉じるボタン（.x）だけ」に合わせる。
  *
  * 状態は localStorage に置く。ワイヤーはページを跨ぐと変数が消えるため。
  * 鍵は「ページ名 + 本文のハッシュ」。何番目の箱かで持つと、後から上に1つ足したり
@@ -34,7 +34,7 @@
 (function () {
   /* 箱の並びを変えたら上げる。旧版の「消した」が残ると、
      入れ替えた別のアラートが最初から消えたまま誰にも出ない。 */
-  var KEY = 'mawaru.foxalert.v1';
+  var KEY = 'mawaru.hint.v1';
 
   var page = (location.pathname.split('/').pop() || 'index').replace(/\.html$/, '');
 
@@ -79,7 +79,7 @@
 
   function init() {
     var seen = load();
-    var boxes = document.querySelectorAll('.fox-alert, .fox-say');
+    var boxes = document.querySelectorAll('.hint, .hint-inline');
 
     for (var i = 0; i < boxes.length; i++) {
       var el = boxes[i];
@@ -101,9 +101,9 @@
          中に浮かせれば、幅を譲るのは×の高さ（28px）に掛かる行だけで、
          ラベルの行の右余白に収まる。下の行は満幅に戻る。
          手書きの×（settings_wire）があれば作り直さず、同じ位置へ移す。 */
-      /* .fox-say は吹き出しの箱を持たないので、行そのものを本文として扱い、
+      /* .hint-inline は吹き出しの箱を持たないので、行そのものを本文として扱い、
          ×は行の右端に置く（中に float すると中央寄せの一言がずれる）。 */
-      var say = el.classList.contains('fox-say');
+      var say = el.classList.contains('hint-inline');
       var bubble = say ? el : el.querySelector(':scope > div, :scope > p');
       if (!bubble) continue;
 
@@ -120,7 +120,8 @@
         btn.appendChild(icon());
       }
       btn.setAttribute('aria-label', '閉じる');
-      if (say) { el.appendChild(btn); } else { bubble.insertBefore(btn, bubble.firstChild); }
+      /* カード化したので、× は本文の中ではなくカード直下に置く（フレックスの右端） */
+      el.appendChild(btn);
 
       btn.addEventListener('click', (function (box, key) {
         return function (e) {
@@ -134,7 +135,7 @@
 
   /* 消したものを出し直す。ワイヤーの確認用（コンソールから叩く）。
      製品では設定画面の「案内をまた表示する」がこれを呼ぶ。 */
-  window.foxAlertReset = function () {
+  window.hintReset = function () {
     try { localStorage.removeItem(KEY); } catch (e) { /* noop */ }
     location.reload();
   };

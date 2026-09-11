@@ -37,7 +37,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-[1240px] gap-8 px-4 py-9 sm:px-6 md:grid-cols-2 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
         <div>
           <Link href="/" className="mb-3 flex items-center gap-2.5">
-            <Image src={asset('/img/logo-mawaru.png')} alt="マワル" width={140} height={28} className="h-7 w-auto" />
+            <Image src={asset('/img/logo-mawaru.svg')} alt="マワル" width={131} height={28} className="h-7 w-auto" />
             <span className="text-base font-bold">ヘルプセンター</span>
           </Link>
           <p className="text-sm leading-relaxed text-muted-foreground">

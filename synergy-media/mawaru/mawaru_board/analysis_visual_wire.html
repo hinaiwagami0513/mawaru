@@ -66,47 +66,50 @@
 .ti-report-analytics:before{content:"\eecb"}
 :root {
   /* 新パレット（藍・水色）由来の追加トークン */
-  --color-navy: #00347a;
-  --color-navy-subtle: #f1f7ff;
-  --color-primary-deep: #d54101;
-  --color-primary: #fe7235;
-  --color-primary-hover: #d54101;
-  --color-primary-light: #fea735;
-  --color-primary-subtle: #fff5f1;
-  --color-on-primary: #ffffff;
-  --color-background: #fcf5ef;
-  --color-surface: #fffdfb;
-  --color-card: #ffffff;
-  --color-foreground: #2a2826;
-  --color-muted-foreground: #757575;
-  --color-border: #efe7df;
-  --color-border-strong: #ddd0c4;
-  --color-input: #ffffff;
-  --color-ring: #fe7235;
-  --color-success: #008a24; --color-success-vivid: #00ac2f;
-  --color-success-subtle: #f3fcf6;
-  --color-success-border: #cff4dc;
-  --color-warning: #ad6201;
-  --color-warning-border: #ffe6c4;
-  --color-warning-subtle: #fff9f1;
-  --color-info: #0070f0;
-  --color-info-subtle: #f1f7ff;
-  --color-destructive: #e90c2a;
-  --color-on-destructive: #ffffff;
-  --color-destructive-subtle: #feeef1;
-  --color-destructive-border: #fca5a5;
-  --color-like: #ef3a58;
-  --color-like-subtle: #feeef1;
-  --color-accent-purple: #9724ba;
-  --color-accent-purple-subtle: #f5e7f8;
-  --color-sns-instagram: #b02a78;
-  --color-sns-instagram-subtle: #fce7f3;
-  --color-sns-x: #2a2826;
-  --color-sns-x-subtle: #fcf5ef;
-  --color-sns-tiktok: #0a6f66;
-  --color-sns-tiktok-subtle: #e5fbf7;
-  --color-sns-youtube: #c4302b;
-  --color-sns-youtube-subtle: #fcebeb;
+  --color-navy: #122651;
+  --color-navy-subtle: #EDF2FA;
+  --color-primary-deep: #1B3C7E;
+  --color-primary: #2E5AB0;
+  --color-primary-hover: #234A96;
+  --color-primary-light: #7DABDE;
+  --color-primary-subtle: #EDF2FA;
+  --color-on-primary: #FFFFFF;
+  --color-background: #F2F1F0;
+  --color-surface: #FBFAF8;
+  --color-card: #FFFFFF;
+  --color-foreground: #2A2826;
+  --color-muted-foreground: #6E6A66;
+  --color-border: #E9E8E6;
+  --color-border-strong: #CFCDC9;
+  --color-input: #FFFFFF;
+  --color-ring: #2E5AB0;
+  --color-tertiary: #7DABDE;
+  --color-tertiary-subtle: #DCE8F7;
+  --color-border-input: #99948C;
+  --color-success: #008623; --color-success-vivid: #00A62D;
+  --color-success-subtle: #F3FCF6;
+  --color-success-border: #CFF4DC;
+  --color-warning: #AB6101;
+  --color-warning-border: #FFE6C4;
+  --color-warning-subtle: #FFF9F1;
+  --color-info: #0B76B2;
+  --color-info-subtle: #ECF6FD;
+  --color-destructive: #D81028;
+  --color-on-destructive: #FFFFFF;
+  --color-destructive-subtle: #FDEEF0;
+  --color-destructive-border: #FFD0D8;
+  --color-like: #D7213D;
+  --color-like-subtle: #FDEFF1;
+  --color-accent-purple: #8B2FB8;
+  --color-accent-purple-subtle: #F5E9F9;
+  --color-sns-instagram: #B02A78;
+  --color-sns-instagram-subtle: #FCE7F3;
+  --color-sns-x: #2A2826;
+  --color-sns-x-subtle: #F2F1F0;
+  --color-sns-tiktok: #0A6F66;
+  --color-sns-tiktok-subtle: #E5FBF7;
+  --color-sns-youtube: #C4302B;
+  --color-sns-youtube-subtle: #FCEBEB;
 
   /* Bigger text sizes as specified */
   --text-h1: 2rem;
@@ -131,10 +134,10 @@
   --radius-xl: 20px;
   --radius-full: 9999px;
   /* セカンダリ＝青系（primary橙＝押せる／secondary青＝情報・補助） */
-  --color-secondary: #0077ff;
-  --color-secondary-light: #00c3ff;
-  --color-secondary-subtle: #f1f7ff;
-  --color-secondary-deep: #0070f0;
+  --color-secondary: #122651;
+  --color-secondary-light: #7DABDE;
+  --color-secondary-subtle: #EDF2FA;
+  --color-secondary-deep: #0B76B2;
 }
 
 *, *::before, *::after {
@@ -148,7 +151,7 @@ body {
 }
 
 body {
-  background: #fcf5ef;
+  background: #F2F1F0;
   padding: 0;
   color: var(--color-foreground);
   font-size: var(--text-body);
@@ -488,13 +491,13 @@ body {
 }
 .summary-card.down {
   background: var(--color-destructive-subtle);
-  border: 1px solid #ffc4c4;
+  border: 1px solid #A9C8E9;
 }
 .summary-card.neutral {
   background: var(--color-background);
   border: 1px solid var(--color-border);
 }
-.summary-fox {
+.summary-hint,.summary-hint.info-mark,.summary-hint .info-mark{
   width: 40px;
   height: 40px;
   object-fit: contain;
@@ -621,7 +624,7 @@ body {
   font-weight: var(--font-weight-body-strong);
 }
 
-/* diff with fox */
+/* 差分とヒント */
 .mc-diff {
   display: flex;
   align-items: center;
@@ -631,7 +634,7 @@ body {
   margin-top: 8px;
   border-top: 1px solid var(--color-border);
 }
-.mc-fox {
+.mc-hint,.mc-hint.info-mark,.mc-hint .info-mark{
   width: 32px;
   height: 32px;
   object-fit: contain;
@@ -1062,7 +1065,7 @@ body {
 }
 .vr-slide-img {
   overflow: hidden;
-  background: #fcf5ef;
+  background: #F2F1F0;
 }
 .vr-slide-img img {
   width: 100%;
@@ -1089,7 +1092,7 @@ body {
   width: fit-content;
 }
 .vr-slide-link:hover {
-  background: rgba(239,97,8,.15);
+  background: rgba(46,90,176,.15);
 }
 .vr-slide-link .ti { font-size: 14px; }
 
@@ -1186,7 +1189,7 @@ body {
 }
 .vr-rank-num.gold { background: #fef9c3; color: #92400e; }
 .vr-rank-num.silver { background: #f1f5f9; color: #475569; }
-.vr-rank-num.bronze { background: #fef3c7; color: #92400e; }
+.vr-rank-num.bronze { background: #FFE6C4; color: #92400e; }
 .vr-thumb {
   width: 36px;
   height: 36px;
@@ -1244,7 +1247,7 @@ body {
 .vr-ai-card.good { border-left: 3px solid var(--color-success); }
 .vr-ai-card.improve { border-left: 3px solid var(--color-warning-border); }
 .vr-ai-card.action { border-left: 3px solid var(--color-primary); }
-.vr-ai-card.summary { background: var(--color-primary-subtle); border-color: #ffd6c4; }
+.vr-ai-card.summary { background: var(--color-primary-subtle); border-color: #A9C8E9; }
 .vr-ai-badge {
   display: inline-flex;
   align-items: center;
@@ -1301,14 +1304,14 @@ body {
 
 /* ===== ヘッダー右側（全画面共通） =====
    現在のプラン（押せないので枠線のみ）+ ToDo + チャット。ヘルプの左に置く。 */
-.planchip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--color-border-strong,#ddd0c4);border-radius:var(--radius-full,9999px);padding:5px 12px;font-size:var(--text-label,.75rem);font-weight:700;color:var(--color-muted-foreground,#757575);white-space:nowrap;}
-.planchip i{font-size:15px;color:var(--color-primary,#fe7235);}
+.planchip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--color-border-strong,#CFCDC9);border-radius:var(--radius-full,9999px);padding:5px 12px;font-size:var(--text-label,.75rem);font-weight:700;color:var(--color-muted-foreground,#6E6A66);white-space:nowrap;}
+.planchip i{font-size:15px;color:var(--color-primary,#2E5AB0);}
 .planchip{text-decoration:none;transition:border-color .15s,color .15s;}
 .planchip[href]:hover{border-color:var(--color-primary);color:var(--color-foreground);}
 .planchip.is-here{cursor:default;}
-.hdbtn{position:relative;width:38px;height:38px;flex:none;border:1px solid var(--color-border-strong,#ddd0c4);background:var(--color-card,#fff);color:var(--color-foreground,#2a2826);border-radius:var(--radius-full,9999px);display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer;padding:0;text-decoration:none;}
-.hdbtn:hover{border-color:var(--color-primary,#fe7235);color:var(--color-primary,#fe7235);}
-.hdbadge{position:absolute;top:-4px;right:-4px;min-width:19px;height:19px;padding:0 5px;border-radius:var(--radius-full,9999px);background:var(--color-primary,#fe7235);color:#fff;font-size:var(--text-meta,.625rem);font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid var(--color-card,#fff);}
+.hdbtn{position:relative;width:38px;height:38px;flex:none;border:1px solid var(--color-border-strong,#CFCDC9);background:var(--color-card,#fff);color:var(--color-foreground,#2a2826);border-radius:var(--radius-full,9999px);display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer;padding:0;text-decoration:none;}
+.hdbtn:hover{border-color:var(--color-primary,#2E5AB0);color:var(--color-primary,#2E5AB0);}
+.hdbadge{position:absolute;top:-4px;right:-4px;min-width:19px;height:19px;padding:0 5px;border-radius:var(--radius-full,9999px);background:var(--color-primary,#2E5AB0);color:#fff;font-size:var(--text-meta,.625rem);font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid var(--color-card,#fff);}
 
 /* ===== 分析ページのシェル組み直し =====
    ヘッダー（.topbar）が全幅で最上部に置かれ、サイドバーの上に乗っていた。
@@ -1351,8 +1354,8 @@ body {
 /* ===== サイドバーの文字を白に =====
    オレンジ地に白なので、hover / 選択中は面の濃さだけで見分けさせる
    （10% / 22%）。縁は付けない。他ページの .sb と同じ値に合わせている。 */
-.sidebar{background:linear-gradient(180deg,#fe7235 0%,#e85513 55%,#d54101 100%);}
-.sidebar .sb-cta{background:#fff;color:#d54101;}
+.sidebar{background:linear-gradient(180deg,#2E5AB0 0%,#234A96 55%,#234A96 100%);}
+.sidebar .sb-cta{background:#fff;color:#234A96;}
 .sidebar .sb-cta:hover{filter:brightness(.96);}
 .sidebar .sb-btn{color:rgba(255,255,255,.88);text-decoration:none;}
 .sidebar .sb-btn .ti{color:rgba(255,255,255,.88);}
@@ -1366,7 +1369,7 @@ body {
 .sidebar .sb-sub a:hover{background:rgba(255,255,255,.10);color:#fff;}
 .sidebar .sb-acct{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.30);}
 .sidebar .sb-acct div{color:#fff;}
-.sidebar .sb-acct .avatar{background:#fff;color:#d54101;}
+.sidebar .sb-acct .avatar{background:#fff;color:#234A96;}
 /* .sb 系（analysis_posts）はオレンジ化済み。下線だけ外す */
 .main-row > .sb a{text-decoration:none;}
 /* .content を高さ固定のグリッド項目にしたぶん、縦並びの子に flex-shrink が効く。

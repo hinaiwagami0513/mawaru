@@ -53,52 +53,58 @@
 
 :root {
   /* 新パレット（藍・水色）由来の追加トークン */
-  --color-navy: #00347a;
-  --color-navy-subtle: #f1f7ff;
-  --color-primary-deep: #d54101;
-  --color-primary: #fe7235;
-  --color-primary-hover: #d54101;
-  --color-primary-light: #fea735;
-  --color-primary-subtle: #fff5f1;
-  --color-on-primary: #ffffff;
-  --color-background: #fcf5ef;
-  --color-surface: #fffdfb;
-  --color-card: #ffffff;
-  --color-foreground: #2a2826;
-  --color-muted-foreground: #757575;
-  --color-border: #efe7df;
-  --color-border-strong: #ddd0c4;
-  --color-input: #ffffff;
-  --color-ring: #fe7235;
-  --color-success: #008a24; --color-success-vivid: #00ac2f;
-  --color-success-subtle: #f3fcf6;
-  --color-warning: #ad6201;
-  --color-warning-border: #ffe6c4;
-  --color-warning-subtle: #fff9f1;
-  --color-info: #0070f0;
-  --color-info-subtle: #f1f7ff;
-  --color-destructive: #e90c2a;
-  --color-on-destructive: #ffffff;
-  --color-destructive-subtle: #feeef1;
-  --color-like: #ef3a58;
-  --color-like-subtle: #feeef1;
-  --color-accent-purple: #9724ba;
-  --color-accent-purple-subtle: #f5e7f8;
-  --color-sns-instagram: #b02a78;
-  --color-sns-instagram-subtle: #fce7f3;
-  --color-sns-x: #2a2826;
-  --color-sns-x-subtle: #fcf5ef;
-  --color-sns-tiktok: #0a6f66;
-  --color-sns-tiktok-subtle: #e5fbf7;
-  --color-sns-youtube: #c4302b;
-  --color-sns-youtube-subtle: #fcebeb;
-  --color-editor-bg: #1e1a17;
+  --color-navy: #122651;
+  --color-navy-subtle: #EDF2FA;
+  --color-primary-deep: #1B3C7E;
+  --color-primary: #2E5AB0;
+  /* 暗色面では #2E5AB0 が 1.85〜2.64:1 しか出ないため、文字・罫線だけ明るい青を使う。
+     塗りボタンは白文字 6.55:1 で足りるので --color-primary のまま。 */
+  --color-primary-on-dark: #7DABDE;
+  --color-primary-hover: #234A96;
+  --color-primary-light: #7DABDE;
+  --color-primary-subtle: #EDF2FA;
+  --color-on-primary: #FFFFFF;
+  --color-background: #F2F1F0;
+  --color-surface: #FBFAF8;
+  --color-card: #FFFFFF;
+  --color-foreground: #2A2826;
+  --color-muted-foreground: #6E6A66;
+  --color-border: #E9E8E6;
+  --color-border-strong: #CFCDC9;
+  --color-input: #FFFFFF;
+  --color-ring: #2E5AB0;
+  --color-tertiary: #7DABDE;
+  --color-tertiary-subtle: #DCE8F7;
+  --color-border-input: #99948C;
+  --color-success: #008623; --color-success-vivid: #00A62D;
+  --color-success-subtle: #F3FCF6;
+  --color-warning: #AB6101;
+  --color-warning-border: #FFE6C4;
+  --color-warning-subtle: #FFF9F1;
+  --color-info: #0B76B2;
+  --color-info-subtle: #ECF6FD;
+  --color-destructive: #D81028;
+  --color-on-destructive: #FFFFFF;
+  --color-destructive-subtle: #FDEEF0;
+  --color-like: #D7213D;
+  --color-like-subtle: #FDEFF1;
+  --color-accent-purple: #8B2FB8;
+  --color-accent-purple-subtle: #F5E9F9;
+  --color-sns-instagram: #B02A78;
+  --color-sns-instagram-subtle: #FCE7F3;
+  --color-sns-x: #2A2826;
+  --color-sns-x-subtle: #F2F1F0;
+  --color-sns-tiktok: #0A6F66;
+  --color-sns-tiktok-subtle: #E5FBF7;
+  --color-sns-youtube: #C4302B;
+  --color-sns-youtube-subtle: #FCEBEB;
+  --color-editor-bg: #1E1A17;
   --color-editor-surface: #272320;
-  --color-editor-elevated: #3a3530;
+  --color-editor-elevated: #3A3530;
   --color-editor-stage: #000000;
-  --color-editor-foreground: #f5f3f0;
-  --color-editor-muted: #a8a29e;
-  --color-editor-border: #403a34;
+  --color-editor-foreground: #F5F3F0;
+  --color-editor-muted: #A8A29E;
+  --color-editor-border: #403A34;
   --font-display: "Noto Sans JP";
   --font-h1: "Noto Sans JP";
   --font-h2: "Noto Sans JP";
@@ -139,13 +145,13 @@
   --spacing-2xl: 32px;
   --spacing-3xl: 48px;
   /* セカンダリ＝青系（primary橙＝押せる／secondary青＝情報・補助） */
-  --color-secondary: #0077ff;
-  --color-secondary-light: #00c3ff;
-  --color-secondary-subtle: #f1f7ff;
-  --color-secondary-deep: #0070f0;
+  --color-secondary: #122651;
+  --color-secondary-light: #7DABDE;
+  --color-secondary-subtle: #EDF2FA;
+  --color-secondary-deep: #0B76B2;
 }
 *{box-sizing:border-box;margin:0;padding:0;font-family:var(--font-body),'Hiragino Sans','Meiryo',sans-serif;-webkit-font-smoothing:antialiased;}
-body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
+body {background:#000000;padding:0;color:var(--color-editor-foreground);}
 .app{width:100%;background:var(--color-editor-bg);border-radius:0;overflow:hidden;display:flex;flex-direction:column;height:100vh;}
 .ti{line-height:1;}
 .grad{background:linear-gradient(135deg,var(--color-primary),var(--color-primary-light))!important;color:#fff!important;}
@@ -153,18 +159,18 @@ body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
 .iconbtn{width:36px;height:36px;border-radius:var(--radius-md);border:1px solid var(--color-editor-border);background:var(--color-editor-elevated);color:var(--color-editor-foreground);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;}
 .iconbtn:hover{background:var(--color-editor-border);}
 .title{font-size:var(--text-body);font-weight:var(--font-weight-body-strong);}
-.rbadge{font-size:var(--text-meta);font-weight:var(--font-weight-body-strong);color:var(--color-primary);background:rgba(239,97,8,.14);border-radius:var(--radius-full);padding:3px 10px;}
+.rbadge{font-size:var(--text-meta);font-weight:var(--font-weight-body-strong);color:var(--color-primary-on-dark);background:rgba(46,90,176,.14);border-radius:var(--radius-full);padding:3px 10px;}
 .saved{font-size:var(--text-label);color:var(--color-editor-muted);}
 .hr{margin-left:auto;display:flex;align-items:center;gap:14px;}
 .cost{font-size:var(--text-label);color:var(--color-editor-muted);}
-.cost b{color:var(--color-primary);}
+.cost b{color:var(--color-primary-on-dark);}
 .save{background:var(--color-primary);color:#fff;border:none;border-radius:var(--radius-md);padding:10px 18px;font-size:var(--text-body);font-weight:var(--font-weight-body-strong);cursor:pointer;}
 .save:hover{background:var(--color-primary-hover);}
 /* template switcher */
 .tmpl-sw{position:relative;display:flex;align-items:center;}
 .tmpl-btn{display:flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--color-editor-border);border-radius:var(--radius-md);background:var(--color-editor-elevated);color:var(--color-editor-foreground);font-size:var(--text-label);font-weight:var(--font-weight-body-strong);cursor:pointer;white-space:nowrap;}
 .tmpl-btn .ti{font-size:14px;color:var(--color-editor-muted);}
-.tmpl-btn .tmpl-name{color:var(--color-primary);}
+.tmpl-btn .tmpl-name{color:var(--color-primary-on-dark);}
 .tmpl-btn .chevron{font-size:14px;color:var(--color-editor-muted);transition:transform .2s;}
 .tmpl-sw.open .chevron{transform:rotate(180deg);}
 .tmpl-dd{position:absolute;top:calc(100% + 6px);left:0;width:260px;background:var(--color-editor-surface);border:1px solid var(--color-editor-border);border-radius:var(--radius-lg);box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:20;display:none;overflow:hidden;}
@@ -172,13 +178,13 @@ body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
 .tmpl-dd-item{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:var(--text-label);color:var(--color-editor-foreground);border-bottom:1px solid var(--color-editor-border);}
 .tmpl-dd-item:last-child{border-bottom:none;}
 .tmpl-dd-item:hover{background:var(--color-editor-elevated);}
-.tmpl-dd-item.active{background:rgba(239,97,8,.08);}
+.tmpl-dd-item.active{background:rgba(46,90,176,.08);}
 .tmpl-dd-item .tmpl-thumb{width:36px;height:36px;border-radius:var(--radius-sm);border:1px solid var(--color-editor-border);background:var(--color-editor-elevated);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--color-editor-muted);flex-shrink:0;}
-.tmpl-dd-item.active .tmpl-thumb{border-color:var(--color-primary);}
+.tmpl-dd-item.active .tmpl-thumb{border-color:var(--color-primary-on-dark);}
 .tmpl-dd-item .tmpl-info{flex:1;min-width:0;}
 .tmpl-dd-item .tmpl-info .tmpl-n{font-weight:var(--font-weight-body-strong);}
 .tmpl-dd-item .tmpl-info .tmpl-d{font-size:var(--text-meta);color:var(--color-editor-muted);margin-top:2px;}
-.tmpl-dd-item .tmpl-check{font-size:14px;color:var(--color-primary);display:none;}
+.tmpl-dd-item .tmpl-check{font-size:14px;color:var(--color-primary-on-dark);display:none;}
 .tmpl-dd-item.active .tmpl-check{display:block;}
 /* ツールバー / 左プロパティ / 中央プレビュー / 右AIアシスト（動画エディタと同じ並び） */
 .work{flex:1;display:grid;grid-template-columns:72px 320px 1fr 320px;min-height:0;}
@@ -190,8 +196,8 @@ body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
 .tool .ti{font-size:22px;color:var(--color-editor-muted);}
 .tool .l{font-size:14px;font-weight:var(--font-weight-body-strong);color:var(--color-editor-muted);white-space:nowrap;}
 .tool svg{width:22px;height:22px;stroke:var(--color-editor-muted);}
-.tool.on{background:rgba(239,97,8,.14);}
-.tool.on .ti,.tool.on .l{color:var(--color-primary);}
+.tool.on{background:rgba(46,90,176,.14);}
+.tool.on .ti,.tool.on .l{color:var(--color-primary-on-dark);}
 .tool.on svg{stroke:var(--color-primary);}
 /* ===== 調整バー（スライダー） =====
    透明度が div の手組みだったので部品化する。大きさ・余白もこれで揃える。
@@ -202,12 +208,12 @@ body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
 .eb-track{height:4px;background:var(--color-editor-border);border-radius:2px;position:relative;cursor:pointer;}
 .eb-fill{height:100%;background:var(--color-primary);border-radius:2px;}
 .eb-knob{position:absolute;top:-4px;width:12px;height:12px;border-radius:50%;
-  background:var(--color-editor-foreground);border:2px solid var(--color-primary);
+  background:var(--color-editor-foreground);border:2px solid var(--color-primary-on-dark);
   transform:translateX(-50%);pointer-events:none;}
 /* ===== レイヤー一覧（Photoshop / Illustrator 風のカード） ===== */
 .lycard{display:flex;align-items:center;gap:8px;padding:6px 8px;margin-bottom:6px;border:1px solid var(--color-editor-border);border-radius:var(--radius-md);background:var(--color-editor-elevated);cursor:grab;transition:border-color .15s,background .15s;}
 .lycard:hover{border-color:var(--color-editor-muted);}
-.lycard.sel{border-color:var(--color-primary);background:rgba(239,97,8,.1);}
+.lycard.sel{border-color:var(--color-primary-on-dark);background:rgba(46,90,176,.1);}
 .lycard.dragging{opacity:.35;}
 .lycard.dropbefore{box-shadow:0 -2px 0 var(--color-primary);}
 .lycard.dropafter{box-shadow:0 2px 0 var(--color-primary);}
@@ -217,13 +223,13 @@ body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
 .lythumb>*{transform:scale(.3);transform-origin:center;white-space:nowrap;flex:none;}
 .lycard .lyinfo{flex:1;min-width:0;}
 .lycard .lyname{font-size:var(--text-label);color:var(--color-editor-foreground);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.lycard.sel .lyname{color:var(--color-primary);font-weight:var(--font-weight-body-strong);}
+.lycard.sel .lyname{color:var(--color-primary-on-dark);font-weight:var(--font-weight-body-strong);}
 .lycard .lykind{font-size:var(--text-meta);color:var(--color-editor-muted);margin-top:2px;}
 .lycard .lyb{width:22px;height:22px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:4px;color:var(--color-editor-muted);cursor:pointer;}
 .lycard .lyb:hover{background:var(--color-editor-surface);color:var(--color-editor-foreground);}
 .lycard .lyb.danger:hover{color:var(--color-destructive);}
 .lycard .lyb svg{width:14px;height:14px;}
-.lycard .lyb.on{color:var(--color-primary);}
+.lycard .lyb.on{color:var(--color-primary-on-dark);}
 /* 並べ替え・削除はホバーで出す（常時出すとカードが窮屈になる） */
 .lyacts{display:flex;gap:1px;opacity:0;transition:opacity .15s;}
 .lycard:hover .lyacts,.lycard.sel .lyacts{opacity:1;}
@@ -237,19 +243,19 @@ body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
 .gbtn{display:flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--color-editor-border);color:var(--color-editor-foreground);background:var(--color-editor-elevated);border-radius:var(--radius-md);padding:8px 13px;font-size:var(--text-label);font-weight:var(--font-weight-body-strong);cursor:pointer;}
 .gbtn .ti{font-size:15px;}
 .genrow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px;}
-.genbtn{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:var(--radius-md);padding:14px;font-size:var(--text-body);font-weight:var(--font-weight-body-strong);cursor:pointer;border:1.5px solid var(--color-primary);}
-.genbtn.ghost{background:transparent;color:var(--color-primary);}
+.genbtn{display:flex;align-items:center;justify-content:center;gap:8px;border-radius:var(--radius-md);padding:14px;font-size:var(--text-body);font-weight:var(--font-weight-body-strong);cursor:pointer;border:1.5px solid var(--color-primary-on-dark);}
+.genbtn.ghost{background:transparent;color:var(--color-primary-on-dark);}
 .genbtn .ti{font-size:17px;}
 .ghint{font-size:var(--text-label);color:var(--color-editor-muted);margin-bottom:8px;line-height:1.5;}
 /* 生成指示 */
 .gen-instruct{margin-bottom:10px;}
 .gen-instruct-input{width:100%;background:var(--color-editor-elevated);border:1.5px solid var(--color-editor-border);border-radius:var(--radius-md);padding:10px 12px;font-size:var(--text-label);color:var(--color-editor-foreground);min-height:56px;resize:vertical;font-family:inherit;line-height:1.6;box-sizing:border-box;transition:border-color .2s;}
 .gen-instruct-input::placeholder{color:var(--color-editor-muted);}
-.gen-instruct-input:focus{outline:none;border-color:var(--color-primary);background:rgba(239,97,8,.04);}
+.gen-instruct-input:focus{outline:none;border-color:var(--color-primary-on-dark);background:rgba(46,90,176,.04);}
 /* 画像添付 */
 .gen-attach-bar{display:flex;align-items:center;gap:8px;margin-top:8px;}
 .gen-attach-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:var(--radius-md);border:1px solid var(--color-editor-border);background:var(--color-editor-elevated);color:var(--color-editor-muted);font-size:var(--text-label);cursor:pointer;transition:border-color .2s,color .2s;}
-.gen-attach-btn:hover{border-color:var(--color-primary);color:var(--color-primary);}
+.gen-attach-btn:hover{border-color:var(--color-primary-on-dark);color:var(--color-primary-on-dark);}
 .gen-attach-btn i{font-size:16px;}
 .gen-attach-preview{display:none;flex-wrap:wrap;gap:8px;margin-top:8px;}
 .gen-attach-preview.has-items{display:flex;}
@@ -257,10 +263,10 @@ body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
 .gen-attach-thumb img{width:100%;height:100%;object-fit:cover;}
 .gen-attach-thumb .gen-attach-remove{position:absolute;top:-1px;right:-1px;width:20px;height:20px;border-radius:var(--radius-full);background:var(--color-editor-surface);border:1px solid var(--color-editor-border);color:var(--color-editor-muted);font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,color .2s;}
 .gen-attach-thumb .gen-attach-remove:hover{background:var(--color-destructive);color:#fff;border-color:var(--color-destructive);}
-.tpl{font-size:var(--text-label);color:var(--color-primary);font-weight:var(--font-weight-body-strong);margin-bottom:10px;display:flex;align-items:center;gap:6px;cursor:pointer;}
+.tpl{font-size:var(--text-label);color:var(--color-primary-on-dark);font-weight:var(--font-weight-body-strong);margin-bottom:10px;display:flex;align-items:center;gap:6px;cursor:pointer;}
 .thumbs{display:flex;gap:10px;margin-top:0;margin-bottom:14px;flex:none;}
 .cth{position:relative;width:66px;height:66px;border-radius:var(--radius-md);border:1.5px solid var(--color-editor-border);background:var(--color-editor-elevated);display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--color-editor-muted);cursor:pointer;}
-.cth.sel{border-color:var(--color-primary);background:rgba(239,97,8,.14);}
+.cth.sel{border-color:var(--color-primary-on-dark);background:rgba(46,90,176,.14);}
 .cth .n{position:absolute;bottom:4px;right:4px;width:16px;height:16px;border-radius:var(--radius-sm);background:rgba(0,0,0,.6);color:#fff;font-size:9px;font-weight:var(--font-weight-body-strong);display:flex;align-items:center;justify-content:center;}
 .cth .ed{position:absolute;top:-8px;left:-4px;font-size:8px;font-weight:var(--font-weight-body-strong);color:#fff;background:var(--color-success);border-radius:var(--radius-full);padding:1px 6px;}
 .stage{flex:1;background:var(--color-editor-stage);border:1px solid var(--color-editor-border);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;min-height:340px;position:relative;}
@@ -270,8 +276,8 @@ body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
 .canvas{position:relative;width:260px;aspect-ratio:4/5;background:var(--color-editor-elevated);border-radius:var(--radius-md);overflow:visible;}
 .canvas .ph{position:absolute;inset:0;width:auto;height:auto;border-radius:var(--radius-md);}
 .stobj{position:absolute;cursor:pointer;border:1.5px solid transparent;border-radius:4px;padding:2px 5px;color:#fff;font-weight:var(--font-weight-body-strong);white-space:nowrap;user-select:none;}
-.stobj:hover{border-color:rgba(239,97,8,.5);}
-.stobj.sel{border-color:var(--color-primary);}
+.stobj:hover{border-color:rgba(46,90,176,.5);}
+.stobj.sel{border-color:var(--color-primary-on-dark);}
 .stobj.grouped{border-style:dashed;}
 /* 操作バー：選択中のオブジェクトの右上に縦並びで出す */
 .objbar{position:absolute;top:0;left:calc(100% + 8px);display:flex;flex-direction:column;gap:4px;z-index:6;opacity:0;pointer-events:none;transition:opacity .15s ease;}
@@ -283,7 +289,7 @@ body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
 .objbar button.danger:hover{background:var(--color-destructive);}
 .objbar button svg{width:16px;height:16px;}
 /* 範囲選択（マーキー） */
-.marquee{position:absolute;display:none;border:1px solid var(--color-primary);background:rgba(239,97,8,.14);border-radius:2px;z-index:7;pointer-events:none;}
+.marquee{position:absolute;display:none;border:1px solid var(--color-primary-on-dark);background:rgba(46,90,176,.14);border-radius:2px;z-index:7;pointer-events:none;}
 .stage{user-select:none;}
 .objbar .obl{position:absolute;right:calc(100% + 6px);top:50%;transform:translateY(-50%);white-space:nowrap;font-size:14px;color:#fff;background:rgba(0,0,0,.75);padding:2px 6px;border-radius:4px;pointer-events:none;opacity:0;transition:opacity .15s;}
 .objbar button:hover .obl{opacity:1;}
@@ -291,7 +297,7 @@ body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
 /* --- 画像生成アニメーション --- */
 .stage-gen-overlay{position:absolute;inset:0;background:rgba(30,26,23,.82);backdrop-filter:blur(6px);border-radius:var(--radius-lg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;z-index:10;opacity:0;pointer-events:none;transition:opacity .3s;}
 .stage-gen-overlay.active{opacity:1;pointer-events:auto;}
-.gen-ring{width:56px;height:56px;border-radius:50%;border:3px solid var(--color-editor-border);border-top-color:var(--color-primary);animation:genSpin 1s linear infinite;}
+.gen-ring{width:56px;height:56px;border-radius:50%;border:3px solid var(--color-editor-border);border-top-color:var(--color-primary-on-dark);animation:genSpin 1s linear infinite;}
 @keyframes genSpin{to{transform:rotate(360deg);}}
 .gen-progress{width:160px;height:4px;border-radius:2px;background:var(--color-editor-border);overflow:hidden;}
 .gen-progress-bar{height:100%;width:0%;border-radius:2px;background:linear-gradient(90deg,var(--color-primary),var(--color-primary-light));transition:width .4s ease;}
@@ -313,22 +319,22 @@ body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
 .script-toggle .ti-chevron-right{font-size:14px;color:var(--color-editor-muted);transition:transform .2s;}
 .script-toggle.open .ti-chevron-right{transform:rotate(90deg);}
 .script-toggle .script-hint{display:none;}
-.script-toggle .ti-notebook{font-size:15px;color:var(--color-primary);}
-.script-toggle .script-badge{font-size:var(--text-meta);font-weight:var(--font-weight-body-strong);color:var(--color-primary);background:rgba(239,97,8,.1);border:1px solid rgba(239,97,8,.2);border-radius:var(--radius-full);padding:2px 9px;margin-left:auto;}
+.script-toggle .ti-notebook{font-size:15px;color:var(--color-primary-on-dark);}
+.script-toggle .script-badge{font-size:var(--text-meta);font-weight:var(--font-weight-body-strong);color:var(--color-primary-on-dark);background:rgba(46,90,176,.1);border:1px solid rgba(46,90,176,.2);border-radius:var(--radius-full);padding:2px 9px;margin-left:auto;}
 .script-body{display:none;padding:6px 8px 8px;max-height:40vh;overflow-y:auto;scrollbar-width:thin;}
 .script-body.open{display:block;}
 .script-items{display:flex;flex-direction:column;gap:4px;}
 .script-item{display:none;font-size:var(--text-label);color:var(--color-editor-muted);line-height:1.6;padding:10px 12px;border-radius:var(--radius-md);border:1px solid transparent;}
 /* 選択中のシートの台本だけを表示する */
 .script-item.active{display:block;}
-.script-item.active{background:rgba(239,97,8,.08);border-color:rgba(239,97,8,.25);}
+.script-item.active{background:rgba(46,90,176,.08);border-color:rgba(46,90,176,.25);}
 .script-item .si-head{font-weight:var(--font-weight-body-strong);color:var(--color-editor-foreground);margin-bottom:6px;display:flex;align-items:center;gap:8px;font-size:var(--text-body);}
 .script-item .si-num{width:20px;height:20px;border-radius:var(--radius-full);background:var(--color-editor-border);color:var(--color-editor-foreground);font-size:var(--text-meta);font-weight:var(--font-weight-body-strong);display:flex;align-items:center;justify-content:center;flex:none;}
 .script-item.active .si-num{background:var(--color-primary);color:#fff;}
 .script-item .si-details{display:flex;flex-direction:column;gap:3px;padding-left:28px;}
 .script-item .si-row{display:flex;align-items:baseline;gap:6px;}
 .script-item .si-tag{flex:none;font-size:9px;font-weight:var(--font-weight-body-strong);text-transform:uppercase;letter-spacing:.03em;color:var(--color-editor-muted);background:var(--color-editor-elevated);border:1px solid var(--color-editor-border);border-radius:3px;padding:2px 6px;white-space:nowrap;}
-.script-item.active .si-tag{border-color:rgba(239,97,8,.2);background:rgba(239,97,8,.06);color:var(--color-primary);}
+.script-item.active .si-tag{border-color:rgba(46,90,176,.2);background:rgba(46,90,176,.06);color:var(--color-primary-on-dark);}
 .script-item .si-text{font-size:var(--text-label);color:var(--color-editor-muted);line-height:1.5;}
 .right{border-left:1px solid var(--color-editor-border);background:var(--color-editor-surface);display:flex;flex-direction:column;min-width:0;}
 /* 書式（アイコン）／文字の形（形そのものをSVGで表示） */
@@ -342,18 +348,18 @@ body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
 .shapebtn text.tsp-sm{font-size:9px;}
 .fmtbtn span,.shapebtn span{font-size:var(--text-meta);color:var(--color-editor-muted);line-height:1;white-space:nowrap;}
 .fmtbtn:hover,.shapebtn:hover{border-color:var(--color-editor-muted);}
-.fmtbtn.on,.shapebtn.on{border-color:var(--color-primary);background:rgba(239,97,8,.1);color:var(--color-primary);}
-.fmtbtn.on span,.shapebtn.on span{color:var(--color-primary);}
+.fmtbtn.on,.shapebtn.on{border-color:var(--color-primary-on-dark);background:rgba(46,90,176,.1);color:var(--color-primary-on-dark);}
+.fmtbtn.on span,.shapebtn.on span{color:var(--color-primary-on-dark);}
 /* 左パネル内の大タブ／小タブ（動画エディタと同じ2段構成） */
 .ptabs{display:flex;gap:0;margin-bottom:14px;border-bottom:1px solid var(--color-editor-border);}
 .ptab{font-size:14px;font-weight:500;color:var(--color-editor-muted);cursor:pointer;padding:8px 16px;border-bottom:2px solid transparent;margin-bottom:-1px;}
-.ptab.on{font-weight:var(--font-weight-body-strong);color:var(--color-primary);border-bottom-color:var(--color-primary);}
+.ptab.on{font-weight:var(--font-weight-body-strong);color:var(--color-primary-on-dark);border-bottom-color:var(--color-primary-on-dark);}
 .psubs{display:flex;gap:0;margin-bottom:14px;background:var(--color-editor-elevated);border-radius:var(--radius-md);padding:3px;border:1px solid var(--color-editor-border);}
 .psub{flex:1;text-align:center;padding:7px 0;font-size:14px;font-weight:500;border-radius:var(--radius-sm);cursor:pointer;color:var(--color-editor-muted);background:transparent;}
 .psub.on{font-weight:var(--font-weight-body-strong);color:var(--color-editor-foreground);background:var(--color-editor-surface);}
 .rtabs{display:flex;border-bottom:1px solid var(--color-editor-border);}
 .rt{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:13px;font-size:var(--text-label);font-weight:var(--font-weight-body-strong);color:var(--color-editor-muted);border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer;}
-.rt.on{color:var(--color-primary);border-bottom-color:var(--color-primary);}
+.rt.on{color:var(--color-primary-on-dark);border-bottom-color:var(--color-primary-on-dark);}
 .rt img{width:16px;height:16px;border-radius:var(--radius-full);object-fit:cover;}
 .rt .ti{font-size:15px;}
 .rbody{flex:1;overflow-y:auto;padding:18px;min-height:0;}
@@ -366,30 +372,30 @@ body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
 /* フォント一覧：項目名をそのフォント自体で表示する */
 .fontpv{padding:8px 12px;cursor:pointer;font-size:14px;color:var(--color-editor-foreground);}
 .fontpv:hover{background:var(--color-editor-elevated);}
-.fontpv.on{background:rgba(239,97,8,.08);color:var(--color-primary);}
-.fontpv.on:hover{background:rgba(239,97,8,.14);}
+.fontpv.on{background:rgba(46,90,176,.08);color:var(--color-primary-on-dark);}
+.fontpv.on:hover{background:rgba(46,90,176,.14);}
 .sizes{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
 .sz{border:1px solid var(--color-editor-border);background:var(--color-editor-elevated);color:var(--color-editor-foreground);border-radius:var(--radius-md);padding:9px;font-size:var(--text-body);font-weight:var(--font-weight-body-strong);text-align:center;cursor:pointer;}
-.sz.on{border-color:var(--color-primary);background:rgba(239,97,8,.14);color:var(--color-primary);}
+.sz.on{border-color:var(--color-primary-on-dark);background:rgba(46,90,176,.14);color:var(--color-primary-on-dark);}
 .swatches{display:flex;gap:8px;flex-wrap:wrap;}
 .sw{width:26px;height:26px;border-radius:var(--radius-full);cursor:pointer;border:2px solid transparent;}
-.sw.on{border-color:var(--color-primary);}
+.sw.on{border-color:var(--color-primary-on-dark);}
 /* 「文字色 / 文字背景 / 文字枠」は、色玉だけだとどこに効く色か読まないと分からないので
    見本の「A」自体をその見え方で描く（文字色=Aが染まる／背景=Aの下地が染まる／枠=Aの輪郭が染まる） */
 .swA{width:32px;height:32px;border-radius:var(--radius-sm);border:1px solid var(--color-editor-border);background:var(--color-editor-elevated);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;line-height:1;cursor:pointer;position:relative;overflow:hidden;}
-.swA.on{border-color:var(--color-primary);box-shadow:0 0 0 2px rgba(239,97,8,.3);}
+.swA.on{border-color:var(--color-primary-on-dark);box-shadow:0 0 0 2px rgba(46,90,176,.3);}
 .swA.none::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:1px;background:var(--color-editor-muted);transform:rotate(-45deg);}
 .fl-ic{display:inline-flex;align-items:center;gap:6px;}
 .fl-ic svg{width:15px;height:15px;flex:none;color:var(--color-editor-muted);}
 /* 好きな色（カラーピッカー）とスポイト */
-.swA.custom{position:relative;background:conic-gradient(from .25turn,#ef6108,#e8b931,#12960a,#2f6ad9,#9724ba,#d94a4a,#ef6108);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5);}
+.swA.custom{position:relative;background:conic-gradient(from .25turn,#2E5AB0,#AB6101,#12960a,#2f6ad9,#8B2FB8,#D81028,#2E5AB0);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5);}
 .swA.custom input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;padding:0;border:none;}
 .swA.dropper{color:var(--color-editor-muted);}
 .swA.dropper:hover{color:var(--color-editor-foreground);}
 .swA.dropper svg{width:16px;height:16px;}
 .align{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:150px;}
 .ab{aspect-ratio:1;border:1px solid var(--color-editor-border);background:var(--color-editor-elevated);color:var(--color-editor-muted);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;}
-.ab.on{border-color:var(--color-primary);background:rgba(239,97,8,.14);color:var(--color-primary);}
+.ab.on{border-color:var(--color-primary-on-dark);background:rgba(46,90,176,.14);color:var(--color-primary-on-dark);}
 .addbtn{width:100%;background:var(--color-primary);color:#fff;border:none;border-radius:var(--radius-md);padding:13px;font-size:var(--text-body);font-weight:var(--font-weight-body-strong);cursor:pointer;margin-top:18px;}
 /* ===== 素材（スタンプ） =====
    スタンプは全てインラインSVGで描く。アイコンフォントに寄せるとサブセット漏れで
@@ -402,10 +408,10 @@ body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
 .chiprow{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:4px;scrollbar-width:none;}
 .chiprow::-webkit-scrollbar{display:none;}
 .chip{flex:none;font-size:14px;font-weight:500;color:var(--color-editor-muted);background:var(--color-editor-elevated);border:1px solid var(--color-editor-border);border-radius:var(--radius-full);padding:5px 11px;cursor:pointer;white-space:nowrap;}
-.chip.on{color:#fff;background:var(--color-primary);border-color:var(--color-primary);font-weight:var(--font-weight-body-strong);}
+.chip.on{color:#fff;background:var(--color-primary);border-color:var(--color-primary-on-dark);font-weight:var(--font-weight-body-strong);}
 .stgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px;}
 .sttile{position:relative;aspect-ratio:1;border:1px solid var(--color-editor-border);border-radius:var(--radius-sm);background:var(--color-editor-elevated);display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;}
-.sttile:hover{border-color:var(--color-primary);}
+.sttile:hover{border-color:var(--color-primary-on-dark);}
 .sttile svg{width:66%;height:66%;display:block;}
 .stnote{font-size:var(--text-meta);color:var(--color-editor-muted);margin-top:10px;line-height:1.6;}
 .stempty{grid-column:1/-1;text-align:center;color:var(--color-editor-muted);font-size:var(--text-meta);padding:26px 0;}
@@ -417,19 +423,19 @@ body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
 .aibtn{border:none;border-radius:var(--radius-md);padding:10px 6px;font-size:var(--text-label);font-weight:var(--font-weight-body-strong);cursor:pointer;background:var(--color-primary);color:#fff;}
 .aibtn.sub{background:var(--color-editor-surface);color:var(--color-editor-foreground);border:1px solid var(--color-editor-border);}
 .aibtn:disabled{opacity:.5;cursor:default;}
-/* 生成中は🦊ローディング（既存のおまかせ演出と同じ作法） */
-.genfox{display:none;align-items:center;gap:9px;margin-top:10px;font-size:var(--text-label);color:var(--color-editor-muted);}
-.genfox.on{display:flex;}
-.genfox .fx{width:22px;height:22px;flex:none;animation:fxspin 1s linear infinite;}
+/* 生成中はロゴのローディング（既存のおまかせ演出と同じ作法） */
+.genhint{display:none;align-items:center;gap:9px;margin-top:10px;font-size:var(--text-label);color:var(--color-editor-muted);}
+.genhint.on{display:flex;}
+.genhint .fx{width:22px;height:22px;flex:none;animation:fxspin 1s linear infinite;}
 @keyframes fxspin{to{transform:rotate(360deg);}}
-.styleref{display:none;align-items:center;gap:8px;background:rgba(239,97,8,.12);border:1px solid var(--color-primary);border-radius:var(--radius-md);padding:6px 8px;margin-bottom:8px;font-size:var(--text-meta);color:var(--color-editor-foreground);}
+.styleref{display:none;align-items:center;gap:8px;background:rgba(46,90,176,.12);border:1px solid var(--color-primary-on-dark);border-radius:var(--radius-md);padding:6px 8px;margin-bottom:8px;font-size:var(--text-meta);color:var(--color-editor-foreground);}
 .styleref.on{display:flex;}
 .styleref svg{width:22px;height:22px;flex:none;}
 .styleref button{margin-left:auto;background:none;border:none;color:var(--color-editor-muted);cursor:pointer;font-size:14px;line-height:1;padding:2px;}
 /* ===== マイ素材（保存して使い回す） ===== */
 .mygrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px;}
 .mycard{position:relative;aspect-ratio:1;border:1px solid var(--color-editor-border);border-radius:var(--radius-sm);background:var(--color-editor-elevated);display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;}
-.mycard:hover{border-color:var(--color-primary);}
+.mycard:hover{border-color:var(--color-primary-on-dark);}
 .mycard svg{width:62%;height:62%;display:block;}
 /* 配置済みオブジェクトから保存したものは中身がHTMLなので縮めて見せる */
 .mhtml{display:flex;align-items:center;justify-content:center;transform:scale(.5);transform-origin:center;pointer-events:none;}
@@ -449,7 +455,7 @@ body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
 .mystyle:hover{background:var(--color-primary);}
 .myrow{display:flex;gap:6px;margin-top:10px;}
 .myrow button{flex:1;border:1px solid var(--color-editor-border);background:var(--color-editor-elevated);color:var(--color-editor-foreground);border-radius:var(--radius-md);padding:8px 4px;font-size:14px;cursor:pointer;}
-.myrow button:hover{border-color:var(--color-primary);}
+.myrow button:hover{border-color:var(--color-primary-on-dark);}
 /* ===== グラフのデータ入力 =====
    カンマ区切りの2本の入力だと、どの値がどのラベルか読み解く必要があった。
    1項目＝1行にして、割合バーで大小もその場で見えるようにする。 */
@@ -468,7 +474,7 @@ body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
 .gdbar span{display:block;height:100%;border-radius:2px;transition:width .15s;}
 .gdpct{font-size:var(--text-meta);color:var(--color-editor-muted);flex:none;width:34px;text-align:right;}
 .gdadd{width:100%;background:transparent;border:1px dashed var(--color-editor-border);color:var(--color-editor-muted);border-radius:var(--radius-md);padding:9px;font-size:var(--text-label);cursor:pointer;}
-.gdadd:hover{border-color:var(--color-primary);color:var(--color-primary);}
+.gdadd:hover{border-color:var(--color-primary-on-dark);color:var(--color-primary-on-dark);}
 .gdsum{display:flex;justify-content:space-between;font-size:var(--text-meta);color:var(--color-editor-muted);margin:8px 2px 0;}
 /* ===== 表の編集（スプレッドシート風） =====
    行数・列数を数字で入れるだけだと、置いてみるまで中身が分からなかった。
@@ -476,8 +482,8 @@ body {background:#0a0908;padding:0;color:var(--color-editor-foreground);}
    行番号・列記号・選択の当たり方はスプレッドシートに寄せて、迷わず触れるようにする。 */
 .tblbar{display:flex;align-items:center;gap:4px;margin:8px 0 6px;}
 .tblbar button{width:26px;height:26px;flex:none;border:1px solid var(--color-editor-border);background:var(--color-editor-elevated);color:var(--color-editor-muted);border-radius:var(--radius-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;font-size:14px;font-weight:700;}
-.tblbar button:hover{border-color:var(--color-primary);color:var(--color-primary);}
-.tblbar button.on{background:var(--color-primary);border-color:var(--color-primary);color:#fff;}
+.tblbar button:hover{border-color:var(--color-primary-on-dark);color:var(--color-primary-on-dark);}
+.tblbar button.on{background:var(--color-primary);border-color:var(--color-primary-on-dark);color:#fff;}
 .tblbar button.danger:hover{border-color:var(--color-destructive);color:var(--color-destructive);}
 .tblbar button svg{width:13px;height:13px;}
 .tblbar .sep{width:1px;height:16px;background:var(--color-editor-border);margin:0 2px;flex:none;}
@@ -494,14 +500,14 @@ table.tbledit th,table.tbledit td{border-right:1px solid var(--color-editor-bord
 .tbledit thead .tbhd{top:0;z-index:2;}
 .tbledit tbody .tbhd{left:0;z-index:1;}
 .tbledit .tbhd.corner{left:0;top:0;z-index:3;cursor:default;}
-.tbledit .tbhd:not(.corner):hover{color:var(--color-primary);background:rgba(239,97,8,.12);}
+.tbledit .tbhd:not(.corner):hover{color:var(--color-primary-on-dark);background:rgba(46,90,176,.12);}
 .tbledit .cell{min-width:64px;max-width:120px;height:27px;padding:4px 7px;outline:none;color:var(--color-editor-foreground);white-space:nowrap;overflow:hidden;cursor:text;}
 .tbledit .cell.sel{box-shadow:inset 0 0 0 2px var(--color-primary);}
 /* 罫線オフでも編集中は薄い目安線を残す（完全に消すとどこを打っているか分からなくなる） */
 table.tbledit.noborder td.cell{border-right-color:rgba(255,255,255,.05);border-bottom-color:rgba(255,255,255,.05);}
 .tblfoot{display:flex;gap:6px;margin-top:6px;}
 .tblfoot button{flex:1;background:transparent;border:1px dashed var(--color-editor-border);color:var(--color-editor-muted);border-radius:var(--radius-md);padding:8px 4px;font-size:14px;cursor:pointer;}
-.tblfoot button:hover{border-color:var(--color-primary);color:var(--color-primary);}
+.tblfoot button:hover{border-color:var(--color-primary-on-dark);color:var(--color-primary-on-dark);}
 .tblhint{font-size:var(--text-meta);color:var(--color-editor-muted);font-weight:400;margin-left:6px;}
 .tblstyle{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
 .tblstyle .fmtbtn{padding:8px 4px;font-size:14px;}
@@ -509,11 +515,11 @@ table.tbledit.noborder td.cell{border-right-color:rgba(255,255,255,.05);border-b
 .adjsl{margin-bottom:16px;}
 .adjsl-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
 .adjsl-hd .fl{margin:0;}
-.adjsl-v{font-size:var(--text-label);color:var(--color-primary);font-weight:var(--font-weight-body-strong);}
+.adjsl-v{font-size:var(--text-label);color:var(--color-primary-on-dark);font-weight:var(--font-weight-body-strong);}
 .adjsl-track{height:4px;background:var(--color-editor-border);border-radius:2px;position:relative;cursor:pointer;}
 .adjsl-track::before{content:"";position:absolute;left:0;right:0;top:-9px;bottom:-9px;}
 .adjsl-fill{position:absolute;left:0;top:0;height:100%;background:var(--color-primary);border-radius:2px;}
-.adjsl-knob{position:absolute;top:-4px;width:12px;height:12px;border-radius:50%;background:var(--color-editor-foreground);border:2px solid var(--color-primary);transform:translateX(-50%);cursor:grab;}
+.adjsl-knob{position:absolute;top:-4px;width:12px;height:12px;border-radius:50%;background:var(--color-editor-foreground);border:2px solid var(--color-primary-on-dark);transform:translateX(-50%);cursor:grab;}
 .adjsl.dragging .adjsl-knob{cursor:grabbing;}
 /* ===== 複製メニュー（このシート / 他のシート / 他の投稿） ===== */
 .dupmenu{display:none;position:fixed;z-index:9999;min-width:200px;background:var(--color-editor-surface);border:1px solid var(--color-editor-border);border-radius:var(--radius-md);padding:5px 0;box-shadow:0 8px 24px rgba(0,0,0,.45);}
@@ -532,12 +538,12 @@ table.tbledit.noborder td.cell{border-right-color:rgba(255,255,255,.05);border-b
 .dupdlg-bd{max-height:260px;overflow-y:auto;padding:6px;}
 .dupdlg-ft{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--color-editor-border);}
 .dupdlg-ft button{flex:1;padding:10px;border-radius:var(--radius-md);font-size:var(--text-label);font-weight:var(--font-weight-body-strong);cursor:pointer;border:1px solid var(--color-editor-border);background:var(--color-editor-elevated);color:var(--color-editor-foreground);}
-.dupdlg-ft button.primary{background:var(--color-primary);border-color:var(--color-primary);color:#fff;}
+.dupdlg-ft button.primary{background:var(--color-primary);border-color:var(--color-primary-on-dark);color:#fff;}
 .dupdlg-ft button.primary:disabled{opacity:.4;cursor:default;}
 .duppost{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--radius-md);cursor:pointer;}
 .duppost:hover{background:var(--color-editor-elevated);}
 .duppost .cb{width:18px;height:18px;flex:none;border:1.5px solid var(--color-editor-border);border-radius:4px;display:flex;align-items:center;justify-content:center;color:transparent;font-size:14px;}
-.duppost.on .cb{background:var(--color-primary);border-color:var(--color-primary);color:#fff;}
+.duppost.on .cb{background:var(--color-primary);border-color:var(--color-primary-on-dark);color:#fff;}
 .duppost .pt{flex:1;min-width:0;font-size:var(--text-label);color:var(--color-editor-foreground);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .duppost .pd{font-size:var(--text-meta);color:var(--color-editor-muted);flex:none;}
 .aihd{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
@@ -708,7 +714,8 @@ table.tbledit.noborder td.cell{border-right-color:rgba(255,255,255,.05);border-b
   .script-toggle{min-width:0;}
   .script-toggle .script-hint{display:none;}
 }
-</style></head><body>
+</style><link rel="stylesheet" href="./brand-ui.css">
+</head><body>
 <div class="app">
   <div class="hd">
     <button class="iconbtn" onclick="goBack()"><i class="ti ti-arrow-left"></i></button>
@@ -784,7 +791,7 @@ table.tbledit.noborder td.cell{border-right-color:rgba(255,255,255,.05);border-b
           <div class="ph"><i class="ti ti-building-store"></i></div>
           <!-- キャンバス上のオブジェクト。クリックで選択 → 右上に操作バー -->
           <div class="stobj" style="left:16px;top:22px;font-size:15px;" onclick="selObj(this,event)">駅徒歩5分・南向き1LDK<div class="objbar" onclick="event.stopPropagation()"></div></div>
-          <div class="stobj" style="left:16px;top:52px;font-size:14px;color:#ffd9bd;" onclick="selObj(this,event)">1LDK / 35㎡ / 2階角部屋<div class="objbar" onclick="event.stopPropagation()"></div></div>
+          <div class="stobj" style="left:16px;top:52px;font-size:14px;color:#A9C8E9;" onclick="selObj(this,event)">1LDK / 35㎡ / 2階角部屋<div class="objbar" onclick="event.stopPropagation()"></div></div>
           <div class="stobj" style="left:16px;bottom:18px;font-size:14px;background:var(--color-primary);border-radius:var(--radius-full);padding:5px 12px;" onclick="selObj(this,event)">プロフィールから内見予約<div class="objbar" onclick="event.stopPropagation()"></div></div>
         </div>
         <div class="stage-gen-overlay" id="genOverlay"><div class="gen-ring"></div><div class="gen-label" id="genLabel">画像を生成中…</div><div class="gen-sublabel" id="genSublabel">1 / 1 枚目</div><div class="gen-progress"><div class="gen-progress-bar" id="genBar"></div></div><button class="gen-cancel-btn" onclick="cancelGenerate()">やめる</button></div></div>
@@ -850,9 +857,9 @@ table.tbledit.noborder td.cell{border-right-color:rgba(255,255,255,.05);border-b
 
           <!-- ===== 大タブ 1: スタイル ===== -->
           <div class="ppane" id="txt-1" style="display:none;">
-          <div class="fl fl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18L10 6l5 12"/><path d="M6.8 14.5h6.4"/><rect x="3" y="20" width="18" height="2.5" rx="1" fill="currentColor" stroke="none"/></svg>文字色</div><div class="swatches" data-kind="color"><span class="sw swA on" data-c="#ef6108" onclick="pickSw(this)" style="color:#ef6108;">A</span><span class="sw swA" data-c="#f5f3f0" onclick="pickSw(this)" style="color:#f5f3f0;">A</span><span class="sw swA" data-c="#d94a4a" onclick="pickSw(this)" style="color:#d94a4a;">A</span><span class="sw swA" data-c="#2f6ad9" onclick="pickSw(this)" style="color:#2f6ad9;">A</span><span class="sw swA" data-c="#12960a" onclick="pickSw(this)" style="color:#12960a;">A</span><span class="sw swA" data-c="#e8b931" onclick="pickSw(this)" style="color:#e8b931;">A</span><span class="sw swA" data-c="#9724ba" onclick="pickSw(this)" style="color:#9724ba;">A</span><label class="sw swA custom" data-c="" title="好きな色を選ぶ">A<input type="color" value="#ef6108" oninput="pickCustom(this)" onclick="event.stopPropagation()"></label><span class="sw swA dropper" title="画面から色を吸い取る" onclick="pickDropper(this,event)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 7l6 6"/><path d="M4 20l3.5-.5L18.5 8.5a2.1 2.1 0 0 0-3-3L4.5 16.5 4 20z"/></svg></span></div>
-          <div class="fl fl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3" fill="currentColor" stroke="none" opacity=".3"/><path d="M6 16.5l4-9 4 9"/><path d="M7.4 13.8h5.2"/></svg>文字背景</div><div class="swatches" data-kind="bg"><span class="sw swA on none" data-c="" onclick="pickSw(this)" title="なし" style="color:var(--color-editor-muted);">A</span><span class="sw swA" data-c="#1e1a17" onclick="pickSw(this)" style="background:#1e1a17;color:#fff;">A</span><span class="sw swA" data-c="#f5f3f0" onclick="pickSw(this)" style="background:#f5f3f0;color:#1e1a17;">A</span><span class="sw swA" data-c="#ef6108" onclick="pickSw(this)" style="background:#ef6108;color:#fff;">A</span><span class="sw swA" data-c="#2f6ad9" onclick="pickSw(this)" style="background:#2f6ad9;color:#fff;">A</span><label class="sw swA custom" data-c="" title="好きな色を選ぶ">A<input type="color" value="#ef6108" oninput="pickCustom(this)" onclick="event.stopPropagation()"></label><span class="sw swA dropper" title="画面から色を吸い取る" onclick="pickDropper(this,event)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 7l6 6"/><path d="M4 20l3.5-.5L18.5 8.5a2.1 2.1 0 0 0-3-3L4.5 16.5 4 20z"/></svg></span></div>
-          <div class="fl fl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18L10 6l5 12" stroke-dasharray="3 2"/><path d="M6.8 14.5h6.4" stroke-dasharray="3 2"/></svg>文字枠</div><div class="swatches" data-kind="stroke"><span class="sw swA on none" data-c="" onclick="pickSw(this)" title="なし" style="color:var(--color-editor-muted);">A</span><span class="sw swA" data-c="#f5f3f0" onclick="pickSw(this)" style="color:var(--color-editor-foreground);-webkit-text-stroke:1.5px #f5f3f0;">A</span><span class="sw swA" data-c="#1e1a17" onclick="pickSw(this)" style="color:var(--color-editor-foreground);-webkit-text-stroke:1.5px #1e1a17;">A</span><span class="sw swA" data-c="#ef6108" onclick="pickSw(this)" style="color:var(--color-editor-foreground);-webkit-text-stroke:1.5px #ef6108;">A</span><label class="sw swA custom" data-c="" title="好きな色を選ぶ">A<input type="color" value="#ef6108" oninput="pickCustom(this)" onclick="event.stopPropagation()"></label><span class="sw swA dropper" title="画面から色を吸い取る" onclick="pickDropper(this,event)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 7l6 6"/><path d="M4 20l3.5-.5L18.5 8.5a2.1 2.1 0 0 0-3-3L4.5 16.5 4 20z"/></svg></span></div>
+          <div class="fl fl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18L10 6l5 12"/><path d="M6.8 14.5h6.4"/><rect x="3" y="20" width="18" height="2.5" rx="1" fill="currentColor" stroke="none"/></svg>文字色</div><div class="swatches" data-kind="color"><span class="sw swA on" data-c="#2E5AB0" onclick="pickSw(this)" style="color:#2E5AB0;">A</span><span class="sw swA" data-c="#f5f3f0" onclick="pickSw(this)" style="color:#f5f3f0;">A</span><span class="sw swA" data-c="#D81028" onclick="pickSw(this)" style="color:#D81028;">A</span><span class="sw swA" data-c="#2f6ad9" onclick="pickSw(this)" style="color:#2f6ad9;">A</span><span class="sw swA" data-c="#12960a" onclick="pickSw(this)" style="color:#12960a;">A</span><span class="sw swA" data-c="#AB6101" onclick="pickSw(this)" style="color:#AB6101;">A</span><span class="sw swA" data-c="#8B2FB8" onclick="pickSw(this)" style="color:#8B2FB8;">A</span><label class="sw swA custom" data-c="" title="好きな色を選ぶ">A<input type="color" value="#2E5AB0" oninput="pickCustom(this)" onclick="event.stopPropagation()"></label><span class="sw swA dropper" title="画面から色を吸い取る" onclick="pickDropper(this,event)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 7l6 6"/><path d="M4 20l3.5-.5L18.5 8.5a2.1 2.1 0 0 0-3-3L4.5 16.5 4 20z"/></svg></span></div>
+          <div class="fl fl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3" fill="currentColor" stroke="none" opacity=".3"/><path d="M6 16.5l4-9 4 9"/><path d="M7.4 13.8h5.2"/></svg>文字背景</div><div class="swatches" data-kind="bg"><span class="sw swA on none" data-c="" onclick="pickSw(this)" title="なし" style="color:var(--color-editor-muted);">A</span><span class="sw swA" data-c="#1e1a17" onclick="pickSw(this)" style="background:#1e1a17;color:#fff;">A</span><span class="sw swA" data-c="#f5f3f0" onclick="pickSw(this)" style="background:#f5f3f0;color:#1e1a17;">A</span><span class="sw swA" data-c="#2E5AB0" onclick="pickSw(this)" style="background:#2E5AB0;color:#fff;">A</span><span class="sw swA" data-c="#2f6ad9" onclick="pickSw(this)" style="background:#2f6ad9;color:#fff;">A</span><label class="sw swA custom" data-c="" title="好きな色を選ぶ">A<input type="color" value="#2E5AB0" oninput="pickCustom(this)" onclick="event.stopPropagation()"></label><span class="sw swA dropper" title="画面から色を吸い取る" onclick="pickDropper(this,event)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 7l6 6"/><path d="M4 20l3.5-.5L18.5 8.5a2.1 2.1 0 0 0-3-3L4.5 16.5 4 20z"/></svg></span></div>
+          <div class="fl fl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18L10 6l5 12" stroke-dasharray="3 2"/><path d="M6.8 14.5h6.4" stroke-dasharray="3 2"/></svg>文字枠</div><div class="swatches" data-kind="stroke"><span class="sw swA on none" data-c="" onclick="pickSw(this)" title="なし" style="color:var(--color-editor-muted);">A</span><span class="sw swA" data-c="#f5f3f0" onclick="pickSw(this)" style="color:var(--color-editor-foreground);-webkit-text-stroke:1.5px #f5f3f0;">A</span><span class="sw swA" data-c="#1e1a17" onclick="pickSw(this)" style="color:var(--color-editor-foreground);-webkit-text-stroke:1.5px #1e1a17;">A</span><span class="sw swA" data-c="#2E5AB0" onclick="pickSw(this)" style="color:var(--color-editor-foreground);-webkit-text-stroke:1.5px #2E5AB0;">A</span><label class="sw swA custom" data-c="" title="好きな色を選ぶ">A<input type="color" value="#2E5AB0" oninput="pickCustom(this)" onclick="event.stopPropagation()"></label><span class="sw swA dropper" title="画面から色を吸い取る" onclick="pickDropper(this,event)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 7l6 6"/><path d="M4 20l3.5-.5L18.5 8.5a2.1 2.1 0 0 0-3-3L4.5 16.5 4 20z"/></svg></span></div>
           <!-- 文字背景：帯を敷くかどうかと、その角の丸み -->
           <div class="fl">文字背景</div>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px;">
@@ -884,7 +891,7 @@ table.tbledit.noborder td.cell{border-right-color:rgba(255,255,255,.05);border-b
             <div class="eb-track"><div class="eb-fill"></div><div class="eb-knob"></div></div>
           </div>
           <div class="fl">透明度</div>
-          <div style="height:4px;background:var(--color-editor-border);border-radius:2px;margin-bottom:14px;position:relative;"><div style="width:100%;height:100%;background:var(--color-primary);border-radius:2px;"></div><div style="position:absolute;top:-4px;right:0;width:12px;height:12px;border-radius:50%;background:var(--color-editor-foreground);border:2px solid var(--color-primary);"></div></div>
+          <div style="height:4px;background:var(--color-editor-border);border-radius:2px;margin-bottom:14px;position:relative;"><div style="width:100%;height:100%;background:var(--color-primary);border-radius:2px;"></div><div style="position:absolute;top:-4px;right:0;width:12px;height:12px;border-radius:50%;background:var(--color-editor-foreground);border:2px solid var(--color-primary-on-dark);"></div></div>
           </div>
 
           <!-- ===== 大タブ 2: 配置 ===== -->
@@ -993,7 +1000,7 @@ table.tbledit.noborder td.cell{border-right-color:rgba(255,255,255,.05);border-b
               <div id="stBrowse" style="display:none;">
                 <div class="stgrid" id="stGrid"></div>
                 <div class="fl">色</div>
-                <div class="swatches" id="stSw"><span class="sw on" onclick="pickSw(this)" style="background:#ef6108"></span><span class="sw" onclick="pickSw(this)" style="background:#f5f3f0"></span><span class="sw" onclick="pickSw(this)" style="background:#2a2826"></span><span class="sw" onclick="pickSw(this)" style="background:#d94a4a"></span><span class="sw" onclick="pickSw(this)" style="background:#2f6ad9"></span><span class="sw" onclick="pickSw(this)" style="background:#12960a"></span></div>
+                <div class="swatches" id="stSw"><span class="sw on" onclick="pickSw(this)" style="background:#2E5AB0"></span><span class="sw" onclick="pickSw(this)" style="background:#f5f3f0"></span><span class="sw" onclick="pickSw(this)" style="background:#2a2826"></span><span class="sw" onclick="pickSw(this)" style="background:#D81028"></span><span class="sw" onclick="pickSw(this)" style="background:#2f6ad9"></span><span class="sw" onclick="pickSw(this)" style="background:#12960a"></span></div>
                 <div class="stnote">スタンプはすべてベクターなので、色を選んでから置くとブランドカラーで揃います。</div>
               </div>
 
@@ -1017,9 +1024,9 @@ table.tbledit.noborder td.cell{border-right-color:rgba(255,255,255,.05);border-b
                     <button class="aibtn" id="aiBtn1" onclick="aiGenStamp(1)">生成して置く</button>
                     <button class="aibtn sub" id="aiBtn4" onclick="aiGenStamp(4)">セットで4種生成</button>
                   </div>
-                  <div class="genfox" id="aiFox">
+                  <div class="genhint" id="aiHint">
                     <svg class="fx" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"><path d="M12 3 a9 9 0 1 1 -6.4 2.6" opacity=".9"/><path d="M5.6 5.6 L4.2 2.4 L7.6 3.4 Z" fill="var(--color-primary)" stroke="none"/></svg>
-                    <span id="aiFoxLabel">スタンプを生成中…</span>
+                    <span id="aiHintLabel">スタンプを生成中…</span>
                   </div>
                 </div>
                 <div class="stnote">
@@ -1057,7 +1064,7 @@ table.tbledit.noborder td.cell{border-right-color:rgba(255,255,255,.05);border-b
               <div class="shtile" style="aspect-ratio:1;border:1px solid var(--color-editor-border);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;cursor:pointer;" onclick="addStampObj('yajirushi',0)" title="この図形を追加"><svg viewBox="0 0 100 100" style="width:24px;height:24px;fill:var(--color-editor-muted);"><path d="M6 42h56V22l32 28-32 28V58H6Z"/></svg><button class="favbtn" title="お気に入りに追加" onclick="event.stopPropagation();favStamp('yajirushi',0)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9Z"/></svg></button></div>
             </div>
             <div class="fl" style="margin-top:14px;">塗りつぶし色</div>
-            <div class="swatches"><span class="sw on" onclick="pickSw(this)" style="background:#ef6108"></span><span class="sw" onclick="pickSw(this)" style="background:#f5f3f0"></span><span class="sw" onclick="pickSw(this)" style="background:#2a2826"></span><span class="sw" onclick="pickSw(this)" style="background:#d94a4a"></span><span class="sw" onclick="pickSw(this)" style="background:#2f6ad9"></span><span class="sw" onclick="pickSw(this)" style="background:#12960a"></span></div>
+            <div class="swatches"><span class="sw on" onclick="pickSw(this)" style="background:#2E5AB0"></span><span class="sw" onclick="pickSw(this)" style="background:#f5f3f0"></span><span class="sw" onclick="pickSw(this)" style="background:#2a2826"></span><span class="sw" onclick="pickSw(this)" style="background:#D81028"></span><span class="sw" onclick="pickSw(this)" style="background:#2f6ad9"></span><span class="sw" onclick="pickSw(this)" style="background:#12960a"></span></div>
           </div>
             <div class="psubpane" id="mat-graph" style="display:none;">
             <div class="rh">簡易グラフ</div>
@@ -1164,7 +1171,7 @@ table.tbledit.noborder td.cell{border-right-color:rgba(255,255,255,.05);border-b
             <div class="rh">AI背景削除</div>
             <button class="addbtn" style="margin-top:16px;"><i class="ti ti-sparkles"></i> 背景を削除する</button>
             <div class="fl" style="margin-top:16px;">背景を差し替え</div>
-            <div class="swatches"><span class="sw on" onclick="pickSw(this)" style="background:transparent;border:1px dashed var(--color-editor-border);"></span><span class="sw" onclick="pickSw(this)" style="background:#f5f3f0"></span><span class="sw" onclick="pickSw(this)" style="background:#1e1a17"></span><span class="sw" onclick="pickSw(this)" style="background:#ef6108"></span><span class="sw" onclick="pickSw(this)" style="background:#2f6ad9"></span></div>
+            <div class="swatches"><span class="sw on" onclick="pickSw(this)" style="background:transparent;border:1px dashed var(--color-editor-border);"></span><span class="sw" onclick="pickSw(this)" style="background:#f5f3f0"></span><span class="sw" onclick="pickSw(this)" style="background:#1e1a17"></span><span class="sw" onclick="pickSw(this)" style="background:#2E5AB0"></span><span class="sw" onclick="pickSw(this)" style="background:#2f6ad9"></span></div>
           </div>
             <div class="psubpane" id="mat-replace" style="display:none;">
             <div class="rh">範囲置換</div>
@@ -1221,7 +1228,7 @@ table.tbledit.noborder td.cell{border-right-color:rgba(255,255,255,.05);border-b
         <div class="rbody">
           <div class="rh">フィルター</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;">
-            <div onclick="pickFilter(this)" style="border:2px solid var(--color-primary);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;text-align:center;"><img src="./assets/filter-sample.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;"><div style="padding:5px;font-size:var(--text-meta);font-weight:var(--font-weight-body-strong);color:var(--color-primary);">なし</div></div>
+            <div onclick="pickFilter(this)" style="border:2px solid var(--color-primary-on-dark);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;text-align:center;"><img src="./assets/filter-sample.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;"><div style="padding:5px;font-size:var(--text-meta);font-weight:var(--font-weight-body-strong);color:var(--color-primary-on-dark);">なし</div></div>
             <div onclick="pickFilter(this)" style="border:1px solid var(--color-editor-border);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;text-align:center;"><img src="./assets/filter-sample.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;filter:sepia(0.6) contrast(1.1) brightness(0.95);"><div style="padding:5px;font-size:var(--text-meta);color:var(--color-editor-foreground);">ヴィンテージ</div></div>
             <div onclick="pickFilter(this)" style="border:1px solid var(--color-editor-border);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;text-align:center;"><img src="./assets/filter-sample.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;filter:grayscale(1);"><div style="padding:5px;font-size:var(--text-meta);color:var(--color-editor-foreground);">モノクロ</div></div>
             <div onclick="pickFilter(this)" style="border:1px solid var(--color-editor-border);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;text-align:center;"><img src="./assets/filter-sample.jpg" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;filter:sepia(0.4) saturate(1.3) brightness(1.05);"><div style="padding:5px;font-size:var(--text-meta);color:var(--color-editor-foreground);">暖色</div></div>
@@ -1239,9 +1246,9 @@ table.tbledit.noborder td.cell{border-right-color:rgba(255,255,255,.05);border-b
         <div class="rbody">
           <div class="rh">プリセット</div>
           <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
-            <div style="border:1px solid var(--color-primary);border-radius:var(--radius-md);padding:12px 14px;cursor:pointer;background:rgba(239,97,8,.08);"><div style="font-size:var(--text-body);font-weight:var(--font-weight-body-strong);color:var(--color-primary);display:flex;align-items:center;gap:6px;"><i class="ti ti-star"></i>現在のデザインを保存</div><div style="font-size:var(--text-label);color:var(--color-editor-muted);margin-top:4px;">フォント・色・配置をプリセットとして保存</div></div>
+            <div style="border:1px solid var(--color-primary-on-dark);border-radius:var(--radius-md);padding:12px 14px;cursor:pointer;background:rgba(46,90,176,.08);"><div style="font-size:var(--text-body);font-weight:var(--font-weight-body-strong);color:var(--color-primary-on-dark);display:flex;align-items:center;gap:6px;"><i class="ti ti-star"></i>現在のデザインを保存</div><div style="font-size:var(--text-label);color:var(--color-editor-muted);margin-top:4px;">フォント・色・配置をプリセットとして保存</div></div>
             <div style="font-size:var(--text-label);font-weight:var(--font-weight-body-strong);color:var(--color-editor-foreground);margin-top:8px;">保存済みプリセット</div>
-            <div style="border:1px solid var(--color-editor-border);border-radius:var(--radius-md);padding:12px 14px;cursor:pointer;display:flex;align-items:center;gap:10px;"><div style="width:36px;height:36px;border-radius:var(--radius-sm);background:linear-gradient(135deg,#ef6108,#ff971e);flex:none;"></div><div><div style="font-size:var(--text-body);font-weight:var(--font-weight-body-strong);color:var(--color-editor-foreground);">物件紹介スタイル</div><div style="font-size:var(--text-meta);color:var(--color-editor-muted);">Noto Sans JP・オレンジ系</div></div></div>
+            <div style="border:1px solid var(--color-editor-border);border-radius:var(--radius-md);padding:12px 14px;cursor:pointer;display:flex;align-items:center;gap:10px;"><div style="width:36px;height:36px;border-radius:var(--radius-sm);background:linear-gradient(135deg,#2E5AB0,#AB6101);flex:none;"></div><div><div style="font-size:var(--text-body);font-weight:var(--font-weight-body-strong);color:var(--color-editor-foreground);">物件紹介スタイル</div><div style="font-size:var(--text-meta);color:var(--color-editor-muted);">Noto Sans JP・オレンジ系</div></div></div>
             <div style="border:1px solid var(--color-editor-border);border-radius:var(--radius-md);padding:12px 14px;cursor:pointer;display:flex;align-items:center;gap:10px;"><div style="width:36px;height:36px;border-radius:var(--radius-sm);background:linear-gradient(135deg,#2f6ad9,#5a8ae8);flex:none;"></div><div><div style="font-size:var(--text-body);font-weight:var(--font-weight-body-strong);color:var(--color-editor-foreground);">キャンペーン告知</div><div style="font-size:var(--text-meta);color:var(--color-editor-muted);">ゴシック・ブルー系</div></div></div>
             <div style="border:1px solid var(--color-editor-border);border-radius:var(--radius-md);padding:12px 14px;cursor:pointer;display:flex;align-items:center;gap:10px;"><div style="width:36px;height:36px;border-radius:var(--radius-sm);background:linear-gradient(135deg,#e8c8d8,#f0d8e8);flex:none;"></div><div><div style="font-size:var(--text-body);font-weight:var(--font-weight-body-strong);color:var(--color-editor-foreground);">カフェ風ナチュラル</div><div style="font-size:var(--text-meta);color:var(--color-editor-muted);">丸ゴシック・ピンク系</div></div></div>
           </div>
@@ -1268,7 +1275,7 @@ table.tbledit.noborder td.cell{border-right-color:rgba(255,255,255,.05);border-b
             <div class="sz" onclick="pickSz(this)" style="padding:8px;text-align:center;">3:4</div>
             <div class="sz" onclick="pickSz(this)" style="padding:8px;text-align:center;">自由</div>
           </div>
-          <div style="text-align:center;margin-top:8px;font-size:var(--text-label);color:var(--color-primary);font-weight:var(--font-weight-body-strong);cursor:pointer;">AI背景除去：被写体だけ自然に切り抜き</div>
+          <div style="text-align:center;margin-top:8px;font-size:var(--text-label);color:var(--color-primary-on-dark);font-weight:var(--font-weight-body-strong);cursor:pointer;">AI背景除去：被写体だけ自然に切り抜き</div>
           </div>
 
           <!-- ===== 大タブ 1: 変形 ===== -->
@@ -1303,7 +1310,7 @@ table.tbledit.noborder td.cell{border-right-color:rgba(255,255,255,.05);border-b
     <!-- 右ペイン：AIアシスト専用（タブなし・常時表示） -->
     <div class="right">
       <div class="rbody">
-        <div class="aihd"><img src="./assets/mawaru-fox-face.png" alt="AI" style="width:36px;height:36px;flex:none;border-radius:var(--radius-md);object-fit:contain;"><div style="flex:1;"><span class="t">AIアシスト</span><div style="font-size:var(--text-label);color:var(--color-editor-muted);margin-top:1px;">何でも相談してください</div></div><span class="on2">● 利用可能</span></div>
+        <div class="aihd"><span class="ai-mark lg"><i class="ti ti-sparkles"></i></span><div style="flex:1;"><span class="t">AIアシスト</span><div style="font-size:var(--text-label);color:var(--color-editor-muted);margin-top:1px;">何でも相談してください</div></div><span class="on2">● 利用可能</span></div>
         <div class="stream"><div class="emsg me">背景をもっと明るくして</div></div>
       </div>
       <div class="rcomp"><div style="background:var(--color-editor-elevated);border:1px solid var(--color-editor-border);border-radius:18px;overflow:hidden;"><div style="padding:12px 16px 4px;"><input placeholder="AIに指示を入力" style="width:100%;border:none;background:transparent;padding:0;font-size:var(--text-body);outline:none;color:var(--color-editor-foreground);"></div><div style="display:flex;align-items:center;justify-content:space-between;padding:6px 8px 8px;"><button style="width:34px;height:34px;flex:none;border:1px solid var(--color-editor-border);border-radius:var(--radius-full);background:var(--color-editor-bg);color:var(--color-editor-muted);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;"><i class="ti ti-plus"></i></button><button style="width:34px;height:34px;flex:none;border:none;border-radius:var(--radius-full);background:var(--color-primary);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></button></div></div></div>
@@ -1481,7 +1488,7 @@ function adjSet(sl,pct){
 
 /* ===== グラフのデータ入力 =====
    1項目＝1行。入力中は行を作り直さず、割合バーと合計だけ更新する（フォーカスが飛ばないように）。 */
-var GD_COLORS=['#ef6108','#2f6ad9','#12960a','#e8b931','#9724ba','#d94a4a'];
+var GD_COLORS=['#2E5AB0','#2f6ad9','#12960a','#AB6101','#8B2FB8','#D81028'];
 var GDATA=[{l:'賃貸',v:35},{l:'売買',v:25},{l:'管理',v:40}];
 function gdRender(){
   var wrap=document.getElementById('gdRows');
@@ -1537,10 +1544,10 @@ gdRender();
    実物のかたちのグリッドをパネルに出して、そこへ直接打ち込ませる。
    入力中はDOMを作り直さない（作り直すとキャレットが飛ぶ）ので、
    構造が変わるとき＝tblRender / 見た目だけ変わるとき＝tblPaint、と入口を分ける。 */
-var TBL_SW=['#ef6108','#2f6ad9','#12960a','#e8b931','#9724ba','#d94a4a','#2a2826','#f5f3f0'];
+var TBL_SW=['#2E5AB0','#2f6ad9','#12960a','#AB6101','#8B2FB8','#D81028','#2a2826','#f5f3f0'];
 var TBL={
   head:true,stripe:true,border:true,
-  headBg:'#ef6108',
+  headBg:'#2E5AB0',
   rows:[['物件名','家賃','広さ'],
         ['南向き1LDK','8.2万','35㎡'],
         ['駅前ワンルーム','6.5万','22㎡']],
@@ -2158,7 +2165,7 @@ function applyStampTab(cat){
    同じ言葉でも毎回かたちが変わる＝統一感が崩れる、という問題があるので
    ①生成物は必ずマイ素材に保存 ②セット生成 ③スタイル参照 の3つで揃えられるようにする。 */
 var AI_BASES=['fukidashi:0','fukidashi:1','fukidashi:3','fukidashi:4','label:0','label:1','kazari:5','label:4'];
-var AI_COLORS=['#ef6108','#d94a4a','#2f6ad9','#12960a','#e8b931','#9724ba'];
+var AI_COLORS=['#2E5AB0','#D81028','#2f6ad9','#12960a','#AB6101','#8B2FB8'];
 var _aiSeed=0, _styleRef=null;
 function setAiPrompt(el){
   var t=document.getElementById('aiPrompt');
@@ -2201,16 +2208,16 @@ function aiGenStamp(count){
   var t=document.getElementById('aiPrompt');
   var prompt=(t.value||'').trim();
   if(!prompt){toast.info('どんなスタンプが欲しいか入力してください');t.focus();return;}
-  var fox=document.getElementById('aiFox');
+  var hintEl=document.getElementById('aiHint');
   var b1=document.getElementById('aiBtn1'), b4=document.getElementById('aiBtn4');
-  document.getElementById('aiFoxLabel').textContent=count>1?'スタンプを4種生成中…':'スタンプを生成中…';
-  fox.classList.add('on'); b1.disabled=true; b4.disabled=true;
+  document.getElementById('aiHintLabel').textContent=count>1?'スタンプを4種生成中…':'スタンプを生成中…';
+  hintEl.classList.add('on'); b1.disabled=true; b4.disabled=true;
   /* まず実生成を試す。ダメならモックへ落とす（理由はトーストで出す） */
   var words=count>1?SET_WORDS.slice(0,count):[null];
   Promise.all(words.map(function(w){
     return genStampReal(prompt+(w?'（文言は「'+w+'」）':''),_styleRef&&_styleRef.img);
   })).then(function(imgs){
-    fox.classList.remove('on'); b1.disabled=false; b4.disabled=false;
+    hintEl.classList.remove('on'); b1.disabled=false; b4.disabled=false;
     imgs.forEach(function(src,v){
       var name=(count>1?prompt.slice(0,6)+'／'+words[v]:prompt.slice(0,8));
       MYMAT.unshift({name:name,img:src,ai:true,fav:false});
@@ -2224,13 +2231,13 @@ function aiGenStamp(count){
     toast.info(count>1?'4種を生成してマイ素材に保存しました':'生成してマイ素材に保存しました');
   }).catch(function(e){
     toast.info('生成できないのでダミーで代用します（'+(e.message||e)+'）');
-    aiGenStampMock(count,prompt,fox,b1,b4);
+    aiGenStampMock(count,prompt,hintEl,b1,b4);
   });
 }
 /* 生成プロキシが無いときの代用。手持ちの図形を組み合わせて置くだけで、モデルは呼ばない。 */
-function aiGenStampMock(count,prompt,fox,b1,b4){
+function aiGenStampMock(count,prompt,hintEl,b1,b4){
   setTimeout(function(){
-    fox.classList.remove('on'); b1.disabled=false; b4.disabled=false;
+    hintEl.classList.remove('on'); b1.disabled=false; b4.disabled=false;
     /* セット生成のときだけ土台を固定して、シリーズとして見た目を揃える */
     var lockedRef=_styleRef, made=[];
     for(var v=0;v<count;v++){
@@ -2263,8 +2270,8 @@ function clearStyleRef(){
    保存済みは「生成し直さずに同じものを置く」ための場所。
    ⭐お気に入りを付けたものが先頭に固定され、マワルドライブにブランド素材として並ぶ。 */
 var MYMAT=[
-  {name:'ブランド枠',svg:'<g style="color:#ef6108;">'+STAMPS.label[3].s+'</g><text x="50" y="47" text-anchor="middle" dominant-baseline="middle" style="font-size:20px;font-weight:800;fill:#fff;">NEW</text>',ai:false,fav:true,key:'label:3',base:'label:3',color:'#ef6108'},
-  {name:'セール吹き出し',svg:'<g style="color:#d94a4a;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35));">'+STAMPS.fukidashi[3].s+'</g><text x="50" y="47" text-anchor="middle" dominant-baseline="middle" style="font-size:17px;font-weight:800;fill:#fff;">SALE</text>',ai:true,fav:false,base:'fukidashi:3',color:'#d94a4a'}
+  {name:'ブランド枠',svg:'<g style="color:#2E5AB0;">'+STAMPS.label[3].s+'</g><text x="50" y="47" text-anchor="middle" dominant-baseline="middle" style="font-size:20px;font-weight:800;fill:#fff;">NEW</text>',ai:false,fav:true,key:'label:3',base:'label:3',color:'#2E5AB0'},
+  {name:'セール吹き出し',svg:'<g style="color:#D81028;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35));">'+STAMPS.fukidashi[3].s+'</g><text x="50" y="47" text-anchor="middle" dominant-baseline="middle" style="font-size:17px;font-weight:800;fill:#fff;">SALE</text>',ai:true,fav:false,base:'fukidashi:3',color:'#D81028'}
 ];
 /* 保存済みは実生成のPNG・代用のSVG・配置済みオブジェクトのHTMLが混在しうる */
 function matThumb(m){

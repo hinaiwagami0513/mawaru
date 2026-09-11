@@ -90,7 +90,7 @@
     if (document.getElementById('ob-css')) return;
     var css = [
       /* サイドバーの中に置くので、面はサイドバーより一段明るくして浮かせる */
-      '.ob{margin:10px;padding:12px 13px;background:var(--color-card, #ffffff);border:1px solid var(--color-border, #efe7df);border-radius:var(--radius-md);}',
+      '.ob{margin:10px;padding:12px 13px;background:var(--color-card, #ffffff);border:1px solid var(--color-border, #E9E8E6);border-radius:var(--radius-md);}',
       '.ob-hd{display:flex;align-items:center;gap:8px;margin-bottom:9px;}',
       '.ob-hd .t{font-size:var(--text-label);font-weight:var(--font-weight-body-strong);}',
       /* 初心者マーク。ここが入門者向けの場所だと一目で分かるようにする。
@@ -98,40 +98,40 @@
       '.ob-hd .lf{flex:none;width:16px;height:16px;display:block;}',
       '.ob-fin svg{flex:none;}',
       /* 残り数は必須の未完了なので赤（DESIGN.md: 必須・未入力は destructive で一貫させる） */
-      '.ob-hd .n{margin-left:auto;font-size:var(--text-meta);font-weight:var(--font-weight-body-strong);color:var(--color-destructive, #e90c2a);}',
-      '.ob-bar{height:5px;border-radius:999px;background:var(--color-border, #efe7df);overflow:hidden;margin-bottom:10px;}',
-      '.ob-bar i{display:block;height:100%;background:var(--color-primary, #fe7235);border-radius:999px;transition:width .3s;}',
+      '.ob-hd .n{margin-left:auto;font-size:var(--text-meta);font-weight:var(--font-weight-body-strong);color:var(--color-destructive, #D81028);}',
+      '.ob-bar{height:5px;border-radius:999px;background:var(--color-border, #E9E8E6);overflow:hidden;margin-bottom:10px;}',
+      '.ob-bar i{display:block;height:100%;background:var(--color-primary, #2E5AB0);border-radius:999px;transition:width .3s;}',
       '.ob-li{display:flex;align-items:center;gap:8px;width:100%;padding:6px 6px;border:none;background:none;',
       '  font-family:inherit;font-size:var(--text-meta);color:var(--color-foreground, #2a2826);text-align:left;',
       '  border-radius:var(--radius-sm);cursor:pointer;text-decoration:none;}',
-      '.ob-li:hover{background:var(--color-primary-subtle, #fff5f1);color:var(--color-primary, #fe7235);}',
+      '.ob-li:hover{background:var(--color-primary-subtle, #EDF2FA);color:var(--color-primary, #2E5AB0);}',
       '.ob-li .mk{width:16px;height:16px;flex:none;border-radius:999px;border:2px dashed var(--color-destructive-border, #ffd0d8);',
       '  display:flex;align-items:center;justify-content:center;font-size:11px;}',
-      '.ob-li.done{color:var(--color-muted-foreground, #757575);cursor:default;}',
-      '.ob-li.done:hover{background:none;color:var(--color-muted-foreground, #757575);}',
-      '.ob-li.done .mk{border:none;background:var(--color-success, #008a24);color:#fff;}',
+      '.ob-li.done{color:var(--color-muted-foreground, #6E6A66);cursor:default;}',
+      '.ob-li.done:hover{background:none;color:var(--color-muted-foreground, #6E6A66);}',
+      '.ob-li.done .mk{border:none;background:var(--color-success, #008623);color:#fff;}',
       '.ob-li.done .tx{text-decoration:line-through;}',
       '.ob-li .tx{flex:1;min-width:0;}',
       /* task の中の進み具合。行を増やさずここだけで示す */
-      '.ob-li .sub{flex:none;font-size:var(--text-meta);font-weight:var(--font-weight-body-strong);color:var(--color-muted-foreground, #757575);}',
-      '.ob-li:hover .sub{color:var(--color-primary, #fe7235);}',
+      '.ob-li .sub{flex:none;font-size:var(--text-meta);font-weight:var(--font-weight-body-strong);color:var(--color-muted-foreground, #6E6A66);}',
+      '.ob-li:hover .sub{color:var(--color-primary, #2E5AB0);}',
       /* 終わったときだけ出す。祝って消える導線を置く */
-      '.ob.fin .ob-hd .n{color:var(--color-success, #008a24);}',
-      '.ob-fin{display:flex;align-items:center;gap:7px;font-size:var(--text-meta);color:var(--color-success, #008a24);font-weight:var(--font-weight-body-strong);margin-bottom:8px;}',
-      '.ob-close{width:100%;padding:7px;border:1px solid var(--color-border-strong, #ddd0c4);background:var(--color-card, #ffffff);',
+      '.ob.fin .ob-hd .n{color:var(--color-success, #008623);}',
+      '.ob-fin{display:flex;align-items:center;gap:7px;font-size:var(--text-meta);color:var(--color-success, #008623);font-weight:var(--font-weight-body-strong);margin-bottom:8px;}',
+      '.ob-close{width:100%;padding:7px;border:1px solid var(--color-border-strong, #CFCDC9);background:var(--color-card, #ffffff);',
       '  color:var(--color-foreground, #2a2826);border-radius:var(--radius-sm);font-family:inherit;font-size:var(--text-meta);',
       '  font-weight:var(--font-weight-body-strong);cursor:pointer;}',
-      '.ob-close:hover{border-color:var(--color-primary, #fe7235);color:var(--color-primary, #fe7235);}',
+      '.ob-close:hover{border-color:var(--color-primary, #2E5AB0);color:var(--color-primary, #2E5AB0);}',
       /* ---- 最初の1枚だけ出すダイアログ。ツアーは作らない（長いツアーは完了しない） ---- */
       '.ob-ovl{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:300;padding:20px;}',
       '.ob-ovl.open{display:flex;}',
       '.ob-dlg{background:var(--color-card, #ffffff);border-radius:var(--radius-xl);box-shadow:0 8px 24px rgb(0 0 0 / .14);width:min(460px,100%);padding:26px 26px 22px;text-align:center;}',
       '.ob-dlg img{width:84px;height:84px;object-fit:contain;margin-bottom:12px;}',
       '.ob-dlg .t{font-size:var(--text-h2);font-weight:var(--font-weight-h2);margin-bottom:8px;}',
-      '.ob-dlg .d{font-size:var(--text-body);color:var(--color-muted-foreground, #757575);line-height:1.9;margin-bottom:18px;}',
-      '.ob-dlg .go{width:100%;padding:12px;border:none;background:var(--color-primary, #fe7235);color:#fff;border-radius:var(--radius-md);',
+      '.ob-dlg .d{font-size:var(--text-body);color:var(--color-muted-foreground, #6E6A66);line-height:1.9;margin-bottom:18px;}',
+      '.ob-dlg .go{width:100%;padding:12px;border:none;background:var(--color-primary, #2E5AB0);color:#fff;border-radius:var(--radius-md);',
       '  font-family:inherit;font-size:var(--text-body);font-weight:var(--font-weight-body-strong);cursor:pointer;}',
-      '.ob-dlg .later{margin-top:9px;background:none;border:none;color:var(--color-muted-foreground, #757575);font-family:inherit;',
+      '.ob-dlg .later{margin-top:9px;background:none;border:none;color:var(--color-muted-foreground, #6E6A66);font-family:inherit;',
       '  font-size:var(--text-label);cursor:pointer;text-decoration:underline;}',
       /* ---- SPでは一覧を出さない ----
          SPのサイドバー（shell-sp.css）は高さ60pxの下部ナビに変わる。そこへこの箱が
@@ -221,7 +221,6 @@
     ovl.id = 'obOvl';
     ovl.innerHTML =
       '<div class="ob-dlg" role="dialog" aria-modal="true" aria-label="はじめの設定">' +
-      '<img src="./assets/mawaru-fox-sit.png" alt="">' +
       '<div class="t">はじめに、投稿の狙いを決めます</div>' +
       '<div class="d">AIは<b>ここで決めたこと</b>をもとに投稿を書きます。<br>' +
       '4つ決めるだけで、説明文ではなく狙いのある投稿になります。</div>' +
@@ -241,7 +240,6 @@
     ovl.id = 'obFinOvl';
     ovl.innerHTML =
       '<div class="ob-dlg" role="dialog" aria-modal="true" aria-label="完了">' +
-      '<img src="./assets/mawaru-fox-celebrate.png" alt="">' +
       '<div class="t">すべてのチュートリアルタスクが<br>終了しました</div>' +
       '<div class="d">AIが<b>狙いのある投稿</b>を書けるようになりました。</div>' +
       '<button class="go" onclick="MawaruOnboarding.closeFinish()">はじめる</button>' +

@@ -40,9 +40,9 @@ export function SiteHeader({ showSearch = true }: { showSearch?: boolean }) {
 
         <Link href="/" className="flex min-w-0 flex-1 items-center gap-2.5 md:flex-none">
           <Image
-            src={asset('/img/logo-mawaru.png')}
+            src={asset('/img/logo-mawaru.svg')}
             alt="マワル"
-            width={140}
+            width={131}
             height={28}
             priority
             className="h-7 w-auto"

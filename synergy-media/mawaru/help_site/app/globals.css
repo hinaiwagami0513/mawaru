@@ -18,23 +18,23 @@
   --popover-foreground: #2a2826;
 
   /* ブランド -------------------------------------------------------------- */
-  --primary: #ef6108;
+  --primary: #2E5AB0;
   --primary-foreground: #ffffff;
-  --primary-light: #ff971e; /* グラデ相方 */
-  --primary-subtle: #fff2e2; /* アクティブ/選択中の背景 */
+  --primary-light: #7DABDE; /* グラデ相方 */
+  --primary-subtle: #EDF2FA; /* アクティブ/選択中の背景 */
 
   /* ニュートラル ---------------------------------------------------------- */
   --secondary: #fbfaf8;
   --secondary-foreground: #2a2826;
   --muted: #fbfaf8;
   --muted-foreground: #757575;
-  --accent: #fff2e2;
-  --accent-foreground: #ef6108;
+  --accent: #EDF2FA;
+  --accent-foreground: #2E5AB0;
 
   --border: #e9e8e6;
   --border-strong: #cfcdc9;
   --input: #e9e8e6;
-  --ring: #ef6108;
+  --ring: #2E5AB0;
 
   /* 状態（色だけで表さない。必ずアイコンとセットで使う） -------------------- */
   --success: #12960a;
@@ -42,7 +42,7 @@
   --warning: #8a6d0f;
   --warning-border: #e8b931;
   --warning-subtle: #fcf4d9;
-  --info: #185fa5;
+  --info: #0B76B2;
   --info-subtle: #e6f1fb;
   --destructive: #dc2626;
   --destructive-foreground: #ffffff;
@@ -59,20 +59,20 @@
   /* サイドバー（shadcn sidebar 系トークン） -------------------------------- */
   --sidebar: #f2f1f0;
   --sidebar-foreground: #2a2826;
-  --sidebar-primary: #ef6108;
+  --sidebar-primary: #2E5AB0;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #fff2e2;
-  --sidebar-accent-foreground: #ef6108;
+  --sidebar-accent: #EDF2FA;
+  --sidebar-accent-foreground: #2E5AB0;
   --sidebar-border: #e9e8e6;
-  --sidebar-ring: #ef6108;
+  --sidebar-ring: #2E5AB0;
 
   /* チャート：primary起点の単一色相ランプ。多い系列ほど濃い ------------------
      旧: 色相バラバラ（青/緑/紫/ピンク）＝意味色の流用。DESIGN.md「グラフの色」で失効 */
-  --chart-1: #ef6108;
-  --chart-2: #ff971e;
-  --chart-3: #ffc07a;
-  --chart-4: #ffdcb8;
-  --chart-5: #fff2e2;
+  --chart-1: #2E5AB0;
+  --chart-2: #4E7BC8;
+  --chart-3: #7DABDE;
+  --chart-4: #A9C8E9;
+  --chart-5: #D5E3F5;
 }
 
 @theme inline {
