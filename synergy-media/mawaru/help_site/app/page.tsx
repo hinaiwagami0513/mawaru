@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { IconChevronRight, IconMail } from '@tabler/icons-react';
 
@@ -25,14 +24,6 @@ export default function HomePage() {
       <SiteHeader showSearch={false} />
 
       <section className="border-b bg-[radial-gradient(900px_320px_at_50%_-60px,rgba(125,171,222,0.30),transparent_70%),linear-gradient(180deg,var(--primary-subtle)_0%,var(--secondary)_100%)] px-4 pb-12 pt-9 text-center sm:px-6 sm:pt-14">
-        <Image
-          src={asset('/img/mawaru-mark.svg')}
-          alt=""
-          width={112}
-          height={112}
-          priority
-          className="mx-auto mb-2.5 h-auto w-20 drop-shadow-[0_6px_14px_rgba(18,38,81,0.14)] sm:w-24"
-        />
         <h1 className="mb-5 text-[26px] font-black sm:text-[38px]">お困りごとを解決します</h1>
         <div className="mx-auto max-w-2xl">
           <SearchTrigger variant="hero" />
