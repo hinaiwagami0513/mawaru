@@ -86,6 +86,11 @@
   --radius-lg: 16px;
   --radius-xl: 20px;
   --radius-full: 9999px;
+  /* 影は3段（depth-and-rhythm）。カードは常時 card、ホバーで raised。
+     定義が無いと var() が解決できず box-shadow が無効になるので、使う画面には必ず置く。 */
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.06);
+  --shadow-raised: 0 2px 8px rgb(0 0 0 / 0.08);
+  --shadow-overlay: 0 8px 24px rgb(0 0 0 / 0.12);
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 12px;
@@ -236,7 +241,7 @@ body {background:#F2F1F0;padding:0;color:var(--color-foreground);}
 
 /* ===== CARD GRID ===== */
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.pcard{background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:box-shadow .15s,border-color .15s;display:flex;flex-direction:column;}
+.pcard{background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:box-shadow .15s,border-color .15s;display:flex;flex-direction:column;box-shadow:var(--shadow-card);}
 .pcard:hover{box-shadow:0 2px 8px rgb(0 0 0 / .08);border-color:var(--color-border-strong);}
 /* Thumbnail */
 .pcard-thumb{position:relative;width:100%;aspect-ratio:4/3;background:var(--color-background);display:flex;align-items:center;justify-content:center;color:var(--color-border-strong);font-size:36px;overflow:hidden;}
