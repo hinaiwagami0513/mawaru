@@ -3,7 +3,7 @@
 #
 # 公開されるもの:
 #   /                      … リポジトリのルート（index.html → board.html への転送）
-#   /iine_board/…          … 既存のワイヤーHTML（従来どおりのパスを維持）
+#   /mawaru_board/…          … 既存のワイヤーHTML（従来どおりのパスを維持）
 #   /help/                 … help_site をビルドした新ヘルプセンター
 #
 # help_site のビルド成果物（17MB）はリポジトリにコミットしない。
@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: synergy-media/iine-ai/help_site
+        working-directory: synergy-media/mawaru/help_site
     steps:
       - uses: actions/checkout@v4
 
@@ -38,14 +38,14 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: synergy-media/iine-ai/help_site/package-lock.json
+          cache-dependency-path: synergy-media/mawaru/help_site/package-lock.json
 
       - run: npm ci
 
       - name: Build help center
-        # Pages はプロジェクトサイトなので /iineai 配下。ヘルプはさらに /help。
+        # Pages はプロジェクトサイトなので /mawaru 配下。ヘルプはさらに /help。
         env:
-          BASE_PATH: /iineai/help
+          BASE_PATH: /mawaru/help
         run: npm run build
 
       - name: Assemble the site
@@ -55,13 +55,13 @@ jobs:
           mkdir -p _site
 
           # 従来どおり「リポジトリのファイルをそのまま配信」を再現する。
-          # 既存の公開URL（/ と /iine_ai/…/iine_board/*.html）を1本も壊さないため、
+          # 既存の公開URL（/ と /synergy-media/mawaru/mawaru_board/*.html）を1本も壊さないため、
           # 個別にコピーせず追跡ファイルを丸ごと持っていく。
           # git 管理外（node_modules / out / .next / 各種作業フォルダ）は自然に落ちる。
           git ls-files -z | rsync -a --files-from=- --from0 ./ _site/
 
           # 新ヘルプを /help/ に配置
-          cp -R synergy-media/iine-ai/help_site/out _site/help
+          cp -R synergy-media/mawaru/help_site/out _site/help
 
           # Pages の Jekyll 処理を止める（_next/ が消されるのを防ぐ）
           touch _site/.nojekyll
@@ -71,8 +71,8 @@ jobs:
           set -eu
           cd "$GITHUB_WORKSPACE/_site"
           for f in index.html \
-                   synergy-media/iine-ai/iine_board/board.html \
-                   synergy-media/iine-ai/iine_board/post_list_wire.html \
+                   synergy-media/mawaru/mawaru_board/board.html \
+                   synergy-media/mawaru/mawaru_board/post_list_wire.html \
                    help/index.html \
                    help/analytics/ai-report/index.html \
                    help/manage/list/index.html; do

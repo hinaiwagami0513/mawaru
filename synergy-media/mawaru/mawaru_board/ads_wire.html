@@ -1,0 +1,873 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<title>広告 — マワル</title>
+<link rel="stylesheet" href="./tabler-icons-inline.css">
+<link rel="stylesheet" href="./fox-alert.css">
+<style>
+/* このファイルで使うアイコンだけ定義する（フォント実体は tabler-icons-inline.css）。
+   字形コードは同梱フォントで実物を描画して確認済み。 */
+.ti-plus:before{content:"\eb0b"}
+.ti-layout-dashboard:before{content:"\f02c"}
+.ti-file-text:before{content:"\eaa2"}
+.ti-calendar:before{content:"\ea53"}
+.ti-camera:before{content:"\ea54"}
+.ti-chart-bar:before{content:"\ea59"}
+.ti-folder:before{content:"\eaad"}
+.ti-dots:before{content:"\ea95"}
+.ti-settings:before{content:"\eb20"}
+.ti-chevron-down:before{content:"\ea5f"}
+.ti-chevron-right:before{content:"\ea61"}
+.ti-selector:before{content:"\eb1d"}
+.ti-coffee:before{content:"\ef0e"}
+.ti-sparkles:before{content:"\f6d7"}
+.ti-help:before{content:"\eabf"}
+.ti-list-check:before{content:"\eb6a"}
+.ti-message-dots:before{content:"\eaee"}
+.ti-speakerphone:before{content:"\ed61"}
+.ti-clock:before{content:"\ea70"}
+.ti-check:before{content:"\ea5e"}
+.ti-x:before{content:"\eb55"}
+.ti-arrow-right:before{content:"\ea1f"}
+.ti-arrow-left:before{content:"\ea19"}
+.ti-alert-triangle:before{content:"\ea06"}
+.ti-refresh:before{content:"\eb13"}
+.ti-pencil:before{content:"\eb04"}
+.ti-eye:before{content:"\ea9a"}
+.ti-heart:before{content:"\eabe"}
+.ti-users:before{content:"\ebf2"}
+.ti-photo:before{content:"\eb0a"}
+.ti-star:before{content:"\eb2e"}
+.ti-world:before{content:"\eb54"}
+.ti-brand-instagram:before{content:"\ec20"}
+.ti-brand-x:before{content:"\fc0f"}
+.ti-brand-tiktok:before{content:"\ec73"}
+.ti-brand-youtube:before{content:"\ec90"}
+
+:root {
+  /* 新パレット（藍・水色）由来の追加トークン */
+  --color-navy: #00347a;
+  --color-navy-subtle: #f1f7ff;
+  --color-primary-deep: #d54101;
+  --color-primary: #fe7235;
+  --color-primary-hover: #d54101;
+  --color-primary-light: #fea735;
+  --color-primary-subtle: #fff5f1;
+  --color-on-primary: #ffffff;
+  --color-background: #fcf5ef;
+  --color-surface: #fffdfb;
+  --color-card: #ffffff;
+  --color-foreground: #2a2826;
+  --color-muted-foreground: #757575;
+  --color-border: #efe7df;
+  --color-border-strong: #ddd0c4;
+  --color-input: #ffffff;
+  --color-ring: #fe7235;
+  --color-success: #008a24; --color-success-vivid: #00ac2f;
+  --color-success-subtle: #f3fcf6;
+  --color-warning: #ad6201;
+  --color-warning-border: #ffe6c4;
+  --color-warning-subtle: #fff9f1;
+  --color-info: #0070f0;
+  --color-info-subtle: #f1f7ff;
+  --color-destructive: #e90c2a;
+  --color-destructive-subtle: #feeef1;
+  --color-accent-purple: #9724ba;
+  --color-accent-purple-subtle: #f5e7f8;
+  --color-like: #ef3a58;
+  --color-like-subtle: #feeef1;
+  --color-sns-instagram: #b02a78;
+  --color-sns-instagram-subtle: #fce7f3;
+  --color-sns-x: #2a2826;
+  --color-sns-x-subtle: #fcf5ef;
+  --color-sns-tiktok: #0a6f66;
+  --color-sns-tiktok-subtle: #e5fbf7;
+  --color-sns-youtube: #c4302b;
+  --color-sns-youtube-subtle: #fcebeb;
+  --font-body: Inter, "Noto Sans JP";
+  --text-h1: 1.875rem;
+  --text-h2: 1.25rem;
+  --text-h3: 1rem;
+  --text-body-lg: 1rem;
+  --text-body: 0.875rem;
+  --text-label: 0.875rem;
+  --text-meta: 0.875rem;
+  --font-weight-h1: 700;
+  --font-weight-h2: 700;
+  --font-weight-h3: 700;
+  --font-weight-body: 400;
+  --font-weight-body-strong: 700;
+  --font-weight-label: 500;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+  /* セカンダリ＝青系（primary橙＝押せる／secondary青＝情報・補助） */
+  --color-secondary: #0077ff;
+  --color-secondary-light: #00c3ff;
+  --color-secondary-subtle: #f1f7ff;
+  --color-secondary-deep: #0070f0;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:var(--font-body),'Hiragino Sans','Meiryo',sans-serif;-webkit-font-smoothing:antialiased;}
+body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
+.app{width:100%;background:var(--color-card);border-radius:0;overflow:hidden;display:flex;height:100vh;position:relative;}
+.ti{line-height:1;}
+
+/* ===== サイドバー（全画面共通） =====
+   広告はサイドバーの第一階層に置かない。ホームのフッターから入る。 */
+.sb{width:250px;flex:none;background:var(--color-surface);border-right:1px solid var(--color-border);display:flex;flex-direction:column;}
+.sbtop{padding:16px 16px 10px;}
+.logo{height:24px;margin-bottom:14px;display:block;}
+.create{text-decoration:none;width:100%;display:flex;align-items:center;justify-content:center;gap:7px;background:var(--color-primary);color:#fff;border:none;border-radius:var(--radius-md);padding:11px;font-family:inherit;font-size:var(--text-body);font-weight:var(--font-weight-body-strong);cursor:pointer;}
+.nav{padding:6px 10px;overflow-y:auto;flex:1;}
+.ni{display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:var(--radius-md);font-size:var(--text-body-lg);font-weight:var(--font-weight-body-strong);color:var(--color-foreground);cursor:pointer;text-decoration:none;}
+.ni .ti{font-size:18px;color:#6e655d;}
+.ni .cv{margin-left:auto;font-size:14px;color:#9a938c;}
+.ni.on{background:var(--color-primary-subtle);color:var(--color-primary);font-weight:var(--font-weight-body-strong);}
+.nidiv{height:1px;background:var(--color-border);margin:8px 10px;}
+/* 中央の投稿作成はSP専用。PCはサイドバー上部の「投稿作成」が同じ役目 */
+.ni-create{display:none;}
+.ni.exp .cv{transform:rotate(180deg);}
+.nisub{display:none;}
+.nisub.open{display:block;}
+.nis{display:flex;align-items:center;text-decoration:none;padding:8px 10px 8px 41px;border-radius:var(--radius-md);font-size:var(--text-body);font-weight:var(--font-weight-body-strong);color:var(--color-muted-foreground);cursor:pointer;}
+.nis:hover{background:var(--color-primary-subtle);color:var(--color-primary);}
+.foot{border-top:1px solid var(--color-border);padding:12px;}
+.switcher{display:flex;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--color-border-strong);border-radius:var(--radius-md);background:var(--color-card);cursor:pointer;}
+.switcher .pic{width:34px;height:34px;flex:none;border-radius:var(--radius-md);background:#ffe6dc;color:var(--color-primary);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.switcher .pn{font-size:var(--text-body);font-weight:var(--font-weight-body-strong);}
+.switcher .an{font-size:var(--text-meta);color:#9a938c;}
+.switcher .cv{margin-left:auto;color:#9a938c;font-size:17px;}
+
+/* ===== メイン ===== */
+.main{flex:1;min-width:0;display:flex;flex-direction:column;}
+.hd{height:64px;flex:none;display:flex;align-items:center;gap:11px;padding:0 26px;border-bottom:1px solid var(--color-border);}
+.hd .pgic{font-size:22px;color:var(--color-foreground);}
+.hd .pgnm{font-size:var(--text-h3);font-weight:var(--font-weight-body-strong);}
+.hd .r{margin-left:auto;display:flex;align-items:center;gap:10px;}
+.help{width:38px;height:38px;border:1.5px solid var(--color-primary);color:var(--color-primary);background:transparent;border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer;text-decoration:none;}
+.help:hover{background:var(--color-primary);color:var(--color-on-primary);}
+.planchip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--color-border-strong);border-radius:var(--radius-full);padding:5px 12px;font-size:var(--text-label);font-weight:var(--font-weight-body-strong);color:var(--color-muted-foreground);white-space:nowrap;}
+.planchip i{font-size:15px;color:var(--color-primary);}
+.planchip{text-decoration:none;transition:border-color .15s,color .15s;}
+.planchip[href]:hover{border-color:var(--color-primary);color:var(--color-foreground);}
+.planchip.is-here{cursor:default;}
+.hdbtn{position:relative;width:38px;height:38px;flex:none;border:1px solid var(--color-border-strong);background:var(--color-card);color:var(--color-foreground);border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer;padding:0;text-decoration:none;}
+.hdbtn:hover{border-color:var(--color-primary);color:var(--color-primary);}
+.hdbadge{position:absolute;top:-4px;right:-4px;min-width:19px;height:19px;padding:0 5px;border-radius:var(--radius-full);background:var(--color-primary);color:var(--color-on-primary);font-size:var(--text-meta);font-weight:var(--font-weight-body-strong);display:flex;align-items:center;justify-content:center;border:2px solid var(--color-card);}
+
+/* ===== 3つのサービスの切替 =====
+   広告作成・発注相談・出張撮影は「プロに頼む」仲間なので、同じ場所で行き来できるようにする。
+   この画面は広告作成が現在地なので、そこだけ span で出して押せないようにしている。 */
+/* 背景は敷かない。ページ背景の上に白帯が乗るとタブが別のカードに見える */
+.svc{flex:none;display:flex;gap:0;padding:0 26px;border-bottom:1px solid var(--color-border);}
+.svc a,.svc button,.svc span{display:flex;align-items:center;gap:8px;padding:13px 20px;font-family:inherit;font-size:var(--text-body-lg);font-weight:var(--font-weight-label);color:var(--color-muted-foreground);background:none;border:none;border-bottom:3px solid transparent;margin-bottom:-1px;cursor:pointer;text-decoration:none;}
+.svc a:hover,.svc button:hover{color:var(--color-foreground);}
+.svc .on{color:var(--color-primary);border-bottom-color:var(--color-primary);font-weight:var(--font-weight-body-strong);cursor:default;}
+.svc i{font-size:18px;}
+
+.content{flex:1;overflow-y:auto;padding:24px 30px 40px;background:var(--color-background);}
+.view{display:none;}
+.view.on{display:block;}
+.btn-p{display:inline-flex;align-items:center;gap:8px;background:var(--color-primary);color:var(--color-on-primary);border:none;border-radius:var(--radius-md);padding:0 22px;height:44px;font-family:inherit;font-size:var(--text-body);font-weight:var(--font-weight-body-strong);cursor:pointer;}
+.btn-p:hover{background:var(--color-primary-hover);}
+.btn-p[disabled]{background:var(--color-border-strong);cursor:default;}
+.btn-o{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--color-primary);color:var(--color-primary);background:transparent;border-radius:var(--radius-md);padding:0 16px;height:40px;font-family:inherit;font-size:var(--text-label);font-weight:var(--font-weight-body-strong);cursor:pointer;white-space:nowrap;}
+.btn-o:hover{background:var(--color-primary);color:var(--color-on-primary);}
+.btn-g{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--color-border-strong);color:var(--color-muted-foreground);background:var(--color-card);border-radius:var(--radius-md);padding:0 16px;height:40px;font-family:inherit;font-size:var(--text-label);font-weight:var(--font-weight-label);cursor:pointer;white-space:nowrap;}
+.btn-g:hover{border-color:var(--color-foreground);color:var(--color-foreground);}
+
+/* ===== 広告一覧 ===== */
+.top{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.top .h{font-size:var(--text-h2);font-weight:var(--font-weight-h2);}
+.top .n{font-size:var(--text-label);color:var(--color-muted-foreground);}
+.top .sp{margin-left:auto;}
+.ad{display:flex;gap:16px;background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:16px;margin-bottom:14px;}
+.ad .thumb{width:112px;height:112px;flex:none;border-radius:var(--radius-md);border:1px solid var(--color-border);}
+.ad .bd{flex:1;min-width:0;}
+.ad .row1{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:6px;}
+.ad .nm{font-size:var(--text-body-lg);font-weight:var(--font-weight-body-strong);}
+.st{display:inline-flex;align-items:center;gap:5px;font-size:var(--text-meta);font-weight:var(--font-weight-body-strong);border-radius:var(--radius-full);padding:3px 10px;}
+.st.run{background:var(--color-success-subtle);color:var(--color-success);}
+.st.draft{background:var(--color-info-subtle);color:var(--color-info);}
+.st.end{background:var(--color-surface);color:var(--color-muted-foreground);border:1px solid var(--color-border);}
+.st.ng{background:var(--color-warning-subtle);color:var(--color-warning);}
+.snsdot{display:inline-flex;align-items:center;gap:5px;font-size:var(--text-meta);font-weight:var(--font-weight-body-strong);}
+.ad .mt{font-size:var(--text-label);color:var(--color-muted-foreground);line-height:1.8;}
+/* お金の使いぐあいは、いちばん気になるところなので必ずバーで出す */
+.spend{margin-top:11px;}
+.spend .lb{display:flex;align-items:baseline;gap:6px;font-size:var(--text-label);margin-bottom:6px;}
+.spend .lb b{font-size:var(--text-body-lg);font-weight:var(--font-weight-body-strong);}
+.spend .lb .of{color:var(--color-muted-foreground);}
+.spend .lb .rest{margin-left:auto;color:var(--color-muted-foreground);}
+.spend .bar{height:8px;background:var(--color-border);border-radius:var(--radius-full);overflow:hidden;}
+.spend .bar i{display:block;height:100%;background:var(--color-primary);border-radius:var(--radius-full);}
+.res{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px;}
+.res .r{border:1px solid var(--color-border);border-radius:var(--radius-md);padding:10px 12px;}
+.res .k{font-size:var(--text-meta);color:var(--color-muted-foreground);display:flex;align-items:center;gap:5px;}
+.res .v{font-size:var(--text-h3);font-weight:var(--font-weight-body-strong);margin-top:4px;}
+.ad .acts{display:flex;flex-direction:column;gap:8px;justify-content:center;flex:none;}
+
+/* ===== ステップ ===== */
+.steps{display:flex;align-items:center;gap:0;margin-bottom:22px;}
+.step{display:flex;align-items:center;gap:9px;font-size:var(--text-label);color:var(--color-muted-foreground);font-weight:var(--font-weight-body-strong);}
+.step .n{width:26px;height:26px;flex:none;border-radius:var(--radius-full);background:var(--color-border);color:#fff;display:flex;align-items:center;justify-content:center;font-size:var(--text-label);}
+.step.on{color:var(--color-primary);}
+.step.on .n{background:var(--color-primary);}
+.step.done .n{background:var(--color-success-vivid);}
+.step.done{color:var(--color-foreground);}
+.steps .line{flex:1;height:2px;background:var(--color-border);margin:0 12px;}
+.steps .line.done{background:var(--color-success-vivid);}
+.qh{font-size:var(--text-h2);font-weight:var(--font-weight-h2);margin-bottom:6px;}
+.qs{font-size:var(--text-body);color:var(--color-muted-foreground);line-height:1.9;margin-bottom:18px;}
+.card{background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px;}
+.card-t{font-size:var(--text-body-lg);font-weight:var(--font-weight-body-strong);margin-bottom:4px;}
+.card-d{font-size:var(--text-label);color:var(--color-muted-foreground);line-height:1.8;margin-bottom:14px;}
+/* 目的：3つから1つ選ぶ。専門用語を使わない */
+.goals{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.goal{border:1px solid var(--color-border-strong);border-radius:var(--radius-lg);padding:18px;cursor:pointer;background:var(--color-card);text-align:left;font-family:inherit;}
+.goal:hover{border-color:var(--color-primary);}
+.goal.on{border:2px solid var(--color-primary);background:var(--color-primary-subtle);padding:17px;}
+.goal .ic{width:40px;height:40px;border-radius:var(--radius-md);background:var(--color-surface);color:var(--color-primary);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:11px;}
+.goal.on .ic{background:#fff;}
+.goal .t{font-size:var(--text-body-lg);font-weight:var(--font-weight-body-strong);}
+.goal .d{font-size:var(--text-label);color:var(--color-muted-foreground);line-height:1.8;margin-top:6px;}
+.goal .e{font-size:var(--text-meta);color:var(--color-primary);margin-top:9px;font-weight:var(--font-weight-body-strong);}
+/* 何を広告にするか */
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+/* ⚠️ 中身は button 直下の span。display を指定しないと inline のままで
+   aspect-ratio も overflow:hidden も効かない（サムネが潰れ、バッジが1文字ずつ縦に折れる）。
+   span を使うときは必ず block/flex を当てる。 */
+.pick{display:flex;flex-direction:column;border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;background:var(--color-card);text-align:left;font-family:inherit;padding:0;}
+.pick:hover{border-color:var(--color-primary);}
+/* 選択中は border を太くせず内側の影で2px相当にする（太らせると中身が2pxずれて跳ねる） */
+.pick.on{border-color:var(--color-primary);box-shadow:inset 0 0 0 1px var(--color-primary);}
+.pick .th{display:block;aspect-ratio:16/10;position:relative;flex:none;}
+.pick .badge{position:absolute;left:7px;top:7px;background:var(--color-primary-subtle);border-radius:var(--radius-full);padding:2px 9px;font-size:var(--text-meta);font-weight:var(--font-weight-body-strong);color:var(--color-primary);white-space:nowrap;}
+.pick .bd{display:block;padding:10px 11px;}
+.pick .t{display:block;font-size:var(--text-label);font-weight:var(--font-weight-body-strong);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.pick .m{font-size:var(--text-meta);color:var(--color-muted-foreground);margin-top:4px;display:flex;gap:9px;}
+.pick.new{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;border-style:dashed;color:var(--color-primary);font-weight:var(--font-weight-body-strong);font-size:var(--text-body);min-height:150px;}
+
+/* 届け先・期間・予算 */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.field{margin-bottom:16px;}
+.field:last-child{margin-bottom:0;}
+.lbl{display:block;font-size:var(--text-body);font-weight:var(--font-weight-body-strong);margin-bottom:4px;}
+.sub{font-size:var(--text-label);color:var(--color-muted-foreground);margin-bottom:9px;line-height:1.7;}
+.inp,.sel{width:100%;border:1px solid var(--color-border-strong);border-radius:var(--radius-md);padding:11px 13px;font-family:inherit;font-size:var(--text-body);background:var(--color-input);color:var(--color-foreground);}
+.inp:focus,.sel:focus{outline:2px solid var(--color-ring);outline-offset:1px;border-color:var(--color-primary);}
+.chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{border:1px solid var(--color-border-strong);background:var(--color-card);border-radius:var(--radius-full);padding:9px 16px;font-family:inherit;font-size:var(--text-body);cursor:pointer;color:var(--color-foreground);display:inline-flex;align-items:center;gap:7px;}
+.chip:hover{border-color:var(--color-primary);}
+.chip.on{background:var(--color-primary-subtle);border-color:var(--color-primary);color:var(--color-primary);font-weight:var(--font-weight-body-strong);}
+.chip i{font-size:16px;}
+/* お金は「1日いくら × 何日 = 合計」を常に見せる。総額が分からないまま決めさせない */
+.money{display:grid;grid-template-columns:1fr auto 1fr auto 1.2fr;align-items:center;gap:12px;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:16px;}
+.money .k{font-size:var(--text-label);color:var(--color-muted-foreground);}
+.money .v{font-size:var(--text-h3);font-weight:var(--font-weight-body-strong);margin-top:3px;}
+.money .op{font-size:var(--text-h3);color:var(--color-muted-foreground);}
+.money .total .k{color:var(--color-primary);font-weight:var(--font-weight-body-strong);}
+.money .total .v{font-size:var(--text-h1);font-weight:var(--font-weight-h1);color:var(--color-primary);line-height:1.1;}
+.range{width:100%;accent-color:var(--color-primary);margin-top:10px;}
+.reach{display:flex;align-items:center;gap:9px;background:var(--color-info-subtle);border:1px solid #cfe0f2;border-radius:var(--radius-md);padding:12px 14px;margin-top:14px;font-size:var(--text-label);line-height:1.8;}
+.reach i{font-size:17px;color:var(--color-info);flex:none;}
+.navrow{display:flex;align-items:center;gap:12px;margin-top:20px;}
+.navrow .sp{margin-left:auto;}
+
+/* ===== 生成中 =====
+   90秒を黒い箱で見せない。いま何をしているのかを段階で出し、閉じても続けられるようにする。 */
+.gen{background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:28px 30px;max-width:640px;margin:0 auto;}
+.gen .t{font-size:var(--text-h2);font-weight:var(--font-weight-h2);margin-bottom:5px;}
+.gen .d{font-size:var(--text-body);color:var(--color-muted-foreground);line-height:1.9;margin-bottom:20px;}
+.gsteps{display:flex;flex-direction:column;gap:2px;margin-bottom:20px;}
+.gstep{display:flex;align-items:center;gap:12px;padding:11px 0;font-size:var(--text-body);color:var(--color-muted-foreground);}
+.gstep .m{width:24px;height:24px;flex:none;border-radius:var(--radius-full);border:2px solid var(--color-border);display:flex;align-items:center;justify-content:center;font-size:14px;}
+.gstep.done{color:var(--color-foreground);}
+/* 完了マーカーのチェック。マークアップの <span class="m"> は空で、進行のJSも
+   クラスを付け替えるだけなので、字形が入らず緑の丸だけになっていた。
+   ::before で出すと done になった瞬間だけ現れ、JS側は触らなくて済む。 */
+.gstep.done .m::before{content:"\ea5e";font-family:"tabler-icons";font-size:14px;line-height:1;}
+.gstep.done .m{background:var(--color-success);border-color:var(--color-success);color:#fff;}
+.gstep.now{color:var(--color-primary);font-weight:var(--font-weight-body-strong);}
+.gstep.now .m{border-color:var(--color-primary);border-top-color:transparent;animation:sp .8s linear infinite;}
+@keyframes sp{to{transform:rotate(360deg)}}
+.gbar{height:8px;background:var(--color-border);border-radius:var(--radius-full);overflow:hidden;margin-bottom:8px;}
+.gbar i{display:block;height:100%;background:var(--color-primary);border-radius:var(--radius-full);transition:width .4s;}
+.gnote{font-size:var(--text-label);color:var(--color-muted-foreground);line-height:1.8;}
+
+/* ===== できた広告 ===== */
+.result{display:grid;grid-template-columns:340px 1fr;gap:20px;}
+/* 実際にどう見えるかを主役にする。文字数の枠を主役にしない */
+.prev{background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;}
+.prev-h{display:flex;align-items:center;gap:9px;padding:11px 13px;border-bottom:1px solid var(--color-border);}
+.prev-h .av{width:30px;height:30px;border-radius:var(--radius-full);background:#ffe6dc;color:var(--color-primary);display:flex;align-items:center;justify-content:center;font-size:15px;}
+.prev-h .nm{font-size:var(--text-label);font-weight:var(--font-weight-body-strong);}
+.prev-h .ad-lb{font-size:var(--text-meta);color:var(--color-muted-foreground);}
+.prev-img{aspect-ratio:1;}
+.prev-cta{display:flex;align-items:center;gap:8px;padding:11px 13px;border-bottom:1px solid var(--color-border);background:var(--color-surface);font-size:var(--text-label);font-weight:var(--font-weight-body-strong);}
+.prev-cta .go{margin-left:auto;color:var(--color-primary);}
+.prev-bd{padding:12px 13px;font-size:var(--text-label);line-height:1.9;}
+.prev-bd .nm{font-weight:var(--font-weight-body-strong);}
+.prev-note{font-size:var(--text-meta);color:var(--color-muted-foreground);text-align:center;margin-top:9px;}
+.ed{background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:18px 20px;}
+.ed .row{margin-bottom:16px;}
+.ed .row:last-child{margin-bottom:0;}
+.ed .k{display:flex;align-items:baseline;gap:8px;font-size:var(--text-body);font-weight:var(--font-weight-body-strong);margin-bottom:4px;}
+.ed .k .where{font-size:var(--text-meta);color:var(--color-muted-foreground);font-weight:var(--font-weight-body);}
+.ed textarea,.ed input{width:100%;border:1px solid var(--color-border-strong);border-radius:var(--radius-md);padding:10px 12px;font-family:inherit;font-size:var(--text-body);line-height:1.8;resize:vertical;background:var(--color-input);color:var(--color-foreground);}
+.ed textarea:focus,.ed input:focus{outline:2px solid var(--color-ring);outline-offset:1px;border-color:var(--color-primary);}
+.ed .cnt{font-size:var(--text-meta);color:var(--color-muted-foreground);text-align:right;margin-top:4px;}
+.alt{display:flex;align-items:center;gap:9px;margin-top:14px;padding-top:14px;border-top:1px solid var(--color-border);}
+.alt .n{font-size:var(--text-label);color:var(--color-muted-foreground);}
+/* 媒体の細かい欄は、ふだん出さない */
+.adv{margin-top:16px;border-top:1px solid var(--color-border);padding-top:14px;}
+.adv summary{font-size:var(--text-label);font-weight:var(--font-weight-body-strong);color:var(--color-muted-foreground);cursor:pointer;}
+.adv .in{margin-top:12px;font-size:var(--text-label);color:var(--color-muted-foreground);line-height:1.9;}
+.adv .in ul{margin:6px 0 0 20px;}
+/* 出す前の確認 */
+.confirm{background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:18px 20px;margin-top:18px;}
+.confirm .t{font-size:var(--text-body-lg);font-weight:var(--font-weight-body-strong);margin-bottom:12px;}
+.crow{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--color-border);font-size:var(--text-body);}
+.crow:last-of-type{border-bottom:none;}
+/* 確認表のラベルは口語をやめて短い一般語に。値までの距離も詰める（2026-08-19） */
+.crow .k{width:88px;flex:none;color:var(--color-muted-foreground);font-size:var(--text-label);}
+.crow .v{font-weight:var(--font-weight-body-strong);}
+.crow .ed2{margin-left:auto;color:var(--color-primary);font-size:var(--text-label);font-weight:var(--font-weight-body-strong);background:none;border:none;cursor:pointer;font-family:inherit;}
+.empty{background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:44px;text-align:center;}
+.empty .ic{width:56px;height:56px;border-radius:var(--radius-full);background:var(--color-primary-subtle);color:var(--color-primary);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 14px;}
+.empty .t{font-size:var(--text-body-lg);font-weight:var(--font-weight-body-strong);margin-bottom:6px;}
+.empty .d{font-size:var(--text-body);color:var(--color-muted-foreground);line-height:1.9;margin-bottom:18px;}
+
+@media(max-width:1100px){
+  .goals,.picks,.res{grid-template-columns:1fr;} .result{grid-template-columns:1fr;}
+  /* 1列になると 16:10 のサムネが横幅いっぱい＝高さ500px超になる。横並びの行に組み替える */
+  .pick{flex-direction:row;align-items:stretch;}
+  .pick .th{width:120px;aspect-ratio:1;}
+  .pick .bd{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;}
+  .pick.new{flex-direction:row;min-height:76px;}
+}
+/* ===== シェル：ヘッダーとサイドバーを角丸のカードにする =====
+   全面ベタ（角丸0・隙間0）だと面が窓枠に貼り付いて古く見える。
+   .app に余白と gap を持たせて、サイドバー / ヘッダー / 本文を
+   生成りの地に浮いた3枚のカードとして置く。 */
+.app{background:var(--color-background);padding:10px;gap:10px;}
+.sb{border-radius:var(--radius-xl);border-right:none;overflow:hidden;}
+.main{gap:10px;}
+.hd{border-radius:var(--radius-xl);border-bottom:none;background:var(--color-card);
+    box-shadow:var(--shadow-card);padding:0 22px;}
+.content{border-radius:var(--radius-xl);background:var(--color-card);
+    box-shadow:var(--shadow-card);}
+/* トレイは .app の余白ぶん内側に寄せる */
+.corner{right:26px;bottom:26px;}
+
+/* ===== サイドバーの文字を白に =====
+   地の #fe7235 に白は 2.74 で、15px の本文には足りない。
+   文字を白にすると決めた以上、地の側を下げてコントラストを作る。
+   以前は縦グラデーション（#fe7235→#e85513→#d54101）で「上は鮮やかなまま」を
+   残していたが、SPではサイドバーが高さ60pxの帯になるため、180度の階調が
+   その中に圧縮されて帯状のムラに見え、古く見える原因になっていた（2026-08-28）。
+   ベタの primary-deep(#d54101) に統一。白文字で 4.58 なので本文でも AA を満たす。 */
+.sb{background:var(--color-primary-deep);}
+.sb .logo{filter:brightness(0) invert(1);opacity:.96;}
+.sb .ni{color:rgba(255,255,255,.88);}
+.sb .ni .ti{color:rgba(255,255,255,.88);}
+/* hover / 選択中は薄い白の面だけで示す（2026-08-21）。縁は付けない。
+   面を白に寄せると白文字が沈むので寄せない（白100%なら 1.00、80%でも 1.27）。
+   薄いままなら文字は白で通る＝他の行と同じ読みやすさ（オレンジ地に白で 2.7）。
+   hover 10% / 選択 22% と差を付けて、面の濃さだけで状態を見分けさせる。 */
+.sb .ni:hover{background:rgba(255,255,255,.10);color:#fff;}
+.sb .ni:hover .ti{color:#fff;}
+/* 選択中は「薄い白」の面に反転させる（2026-08-21）。
+   もとは 24%白 + 白文字で、地のオレンジとの差が出ず沈んでいた（白文字は 2.67）。
+   ベタ白だと「投稿作成」ボタンと同じ強さになって重いので 80% に落とす。
+   ただし 80%白の面（rgb(251,222,209)）に #d54101 は 3.59 で AA に足りないので、
+   文字だけ1段濃い #a33200 にして 5.47 を確保する。地を薄くしたぶんは文字で補う。 */
+.sb .ni.on{background:rgba(255,255,255,.22);color:#fff;}
+.sb .ni.on .ti{color:#fff;}
+.sb .ni.on .cv{color:#fff;}
+/* サブ項目も同じ。.nis.on より .sb .nis が後勝ちして白文字になり、
+   薄い地（primary-subtle）と重なって完全に見えなくなっていた。 */
+.sb .nis.on{background:rgba(255,255,255,.22);color:#fff;}
+.sb .ni .cv{color:rgba(255,255,255,.7);}
+.sb .nis{color:rgba(255,255,255,.8);}
+.sb .nis:hover{background:rgba(255,255,255,.10);color:#fff;}
+.sb .nav,.sb .sbbtm,.sb .foot{border-color:rgba(255,255,255,.22);}
+.sb .switcher{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.30);}
+.sb .switcher .pn,.sb .switcher .nm{color:#fff;}
+.sb .switcher .an,.sb .switcher .cv{color:rgba(255,255,255,.72);}
+.sb .switcher .pic{background:#fff;color:#d54101;}
+.sb .upg{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.30);}
+.sb .upg .ut{color:#fff;}
+.sb .upg .ub{background:#fff !important;color:#d54101 !important;}
+.sb .upg .ub:hover{filter:brightness(.94);}
+.create{background:#fff !important;color:#d54101 !important;}
+.create:hover{background:#fff !important;filter:brightness(.96);}
+</style>
+<!-- SP対応。インラインCSSの後に置く（@media は詳細度を上げないので後勝ちにする） -->
+<link rel="stylesheet" href="./shell-sp.css">
+</head><body>
+<div class="app">
+  <!-- サイドバー -->
+  <aside class="sb">
+    <div class="sbtop"><img class="logo" src="data:image/png;base64,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" alt="マワル"><a class="create" href="./flow_video_script_wire.html"><i class="ti ti-plus"></i>投稿作成</a></div>
+    <div class="nav">
+      <a class="ni" href="./shell_header_sidebar_wire.html"><i class="ti ti-layout-dashboard"></i>ホーム</a>
+      <a class="ni" href="./post_list_wire.html"><i class="ti ti-file-text"></i>投稿</a>
+      <a class="ni" href="./calendar_wire.html"><i class="ti ti-calendar"></i>カレンダー</a>
+      <!-- SP専用：投稿作成の動線 -->
+      <a class="ni-create" href="./flow_video_script_wire.html" aria-label="投稿を作る"><i class="ti ti-plus"></i></a>
+      <a class="ni" href="./analysis_visual_wire.html"><i class="ti ti-chart-bar"></i>分析</a>
+      <a class="ni" href="./drive_wire.html"><i class="ti ti-folder"></i>ドライブ</a>
+      <div class="nidiv"></div>
+      <div class="ni" onclick="navToggle(this)"><i class="ti ti-settings"></i>設定<span class="cv"><i class="ti ti-chevron-down"></i></span></div>
+      <div class="nisub">
+        <a class="nis" href="./settings_wire.html#project">運用目的</a>
+        <a class="nis" href="./settings_wire.html#sns">SNS設定</a>
+        <a class="nis" href="./settings_wire.html#review">AIレビュー</a>
+        <a class="nis" href="./settings_wire.html#members">メンバー管理</a>
+      </div>
+      <div class="nidiv sp-hide"></div>
+      <div class="ni sp-hide" onclick="navToggle(this)"><i class="ti ti-dots"></i>その他<span class="cv"><i class="ti ti-chevron-down"></i></span></div>
+      <div class="nisub sp-hide">
+        <a class="nis" href="./news_wire.html">NEWS</a>
+        <a class="nis" href="https://hinaiwagami0513.github.io/mawaru/help/" target="_blank" rel="noopener">ヘルプセンター</a>
+      </div>
+    </div>
+    <div class="foot">
+      <div class="switcher"><div class="pic"><i class="ti ti-coffee"></i></div><div><div class="pn">犬カフェOne</div><div class="an">田中 陽菜</div></div><i class="ti ti-selector cv"></i></div>
+    </div>
+  </aside>
+
+  <!-- メイン -->
+  <div class="main">
+    <div class="hd">
+      <i class="ti ti-speakerphone pgic"></i><span class="pgnm" id="pgnm">広告</span>
+      <div class="r">
+        <a class="planchip" href="./plan_wire.html" title="いまのプラン（押すと料金一覧へ）"><i class="ti ti-sparkles"></i>ベーシックOne</a>
+        <button class="hdbtn" title="ToDo" aria-label="ToDo"><i class="ti ti-list-check"></i><span class="hdbadge">5</span></button>
+        <a class="hdbtn" href="./chat_wire.html" title="チャット（未読2件）" aria-label="チャット（未読2件）"><i class="ti ti-message-dots"></i><span class="hdbadge">2</span></a>
+        <a class="help" href="https://hinaiwagami0513.github.io/mawaru/help/" target="_blank" rel="noopener" title="このページのヘルプ" aria-label="このページのヘルプ"><i class="ti ti-help"></i></a>
+      </div>
+    </div>
+
+    <!-- プロに頼む3つ -->
+    <div class="svc">
+      <span class="on" aria-current="page"><i class="ti ti-speakerphone"></i>広告作成</span>
+      <a href="./request_wire.html#order"><i class="ti ti-message-circle"></i>発注相談</a>
+      <a href="./request_wire.html#shoot"><i class="ti ti-camera"></i>出張撮影</a>
+    </div>
+
+    <div class="content" id="content">
+
+      <!-- ===== 一覧 ===== -->
+      <div class="view on" id="vList">
+        <div class="top">
+          <span class="h">出している広告</span>
+          <span class="n">3件</span>
+          <span class="sp"><button class="btn-p" onclick="go('s1')"><i class="ti ti-plus"></i>広告を作る</button></span>
+        </div>
+
+        <div class="ad">
+          <span class="thumb" style="background:linear-gradient(135deg,#f7d9b0,#efc189)"></span>
+          <div class="bd">
+            <div class="row1">
+              <span class="nm">看板犬ポチに会いに来ませんか</span>
+              <span class="st run"><i class="ti ti-check"></i>配信中</span>
+              <span class="snsdot" style="color:var(--color-sns-instagram)"><i class="ti ti-brand-instagram"></i>Instagram</span>
+            </div>
+            <div class="mt">お店を知ってもらう・8月10日 〜 8月24日（あと8日）</div>
+            <div class="spend">
+              <div class="lb"><b>6,000円</b><span class="of">/ 14,000円 つかいました</span><span class="rest">1日あたり 1,000円・残り 8,000円</span></div>
+              <div class="bar"><i style="width:43%"></i></div>
+            </div>
+            <div class="res">
+              <div class="r"><div class="k"><i class="ti ti-eye"></i>見られた回数</div><div class="v">12,480</div></div>
+              <div class="r"><div class="k"><i class="ti ti-heart"></i>反応された回数</div><div class="v">386</div></div>
+              <div class="r"><div class="k"><i class="ti ti-users"></i>プロフィールを見た人</div><div class="v">92</div></div>
+            </div>
+          </div>
+          <div class="acts">
+            <button class="btn-o">詳細</button>
+            <button class="btn-g">停止</button>
+          </div>
+        </div>
+
+        <div class="ad">
+          <span class="thumb" style="background:linear-gradient(135deg,#eec3d8,#e0a5c4)"></span>
+          <div class="bd">
+            <div class="row1">
+              <span class="nm">秋の新作パフェ 先行おしらせ</span>
+              <span class="st draft"><i class="ti ti-clock"></i>下書き</span>
+              <span class="snsdot" style="color:var(--color-sns-instagram)"><i class="ti ti-brand-instagram"></i>Instagram</span>
+            </div>
+            <div class="mt">来てもらう・9月1日 〜 9月14日の予定</div>
+            <!-- いまのフローは、ここが空のまま完成扱いになっていた -->
+            <div class="fox-alert care sm">
+              <img src="./assets/mawaru-fox-worried.png" alt="">
+              <div><span class="lb">CHECK</span>予算が決まっていないので、まだ配信できません。</div>
+              <span class="sp"><button class="btn-o" onclick="go('s2')">予算を決める</button></span>
+            </div>
+          </div>
+          <div class="acts">
+            <button class="btn-g">編集</button>
+          </div>
+        </div>
+
+        <div class="ad">
+          <span class="thumb" style="background:linear-gradient(135deg,#b9dcc0,#93c8a0)"></span>
+          <div class="bd">
+            <div class="row1">
+              <span class="nm">夏フェス 期間限定メニュー</span>
+              <span class="st end">終了</span>
+              <span class="snsdot" style="color:var(--color-sns-tiktok)"><i class="ti ti-brand-tiktok"></i>TikTok</span>
+            </div>
+            <div class="mt">お店を知ってもらう・7月20日 〜 8月3日</div>
+            <div class="spend">
+              <div class="lb"><b>10,000円</b><span class="of">/ 10,000円 つかいました</span><span class="rest">1日あたり 715円</span></div>
+              <div class="bar"><i style="width:100%"></i></div>
+            </div>
+            <div class="res">
+              <div class="r"><div class="k"><i class="ti ti-eye"></i>見られた回数</div><div class="v">31,205</div></div>
+              <div class="r"><div class="k"><i class="ti ti-heart"></i>反応された回数</div><div class="v">1,142</div></div>
+              <div class="r"><div class="k"><i class="ti ti-users"></i>プロフィールを見た人</div><div class="v">268</div></div>
+            </div>
+          </div>
+          <div class="acts">
+            <button class="btn-o">再配信</button>
+            <button class="btn-g">レポート</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== STEP1 なんのために出すか ===== -->
+      <div class="view" id="vS1">
+        <div class="steps">
+          <span class="step on"><span class="n">1</span>なんのために</span><span class="line"></span>
+          <span class="step"><span class="n">2</span>だれに・いくら</span><span class="line"></span>
+          <span class="step"><span class="n">3</span>できた広告を見る</span>
+        </div>
+        <div class="qh">この広告は、なんのために出しますか？</div>
+        <div class="qs">選んだ目的で、AIが書く文章と、届ける相手の決め方が変わります。あとから変えられます。</div>
+
+        <div class="card">
+          <div class="goals">
+            <button class="goal on" onclick="pickGoal(this)">
+              <span class="ic"><i class="ti ti-speakerphone"></i></span>
+              <div class="t">お店を知ってもらう</div>
+              <div class="d">まだ知らない人に、お店の名前と雰囲気を届けます。</div>
+              <div class="e">はじめての広告におすすめ</div>
+            </button>
+            <button class="goal" onclick="pickGoal(this)">
+              <span class="ic"><i class="ti ti-users"></i></span>
+              <div class="t">来てもらう</div>
+              <div class="d">近くにいる人に、行ってみようと思ってもらいます。</div>
+              <div class="e">新メニュー・イベント向き</div>
+            </button>
+            <button class="goal" onclick="pickGoal(this)">
+              <span class="ic"><i class="ti ti-star"></i></span>
+              <div class="t">フォローしてもらう</div>
+              <div class="d">くり返し見てもらえるように、フォロワーを増やします。</div>
+              <div class="e">続けて発信したいとき</div>
+            </button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-t">なにを広告にしますか？</div>
+          <div class="card-d">反応がよかった投稿をそのまま広告にするのが、いちばん失敗しません。</div>
+          <div class="picks">
+            <button class="pick on" onclick="pickPost(this)">
+              <span class="th" style="background:linear-gradient(135deg,#f7d9b0,#efc189)"><span class="badge">反応 いちばん</span></span>
+              <span class="bd"><span class="t">看板犬ポチの朝ルーティン</span>
+                <span class="m"><span>いいね 642</span><span>保存 91</span></span></span>
+            </button>
+            <button class="pick" onclick="pickPost(this)">
+              <span class="th" style="background:linear-gradient(135deg,#eec3d8,#e0a5c4)"></span>
+              <span class="bd"><span class="t">夏の新作 トロピカルスムージー</span>
+                <span class="m"><span>いいね 128</span><span>保存 36</span></span></span>
+            </button>
+            <button class="pick new" onclick="pickPost(this)"><i class="ti ti-sparkles" style="font-size:24px"></i>新しく作る</button>
+          </div>
+        </div>
+
+        <div class="navrow">
+          <button class="btn-g" onclick="go('list')"><i class="ti ti-arrow-left"></i>やめる</button>
+          <span class="sp"><button class="btn-p" onclick="go('s2')">次へ：だれに・いくら<i class="ti ti-arrow-right"></i></button></span>
+        </div>
+      </div>
+
+      <!-- ===== STEP2 だれに・いくら ===== -->
+      <div class="view" id="vS2">
+        <div class="steps">
+          <span class="step done"><span class="n"><i class="ti ti-check"></i></span>なんのために</span><span class="line done"></span>
+          <span class="step on"><span class="n">2</span>だれに・いくら</span><span class="line"></span>
+          <span class="step"><span class="n">3</span>できた広告を見る</span>
+        </div>
+        <div class="qh">だれに、いつまで、いくら出しますか？</div>
+        <div class="qs">迷ったら、はじめは 1日1,000円 × 7日 くらいから試すのがおすすめです。途中で止められます。</div>
+
+        <div class="card">
+          <div class="card-t">どこに出しますか</div>
+          <div class="card-d">連携中のSNSにだけ出せます。</div>
+          <div class="chips">
+            <button class="chip on" onclick="this.classList.toggle('on')"><i class="ti ti-brand-instagram" style="color:var(--color-sns-instagram)"></i>Instagram</button>
+            <button class="chip" onclick="this.classList.toggle('on')"><i class="ti ti-brand-x"></i>X</button>
+            <button class="chip" onclick="this.classList.toggle('on')"><i class="ti ti-brand-tiktok" style="color:var(--color-sns-tiktok)"></i>TikTok</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-t">だれに届けますか</div>
+          <div class="card-d">設定の「運用目的 &gt; お客様」から入れています。ここで変えても、そちらは変わりません。</div>
+          <div class="grid2">
+            <div class="field">
+              <label class="lbl" for="area">場所</label>
+              <input class="inp" id="area" value="東京都・神奈川県">
+            </div>
+            <div class="field">
+              <label class="lbl" for="age">年代</label>
+              <select class="sel" id="age">
+                <option>20代〜40代</option><option>10代〜30代</option><option>30代〜50代</option><option>指定しない</option>
+              </select>
+            </div>
+          </div>
+          <div class="field" style="margin-bottom:0">
+            <label class="lbl">興味・関心</label>
+            <div class="chips">
+              <button class="chip on" onclick="this.classList.toggle('on')">犬</button>
+              <button class="chip on" onclick="this.classList.toggle('on')">カフェめぐり</button>
+              <button class="chip" onclick="this.classList.toggle('on')">おでかけ</button>
+              <button class="chip" onclick="this.classList.toggle('on')">スイーツ</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-t">いつ・いくら</div>
+          <div class="card-d">1日あたりの金額と日数から、かかるお金の合計をその場で出します。</div>
+          <div class="grid2" style="margin-bottom:16px">
+            <div class="field" style="margin-bottom:0">
+              <label class="lbl" for="from">はじめる日</label>
+              <input class="inp" id="from" value="2026年9月1日">
+            </div>
+            <div class="field" style="margin-bottom:0">
+              <label class="lbl" for="days">何日間</label>
+              <select class="sel" id="days" onchange="calc()">
+                <option value="7" selected>7日間</option><option value="14">14日間</option><option value="30">30日間</option>
+              </select>
+            </div>
+          </div>
+          <div class="money">
+            <div><div class="k">1日あたり</div><div class="v" id="perDay">1,000円</div></div>
+            <div class="op">×</div>
+            <div><div class="k">日数</div><div class="v" id="dayN">7日</div></div>
+            <div class="op">=</div>
+            <div class="total"><div class="k">予算（合計）</div><div class="v" id="total">7,000円</div></div>
+          </div>
+          <input class="range" type="range" min="500" max="5000" step="100" value="1000" oninput="calc(this.value)" aria-label="1日あたりの金額">
+          <div class="reach"><i class="ti ti-users"></i>
+            <span>この金額だと、<b>だいたい 3,000〜5,000人</b>に届く見込みです。途中でいつでも止められます。</span>
+          </div>
+        </div>
+
+        <div class="navrow">
+          <button class="btn-g" onclick="go('s1')"><i class="ti ti-arrow-left"></i>前へ</button>
+          <span class="sp"><button class="btn-p" onclick="startGen()">この内容でAIに作らせる<i class="ti ti-sparkles"></i></button></span>
+        </div>
+      </div>
+
+      <!-- ===== 生成中 ===== -->
+      <div class="view" id="vGen">
+        <div class="gen">
+          <div class="t">広告を作っています</div>
+          <div class="d">1分ほどかかります。この画面を閉じても止まりません。<br>できあがったら、右下のお知らせでお伝えします。</div>
+          <div class="gsteps" id="gsteps">
+            <div class="gstep now" data-i="0"><span class="m"></span>お店のことを読んでいます（運用目的）</div>
+            <div class="gstep" data-i="1"><span class="m"></span>反応がよかった投稿を見ています</div>
+            <div class="gstep" data-i="2"><span class="m"></span>広告の文章を書いています</div>
+            <div class="gstep" data-i="3"><span class="m"></span>出す画像を選んでいます</div>
+          </div>
+          <div class="gbar"><i id="gbar" style="width:8%"></i></div>
+          <div class="gnote" id="gnote">8% ・ 残り およそ50秒</div>
+          <div class="navrow">
+            <button class="btn-g" onclick="go('list')">閉じて他の作業をする</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== STEP3 できた広告 ===== -->
+      <div class="view" id="vS3">
+        <div class="steps">
+          <span class="step done"><span class="n"><i class="ti ti-check"></i></span>なんのために</span><span class="line done"></span>
+          <span class="step done"><span class="n"><i class="ti ti-check"></i></span>だれに・いくら</span><span class="line done"></span>
+          <span class="step on"><span class="n">3</span>できた広告を見る</span>
+        </div>
+        <div class="qh">この形で出ます</div>
+        <div class="qs">気になるところは直せます。文章はAIが、お店の情報と過去の反応から書きました。</div>
+
+        <div class="result">
+          <div>
+            <div class="prev">
+              <div class="prev-h">
+                <span class="av"><i class="ti ti-coffee"></i></span>
+                <div><div class="nm">inucafe_one</div><div class="ad-lb">広告</div></div>
+              </div>
+              <div class="prev-img" style="background:linear-gradient(135deg,#f7d9b0,#efc189)"></div>
+              <div class="prev-cta">お店を見てみる<span class="go"><i class="ti ti-arrow-right"></i></span></div>
+              <div class="prev-bd">
+                <span class="nm">inucafe_one</span> 看板犬のポチが、今日もカウンターでお待ちしています🐕 犬と一緒に入れるカフェ、駅から歩いて5分。テラス席もありますよ。
+              </div>
+            </div>
+            <div class="prev-note">Instagram に出たときの見え方</div>
+          </div>
+
+          <div>
+            <div class="ed">
+              <div class="row">
+                <div class="k">はじめの一文<span class="where">いちばん最初に読まれるところ</span></div>
+                <textarea rows="3">看板犬のポチが、今日もカウンターでお待ちしています🐕 犬と一緒に入れるカフェ、駅から歩いて5分。テラス席もありますよ。</textarea>
+                <div class="cnt">58 / 125文字</div>
+              </div>
+              <div class="row">
+                <div class="k">ボタンの文字<span class="where">画像の下に出るところ</span></div>
+                <input value="お店を見てみる">
+              </div>
+              <div class="alt">
+                <span class="n">この書きぶりが合わないときは</span>
+                <button class="btn-o"><i class="ti ti-refresh"></i>別の案を見る</button>
+              </div>
+
+              <!-- 媒体が求める細かい欄は、ふだん見せない -->
+              <details class="adv">
+                <summary>くわしい設定（Instagram に渡す項目）</summary>
+                <div class="in">
+                  AIが埋めています。ふつうは触らなくて大丈夫です。
+                  <ul>
+                    <li>見出し 5案（50字以内）</li>
+                    <li>説明 5案（30字以内）</li>
+                    <li>リンク先：お店のInstagramプロフィール</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+
+            <div class="confirm">
+              <div class="t">出す前の確認</div>
+              <div class="crow"><span class="k">目的</span><span class="v">お店を知ってもらう</span><button class="ed2" onclick="go('s1')">変更</button></div>
+              <div class="crow"><span class="k">出すSNS</span><span class="v">Instagram</span><button class="ed2" onclick="go('s2')">変更</button></div>
+              <div class="crow"><span class="k">届ける相手</span><span class="v">東京都・神奈川県／20代〜40代／犬・カフェめぐり</span><button class="ed2" onclick="go('s2')">変更</button></div>
+              <div class="crow"><span class="k">期間</span><span class="v">9月1日 〜 9月7日（7日間）</span><button class="ed2" onclick="go('s2')">変更</button></div>
+              <div class="crow"><span class="k">予算</span><span class="v" id="cTotal">合計 7,000円（1日 1,000円）</span><button class="ed2" onclick="go('s2')">変更</button></div>
+              <div class="navrow">
+                <button class="btn-g" onclick="go('s2')"><i class="ti ti-arrow-left"></i>前へ</button>
+                <span class="sp" style="display:flex;gap:10px">
+                  <button class="btn-g" onclick="go('list')">下書きに保存</button>
+                  <button class="btn-p" onclick="publish()"><i class="ti ti-check"></i>この内容で出す</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 出した ===== -->
+      <div class="view" id="vDone">
+        <div class="gen">
+          <div class="fox-alert ok"><img src="./assets/mawaru-fox-happy.png" alt="">
+            <div><span class="lb">DONE</span><b>広告を出しました。</b><br>
+            9月1日から7日間、Instagram に出ます。合計 7,000円です。<br>
+            出はじめたら、この画面で「見られた回数」と「反応された回数」が見られます。いつでも止められます。</div>
+          </div>
+          <div class="navrow"><button class="btn-p" onclick="go('list')">広告の一覧へ<i class="ti ti-arrow-right"></i></button></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+// サイドバーの折りたたみ項目
+function navToggle(el){
+  var sub = el.nextElementSibling;
+  if(!sub || !sub.classList.contains('nisub')) return;
+  sub.classList.toggle('open');
+  el.classList.toggle('exp');
+}
+
+/* ===== 画面の切替 ===== */
+var VIEWS = {
+  list: {el:'vList', name:'広告'},
+  s1:   {el:'vS1',   name:'広告を作る（1/3）'},
+  s2:   {el:'vS2',   name:'広告を作る（2/3）'},
+  gen:  {el:'vGen',  name:'広告を作っています'},
+  s3:   {el:'vS3',   name:'広告を作る（3/3）'},
+  done: {el:'vDone', name:'広告を出しました'}
+};
+function go(k){
+  Object.keys(VIEWS).forEach(function(x){
+    document.getElementById(VIEWS[x].el).classList.toggle('on', x === k);
+  });
+  document.getElementById('pgnm').textContent = VIEWS[k].name;
+  document.getElementById('content').scrollTop = 0;
+}
+
+function pickGoal(el){
+  el.parentElement.querySelectorAll('.goal').forEach(function(g){ g.classList.remove('on'); });
+  el.classList.add('on');
+}
+function pickPost(el){
+  el.parentElement.querySelectorAll('.pick').forEach(function(g){ g.classList.remove('on'); });
+  el.classList.add('on');
+}
+
+/* ===== お金の計算 =====
+   1日あたり × 日数 = 合計。総額が分からないまま決めさせない。 */
+function calc(perDay){
+  if(perDay) calc.per = parseInt(perDay, 10);
+  var per = calc.per || 1000;
+  var days = parseInt(document.getElementById('days').value, 10);
+  document.getElementById('perDay').textContent = per.toLocaleString() + '円';
+  document.getElementById('dayN').textContent = days + '日';
+  document.getElementById('total').textContent = (per * days).toLocaleString() + '円';
+  document.getElementById('cTotal').textContent =
+    '合計 ' + (per * days).toLocaleString() + '円（1日 ' + per.toLocaleString() + '円）';
+}
+
+/* ===== 生成中 =====
+   黒い箱で待たせず、いま何をしているかを出す。閉じても続く。 */
+function startGen(){
+  go('gen');
+  var steps = document.querySelectorAll('#gsteps .gstep');
+  var i = 0, pct = 8;
+  clearInterval(startGen.t);
+  startGen.t = setInterval(function(){
+    pct += 6;
+    if(pct >= 100){
+      clearInterval(startGen.t);
+      steps.forEach(function(s){ s.classList.remove('now'); s.classList.add('done'); });
+      document.getElementById('gbar').style.width = '100%';
+      document.getElementById('gnote').textContent = 'できあがりました';
+      setTimeout(function(){ go('s3'); }, 700);
+      return;
+    }
+    var next = Math.min(3, Math.floor(pct / 25));
+    if(next !== i){
+      steps[i].classList.remove('now');
+      steps[i].classList.add('done');
+      i = next;
+      steps[i].classList.add('now');
+    }
+    document.getElementById('gbar').style.width = pct + '%';
+    document.getElementById('gnote').textContent = pct + '% ・ 残り およそ' + Math.max(1, Math.round((100 - pct) * 0.55)) + '秒';
+  }, 320);
+}
+
+function publish(){ go('done'); }
+calc();
+</script>
+<script src="./tour.js"></script>
+<script src="./fox-alert.js"></script>
+</body></html>

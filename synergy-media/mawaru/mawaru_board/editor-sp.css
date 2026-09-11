@@ -1,0 +1,203 @@
+/* ===== マワル 投稿編集（エディタ面）のSP対応 =====
+   フロー4種と投稿編集が最後のステップで開く「投稿を編集」の画面が読み込む。
+   対象: flow_video_script / flow_image_v3 / flow_image_material /
+         flow_video_material / flow_manual / post_editor_image
+
+   この面だけ前のステップと作りが違う。PCは3カラムで
+     左 240px（プレビュー） / 中央 1fr（台本・投稿文） / 右 auto（AIパネル 280px）
+   を1行に並べる。390pxだと中央が36pxまで潰れ、タブと表が
+   親の overflow:hidden で右側を切り落とされて存在に気づけなくなる。
+
+   前提のマークアップ（#sc_editor 直下・6ファイルで同じ）:
+     .ed-head … タイトル + .karibtn（仮予約） + .ed-saved（自動保存ずみ）
+     .ed-cols … 左 / 中央（.ed-tabs + .ed-xpane） / #aiPanel
+
+   ⚠️ 中身はインラインstyleで書かれているので、ここは !important で上書きする。
+      クラスを足したのはそのためで、[style*="grid-template-columns:240px"] の
+      当て方はもう使わない（styleの書き換えで黙って外れるため）。 */
+
+/* AIアシストのシートを開いたときの暗幕。editor-sp.js が #aiPanel の隣に足す。
+   実体は常にDOMにあるので、SP以外では必ず消えるようメディアクエリの外で伏せておく
+   （中に入れるとPC幅でルールが1つも当たらず、全面を覆う板になる）。 */
+.ai-sheet-backdrop{display:none;}
+
+@media (max-width:430px){
+
+  /* ===== 3カラム → 縦積み ===== */
+  /* auto の列（AIパネル）が280pxを主張して 1fr を36pxまで削る。
+     grid をやめて縦に積み、それぞれに全幅を渡す。 */
+  .ed-cols{display:flex !important;flex-direction:column !important;gap:14px !important;}
+  .ed-cols>*{min-width:0;}
+  /* 中央カラムは overflow:hidden を持つ枠。中の表とタブが切れる側なので幅を閉じる */
+  .ed-xpane{min-width:0;}
+
+  /* ===== AIパネル = 右下の丸アイコン ＋ 下から出るシート ===== */
+  /* PCは右カラムに出しっぱなしでいい。SPで同じものを縦積みにすると、
+     編集内容の下にAIアシストが埋まって、相談するたびに一番下まで
+     スクロールすることになる。本文の流れから外して右下にアイコンで置き、
+     押したときだけチャットを下から上げる。
+     #aiPanel は #sc_editor の中にあるので、他のステップでは display:none の
+     子として自動的に消える（＝投稿編集画面限定になる）。 */
+  .ai-panel-open,.ai-panel-closed{
+    position:fixed;z-index:60;width:auto !important;height:auto;transition:none;}
+
+  /* --- 閉じている状態 = 丸アイコン --- */
+  /* フッター（戻る / 予約する）に重ならないよう、その高さぶん持ち上げる。
+     --sp-foot-h は editor-sp.js が実測して入れる。JSが動かなくても
+     67px（実測値）で成立するようフォールバックを置く。 */
+  .ai-panel-closed{right:16px;bottom:calc(var(--sp-foot-h,67px) + 16px);left:auto;top:auto;}
+  /* きつねの顔は 1049x892（横長）。32px 32px と正方形で指定すると縦に伸びるので、
+     幅だけ決めて高さは auto に任せる。イラストの比率は変えない。 */
+  .ai-collapsed{
+    position:relative;width:56px;height:56px;border-radius:var(--radius-full);
+    background:var(--color-card) url(./assets/mawaru-fox-face.png) center/34px auto no-repeat;
+    border:1.5px solid var(--color-primary);box-shadow:0 6px 18px rgba(0,0,0,.22);}
+  /* 「«」と「AIアシスト」の文字は56pxの丸に入らない。見た目からは外すが、
+     読み上げには残したいので display:none ではなく視覚的にだけ隠す。 */
+  .ai-col-icon,.ai-col-text{
+    position:absolute;width:1px;height:1px;margin:0;overflow:hidden;
+    clip-path:inset(50%);white-space:nowrap;}
+
+  /* --- 開いている状態 = 下から出るシート --- */
+  .ai-panel-open{left:0;right:0;bottom:0;top:auto;}
+  /* 下端まで使うので、ホームインジケータのぶんだけ内側に逃がす
+     （入力欄と送信ボタンがちょうどその位置に来る）。 */
+  .ai-expanded{max-height:82vh;border-radius:16px 16px 0 0;
+    border-bottom:none;box-shadow:0 -8px 30px rgba(0,0,0,.24);
+    padding-bottom:env(safe-area-inset-bottom);}
+  /* 本文の max-height:46vh はPCの3カラム用。シートでは中身だけ先に止まって
+     下に死んだ余白が残るので、シート側の高さに任せる。 */
+  .ai-ex-stream{max-height:none;}
+  /* 「»」は右へ畳む向き。シートは下へ閉じるので下向きに回す。 */
+  .ai-ex-close{transform:rotate(90deg);}
+
+  /* --- 暗幕（押すと閉じる。editor-sp.js が #aiPanel の隣に足す） --- */
+  .ai-sheet-backdrop.on{display:block;position:fixed;inset:0;z-index:59;
+    background:rgba(0,0,0,.38);}
+  /* シートが開いている間は後ろを動かさない。スクローラは画面によって
+     .main / .canvas のどちらもありうるので両方止める。 */
+  body.ai-sheet-open .main,body.ai-sheet-open .canvas{overflow:hidden;}
+
+  /* ===== ヘッダー行（タイトル + 仮予約 + 自動保存ずみ） ===== */
+  /* 3つを1行に詰めると、タイトルが幅を取ったあとの残りを
+     「仮予約」14px・「自動保存ずみ」44px で分け合い、
+     「仮 / 予 / 約」「自 / 動 / 保 / 存 / ず / み」の柱になる。
+     行を折り返して、状態表示（自動保存ずみ）を次の行へ落とす。 */
+  .ed-head{flex-wrap:wrap;row-gap:10px;}
+  .ed-head>*{min-width:0;}
+  /* タイトル左のSNS種別アイコンは、上のトップバーのタグ（「動画（台本）」など）と
+     ステッパーで分かる。ここに20px+余白を残すとタイトルの幅がその分減って
+     「駅徒歩5分・南 / 向き1LDK 新着 / 物件」と3行になるので、狭い幅では外す。 */
+  .ed-head>i.ti:first-child{display:none;}
+  /* タイトルは主役なので1行を丸ごと渡す。仮予約と自動保存は次の行へ落ちる。 */
+  .ed-head #titleView{flex:1 1 100%;min-width:0;}
+  /* 仮予約は操作。押す場所が縮まないよう、幅は中身のぶんだけ確保する */
+  .karibtn{flex:none;white-space:nowrap;}
+  /* 自動保存ずみは状態表示。仮予約と同じ行の右端に置く（margin-left:auto は
+     インラインstyleにあるが、flex-basis を戻す都合でここでも宣言しておく）。 */
+  .ed-saved{margin-left:auto !important;flex:none;white-space:nowrap;}
+  #kariLbl{white-space:nowrap;}
+  /* タイトル編集の input は min-width:320px を持っていて、
+     左右の余白と合わせて390pxから溢れる。行の幅に合わせる。 */
+  #titleInput{min-width:0 !important;width:100% !important;}
+
+  /* ===== 編集タブ（台本 / 投稿文 / AIレビュー） ===== */
+  /* 3つで340px要る。縮めると「投 / 稿 / 文」になるので、入らない分は
+     横スクロールで送れるようにする（縮めるのではなく送る）。
+     そのうえで幅が余るときは3つで分け合う。左に寄せて詰めると、
+     右に200pxの空きが残って選択中の下線がどこまでの範囲を指すのか
+     読めなくなる（2026-09-03「壁が左寄り」）。
+     flex-grow だけ許して flex-shrink は 0 のままにするのがポイントで、
+     入りきらない幅では従来どおり横スクロールに落ちる。 */
+  .ed-tabs{overflow-x:auto;flex-wrap:nowrap;}
+  .ed-tabs::-webkit-scrollbar{height:0;}
+  .ed-xtab,.ed-tab{flex:1 0 auto;white-space:nowrap;text-align:center;padding:13px 8px !important;}
+  /* テキスト / 画像 の2択トグル */
+  .ed-xsw{white-space:nowrap;}
+
+  /* ===== タブの外枠（.ed-xbox） ===== */
+  /* PCでは3カラムの真ん中を1枚の板として括る枠。390pxだと画面の左右を
+     26px内側でなぞるだけの線になり、何かをまとめている枠に見えない。
+     しかも中のシーンがカードなので「カードの中にカード」になる（2026-09-03 指摘）。
+     枠は外して、境目はタブの下線に持たせる。中身は画面幅いっぱいに開放して、
+     上の見出し（.ed-head のタイトル）と左端を揃える。
+     カードの階層は「1枚 = 1シーン」の内側だけに残す。 */
+  .ed-xbox{border:none !important;border-radius:0 !important;overflow:visible !important;}
+  .ed-xpane{padding:16px 0 !important;}
+
+  /* ===== 編集パネルの見出し行 ===== */
+  /* 「シーン構成」+「4シーン・約24秒」+「クリックで直せます」を1行に詰めると
+     各要素が14〜90pxになり「シーン構 / 成」と折り返す。
+     行を折り返して、補足（クリックで直せます）に1行渡す。 */
+  .ed-panehd{flex-wrap:wrap;row-gap:4px;}
+  .ed-panehd>span{white-space:nowrap;}
+  .ed-panehd>span:last-child{margin-left:0 !important;flex-basis:100%;}
+
+  /* ===== 台本のタイプ行 ===== */
+  /* 左に「台本のタイプ + 説明」、右に「テキスト / 画像」のトグルを
+     space-between で並べた行。トグルが130px取ると左が70pxに潰れて
+     「台本の / タイプ」になる。説明に1行渡して、トグルは次の行へ。 */
+  .ed-typerow{flex-wrap:wrap;row-gap:10px;}
+  .ed-typerow>*{min-width:0;}
+  .ed-typerow>div:first-child{flex-basis:100%;}
+
+  /* ===== 台本テーブル ===== */
+  /* 3列（シーン / 映像（撮影）/ テロップ）を390pxに詰めると各列が42〜58pxになり、
+     セルが1文字ずつ縦に並ぶ。以前は列に下限を与えて横スクロールで送っていたが、
+     390pxの枠に収まるのが1.5列ぶんしかなく、テロップは常に画面の外、映像も
+     右端が切れる。1シーン読むたびに左右へ振ることになって「横スライドしんどい」
+     （2026-09-03）。行ごとカードに畳んで、シーン → 映像 → テロップ を縦に読ませる。
+     ※ 編集は contenteditable の .ed が持っていて td の位置に依存しないので、
+        table のままCSSで畳めばJS（renderScenes / SCENES への反映）は触らずに済む。 */
+  .sctable,.sctable tbody,.sctable tr,.sctable td{display:block;width:auto;}
+  /* 見出し行は各セルの ::before ラベルに引き継ぐので畳む */
+  .sctable thead{display:none;}
+  .sctable tr{border:1px solid var(--color-border);border-radius:var(--radius-md);
+    padding:10px 12px;margin-bottom:10px;}
+  .sctable tr:last-child{margin-bottom:0;}
+  /* td の下罫線はカードの枠と二重になる。セルの区切りは中の線に置き換える */
+  .sctable td{padding:0;border-bottom:none;}
+  .sctable tr:last-child td{border-bottom:none;}
+  .sctable td+td{margin-top:10px;padding-top:10px;border-top:1px solid var(--color-border);}
+  /* 畳んだ見出しの代わり。カード内では2枚目3枚目が何の欄か分からなくなる。
+     1列目は「シーン1」「0〜4秒」を中に持っているのでラベルは要らない。 */
+  .sctable td:nth-child(2)::before{content:"映像（撮影）";}
+  .sctable td:nth-child(3)::before{content:"テロップ";}
+  .sctable td:nth-child(2)::before,.sctable td:nth-child(3)::before{
+    display:block;margin-bottom:4px;font-size:var(--text-meta);
+    font-weight:var(--font-weight-body-strong);color:var(--color-muted-foreground);}
+
+  /* ===== AIレビューのバッジ行 ===== */
+  /* [✓][重要度 高][構成] … [自動反映可] を1行に詰める作り（中身はインラインstyle）。
+     幅が足りなくなるとチップ側が縮んで「重要 / 度 高」「構 / 成」「自動反映 / 可」の
+     柱になる（2026-09-03 陽菜報告）。390pxは編集タブの幅調整でいまは
+     ぎりぎり収まっているが、余りは43pxしかなく320pxでは今も崩れる。
+     チップは縮ませず、入らないぶんは行を折り返して逃がす。
+     右端の「自動反映可」の margin-left:auto は残す。1行に収まるうちは
+     今までどおり右寄せのままで、折り返したときだけ次の行の右に落ちる。 */
+  .rev-item>div:first-child{flex-wrap:wrap;row-gap:6px;}
+  .rev-item>div:first-child>span{flex:none;white-space:nowrap;}
+
+  /* ===== AIのおすすめ（サジェスト） ===== */
+  /* 横スクロールにすると .suglabel の width:100% が
+     flexアイテムとして47pxに縮み、見出しが縦一列になる。
+     チップは折り返させて、見出しには1行を渡す。 */
+  #sugbox{flex-wrap:wrap !important;overflow-x:visible !important;}
+  .suglabel{flex-basis:100%;white-space:nowrap;}
+  .sug{flex:none;white-space:nowrap;}
+
+  /* ボタンのラベルは折り返さない（「AIで / 投稿 / 文を」になる） */
+  #captionRegen{white-space:nowrap;}
+
+  /* ===== 仮予約ダイアログのフッター ===== */
+  /* 「未定に戻す」+「やめる」「仮予約する」「本予約する」の4つを1行に詰めると
+     350pxを分け合って「や / め / る」の柱になる。
+     左の「未定に戻す」に1行、右の3つに1行を渡す。 */
+  .karibox .f{flex-wrap:wrap;row-gap:8px;padding:14px 16px;}
+  .karibox .f button{white-space:nowrap;}
+  .karibox .f .sp{margin-left:0;flex-basis:100%;justify-content:flex-end;flex-wrap:wrap;row-gap:8px;gap:8px;}
+  /* 「やめる」「仮予約する」「本予約する」の3つで342px。余白をあと少し詰めて
+     1行に収める（「仮予約する」と「本予約する」が別の行に分かれると、
+     どちらを押すかの比較ができなくなる）。 */
+  .karibox .f .sp .btn{padding:10px 11px;}
+}
