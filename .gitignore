@@ -2,11 +2,11 @@
 **/.DS_Store
 .gstack/
 # 別リポジトリ（.git を持つ）。この repo には取り込まない
-synergy-media/iine-ai/iineAI/
+synergy-media/mawaru/iineAI/
 
 # ===== 絶対に公開しないもの =====
 # このリポジトリは push すると GitHub Pages に公開配信される。
-# dev/ 直下は「作業を置くフォルダ」なので、いいねAI 以外の荷物が同居している。
+# dev/ 直下は「作業を置くフォルダ」なので、マワル 以外の荷物が同居している。
 # うっかり `git add -A` してもここに書いたものは入らない。
 
 # APIキー（平文）。中身は Gemini のキー
@@ -21,12 +21,12 @@ synergy-media/iine-ai/iineAI/
 **/.env
 **/.env.*
 
-# SHIP関係。いいねAI とは絶対的に別グループ（iine-ai-vault/concepts/ship-separation.md）
+# SHIP関係。マワル とは絶対的に別グループ（mawaru-vault/concepts/ship-separation.md）
 ship/
 ship-inc/
 **/ship-inc/
 
-# いいねAI と関係ない別プロジェクト
+# マワル と関係ない別プロジェクト
 AID/
 line-harness-segn/
 line-harness-segn_v2/
@@ -58,9 +58,9 @@ claude_skills/
 /rep-fe-main/
 synergy-media/green-upcycle/HP/
 # git worktree の実体。作業用の分身なので本体には入れない
-synergy-media/iine-ai/i/
+synergy-media/mawaru/i/
 
-# グリーンアップサイクルのナレッジ。いいねAI とは別グループ（ルート CLAUDE.md の跨ぎ参照禁止）。
+# グリーンアップサイクルのナレッジ。マワル とは別グループ（ルート CLAUDE.md の跨ぎ参照禁止）。
 # 中身が「社内検討用ドラフト」の営業戦略・ターゲット候補で、この repo は Pages で公開配信される。
 # 版管理したくなったら、この repo ではなく green-upcycle 側の非公開 repo に置く。
 synergy-media/green-upcycle/green-upcycle-vault/
@@ -68,6 +68,6 @@ synergy-media/green-upcycle/green-upcycle-vault/
 # 以下2つは公開しても危なくない。事故止めではなく「入れるか未決」なので置いてあるだけ。
 # コミットしたくなったらこの2行を消せばよい。
 # 先頭の / は「dev/ 直下のこれだけ」の意味。素で CLAUDE.md と書くと
-# synergy-media/iine-ai/CLAUDE.md など各グループのルールまで巻き込む。
+# synergy-media/mawaru/CLAUDE.md など各グループのルールまで巻き込む。
 /CLAUDE.md
 /iine-ai-cursor/

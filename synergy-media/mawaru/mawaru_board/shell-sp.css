@@ -1,0 +1,243 @@
+/* ===== マワル 共通シェルのSP対応 =====
+   サイドバー + ヘッダー + メインの「シェル」を持つ画面が読み込む。
+   狙いは1つ: 幅390pxで横スクロールを出さず、文字を折り返させないこと。
+
+   前提のマークアップ（この構造を持つ画面だけが対象）:
+     .app > .sb（.sbtop / .nav > .ni / .foot） + .main（.hd > .pgnm / .content）
+
+   ⚠️ 幅を分け合う都合上、.nav の直下に置ける項目は「6つ + 中央の .ni-create」まで。
+   増やすならラベルを削るか、いずれかを .sp-hide でSPから外す。
+
+   PC側で .ni-create を隠すのは各画面の責任（このファイルはSPだけを見る）:
+     .ni-create{display:none;}
+*/
+
+@media (max-width:430px){
+  body{padding:0;}
+  .app{width:100%;height:auto;min-height:100vh;border-radius:0;border:none;flex-direction:column;}
+
+  /* ===== サイドバー → 下部固定ナビ ===== */
+  .sb{width:100%;height:60px;flex-direction:row;position:fixed;bottom:0;left:0;right:0;z-index:100;border-right:none;border-top:1px solid var(--color-border);flex:none;}
+  /* サイドバー上下の「ナビ以外」は帯から全部落とす。残り幅は全部ナビ項目に回す。
+     クラス名が画面ごとに割れているので、見つけたものを全部並べる:
+       ロゴ帯        .sbtop（10画面）/ .sb-logo（2画面）
+       投稿作成ボタン .sb-cta（分析系5画面）
+       アカウント     .foot（20画面）/ .sb-account（analysis_posts）
+     .sbtop しか見ていなかった頃は .sb-logo の画面でロゴが60pxの帯に残り、
+     ナビを右へ押して「投稿カレンダー分析」と潰れていた。
+     .sb-cta / .sb-account を見落としていた analysis_posts では、
+     この2つが164px食って1枠46pxまで痩せていた（2026-08-28 に追加）。 */
+  .sbtop,.sb-logo,.sb-cta,.sb-account{display:none;}
+  /* 横スクロールさせない。残り幅を項目で分け合う（flex:1 1 0 なので溢れない）。
+     overflow は visible のまま。hidden にすると中央の＋の頭が切られる。 */
+  .nav{display:flex;flex-direction:row;padding:0;overflow:visible;flex:1;gap:0;align-items:stretch;}
+  /* ラベルは折り返さない。「カレンダー」「ドライブ」が2行になると60pxの帯から溢れる。
+     14pxだと「カレンダー」が70pxになるので12pxにする。
+     iOS/Androidのタブラベルも10〜12pxなので、この帯では12pxが上限だと考える。
+
+     枠は等分（flex:1 1 0）に戻した。タブは位置で覚えるものなので、画面ごとに
+     項目の位置がずれる可変幅にはしない。＋を帯から出し、設定をSPから外して
+     5項目にしたことで、等分でも1枠78px（390px時）取れる。
+     「カレンダー」は12pxで60pxなので、320px幅（1枠64px）まで収まる。
+     ⚠️ 項目を6つに戻すと1枠54pxになり、「カレンダー」が確実に溢れる。5つが上限。 */
+  .ni{flex:1 1 0;min-width:0;flex-direction:column;gap:2px;padding:6px 4px;font-size:12px;align-items:center;justify-content:center;white-space:nowrap;}
+  .ni .ti{font-size:20px;}
+  .ni .cv{display:none;}
+  .foot{display:none;}
+  /* 折りたたみはSPでは開かせない。60pxの帯の中に子リストが開くと確実に崩れる。 */
+  .sb .nisub{display:none !important;}
+  /* 区切り線もクラス名が割れている（.nidiv 11画面 / .sb-sep 1画面）。
+     縦の区切りは横帯では意味を持たないうえ、analysis_posts では2本で40px食っていた。 */
+  .sb .nidiv,.sb .sb-sep{display:none;}
+  /* SPで出さない項目に付ける */
+  .sb .sp-hide{display:none !important;}
+
+  /* 折りたたみ項目（設定・その他）はSPの帯から外す（2026-08-28）。
+     この2つは <div class="ni" onclick="navToggle(this)"> で子メニュー(.nisub)を開くだけの項目。
+     その .nisub は上の行でSPでは display:none にしているので、押しても何も起きない
+     死んだタブになっていた。外して失う導線は無い。
+     加えて帯は5項目が上限で、6つだと1枠54pxになり「カレンダー」が入らない。
+
+     判定は .cv（開閉のシェブロン）の有無で行う。これを持つのは折りたたみ項目だけで、
+     アイコン名やラベル文字列に依存しないので、画面ごとの表記ゆれに強い。
+     ⚠️ 各画面のHTMLに .sp-hide を足す方式（上の行）だと23ファイルに手が要るうえ、
+     実際 approval_list だけ「その他」に .sp-hide が無く6項目になっていた。
+     全画面で同じ判断なのでシェル側で持つ。
+     :has() は Chrome 105+ / Safari 15.4+。効かない環境では項目が残るだけで壊れはしない。 */
+  .sb .nav > .ni:has(> .cv){display:none;}
+
+  /* 投稿作成は帯の中央から右下のフローティングボタンへ出した（2026-08-28）。
+     帯に切り込む中央＋は「2＋FAB＋2」の5枠で成立する型で、6項目だと真ん中に
+     ならないうえ、両隣の枠を削って帯全体が窮屈に見える原因になっていた。
+     右下に出すと66px（54+margin12）が帯に戻り、1枠54px→78pxになる。
+     位置は X / Gmail と同じ右下。帯(60px)の上に16px空けて置く。 */
+  /* 既定は 帯60 + すき間16 = 76px。帯のすぐ上に置く。
+     ⚠️ 以前は「画面ごとにボタンが動くと困る」と考えて、全ページを
+     トレイのある高さ(124px)に揃えていた。だがトレイを持つのはホームだけで、
+     他の画面では避ける相手が居ないのに48px浮いて宙ぶらりんに見えていた。
+     トレイがある画面だけ、その上まで上げる（下の :has ルール）。 */
+  .ni-create{position:fixed;right:16px;bottom:76px;z-index:101;
+    width:56px;height:56px;margin:0;top:auto;flex:none;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--color-primary);color:var(--color-on-primary);border:none;
+    border-radius:var(--radius-full);font-size:26px;line-height:1;cursor:pointer;padding:0;
+    text-decoration:none;
+    /* 本文の上に浮くので、帯に乗っていたときより影を1段強くする（DESIGN.md §Elevation overlay） */
+    box-shadow:0 4px 12px rgb(0 0 0 / 0.18);}
+  .ni-create:hover{background:var(--color-primary-hover);}
+  .ni-create:active{transform:scale(.96);}
+  /* 生成トレイがある画面だけ、その上へ逃がす。
+     帯60 + すき間8 + 畳んだトレイ44 + すき間12 = 124px。 */
+  .app:has(.corner) .ni-create{bottom:124px;}
+  /* トレイを開くと255pxまで伸びて＋に届く。開いている間は＋を引っ込める。
+     生成の進み具合を見ている最中に新規作成を押すことはまず無いので、
+     重ねて見せるより消したほうが読みやすい。畳めば戻る。 */
+  .app:has(.tray:not(.is-min)) .ni-create{opacity:0;pointer-events:none;}
+
+  /* ===== ヘッダー ===== */
+  .hd{height:48px;padding:0 16px;}
+  .hd .pgic{font-size:20px;}
+  /* ページ名は絶対に折り返さない。狭い幅では右側の要素を削って場所を作る。 */
+  .hd .pgnm{font-size:var(--text-body);white-space:nowrap;}
+  /* プラン名は状態表示で操作ではないので、タイトルを1行に保つ場所をここから作る。
+     ToDo・チャット・ヘルプは操作なので残す。 */
+  .hd .planchip{display:none;}
+
+  /* ===== メイン =====
+     下ナビ(60px)の逃げは .main ではなく .app に持たせる。.main に付けると、
+     .main の後ろに並ぶ生成トレイ(.corner)との間に70pxの空白が挟まって見える。 */
+  /* .app の padding:10px は「サイドバー / ヘッダー / 本文が生成りの地に浮いた3枚のカード」に
+     見せるためのPC用の余白。SPでは .app が全面（border-radius:0・border なし）になるので、
+     この10pxは何も浮かせておらず、左右の余白を .content の16pxと二重に食っていた。
+     26px → 16px にして、390pxのうち20pxを中身に返す（2026-08-28）。 */
+  .app{padding:0 0 70px;}
+  .main{padding-bottom:0;min-width:0;}
+  .content{padding:16px;min-width:0;}
+
+  /* 固定幅・多カラムを1カラムに畳む。指定が無いと本文が数十pxまで潰れて
+     「メ / ン / テ / ナ / ン / ス」のような縦一列になる。
+     .content の外に出ているグリッド（ドライブの3ペインなど）も対象にする。 */
+  /* ⚠️ [class*="grid"] のような総当たりは使わない。
+     カレンダーの月グリッド（.m-grid = 7曜日）まで1列に潰し、42行の縦長にしてしまう。
+     1カラムにしたいのは「同じ形のカードが横に並ぶ」グリッドだけなので、クラスを名指しする。 */
+  .cards,.grid,.db-stats,.db-tri,.file-grid,.card-grid{grid-template-columns:1fr !important;}
+
+  /* ===== カード内の横並びを縦積みにする =====
+     「サムネ + 情報 + 数値 + 操作」を1行に並べたカードは、390pxだと
+     各列が30〜90pxに潰れて「看 / 板 / 犬」の柱になる。行を折り返す。
+     横スクロールで見せたい行（タブ・チップ・ステッパー・表）は下で個別に戻す。 */
+  .content .ad,.content .row1,
+  .content .hrow,.content .pl-now,
+  .content .db-card,.content .db-help{flex-wrap:wrap;}
+
+  /* ⚠️ .fstep をこの一覧から外した（2026-08-28）。
+     .fstep は「番号＋文言」で1ステップを作る箱のほうで、行そのものではない。
+     ここに折り返しを掛けていたせいで、幅が足りない③だけ番号と文が別の行に割れ、
+     ④が③の文の右に並んで読む順が壊れていた。
+     行の側（.flow）は各画面が自分で畳む。request_wire は SP で 2列グリッドにしている。 */
+  .content .ad>*,.content .hrow>*,.content .pl-now>*{min-width:0;}
+
+  /* ⚠️ flex-wrap:wrap だけでは効かない。
+     「サムネ112 + 情報78 + ボタン102」は合計292pxで358pxに“収まってしまう”ため
+     折り返しが起きず、情報列だけが78pxの柱のまま残る。
+     末尾のボタン列を独立行に落として、その幅を本文へ返す。 */
+  .content .ad .acts,
+  .content .hrow>.btn-o,.content .hrow>.btn-p,.content .hrow>.btn-g,
+  .content .pl-now>.btn-o,.content .pl-now>.btn-p,.content .pl-now>.btn-g{flex-basis:100%;margin-top:8px;}
+  .content .ad .acts{flex-direction:row;justify-content:flex-start;gap:8px;}
+  /* 広告カードの金額行「6,000円 / 14,000円 つかいました」+「1日あたり…」は
+     196pxの列に3つ並ぶと各50〜76pxになる。日割りの補足を次の行へ落とす。
+     .fox-alert の中のラベルピル（同名の .lb）に当たらないよう .ad 配下に限定する。 */
+  .content .ad .lb{flex-wrap:wrap;}
+  .content .ad .lb .rest{flex-basis:100%;margin-top:2px;}
+  /* サムネは112pxのままだと情報列が196pxしか残らず、中のキツネアラートの本文が
+     130px（12pxフォントで10文字）になる。SPではサムネを縮めて情報側に幅を回す。 */
+  .content .ad .thumb{width:72px;height:72px;flex:none;}
+
+  /* サムネの横に置きたいのはタイトルの行（.row1）だけ。
+     flex のままだと .bd 全体がサムネの右に置かれ、その下の期間・金額・数値カードまで
+     サムネ幅(72)+gap(12)=84px ぶん右に寄って、左に誰も居ない帯が縦に伸びる。
+     サムネを float にして、.mt から下を clear で全幅に戻す。
+     .row1 は flex コンテナ＝独立した整形コンテキストなので、clear を書かなくても
+     float の横に自動で収まる（回り込まずに幅だけ譲る）。 */
+  .content .ad{display:block;}
+  .content .ad .thumb{float:left;margin-right:12px;}
+  .content .ad .mt{clear:left;}
+  /* block 化で flex-basis:100% が効かなくなるぶん、block レベルの flex として幅いっぱいに */
+  .content .ad .acts{clear:both;}
+
+  /* 表は列を潰さず横スクロールで見せる（列幅を詰めると1文字ずつ縦に並ぶ） */
+  .content table{display:block;overflow-x:auto;white-space:nowrap;}
+  .content table td,.content table th{white-space:nowrap;}
+
+  /* サービス切替タブ（広告作成 / 発注相談 / 出張撮影）は body-lg + 左右20px余白で
+     390pxに3つ入らず「広告 / 作成」と2行になる。余白と文字を詰めて1行に収める。 */
+  .svc{padding:0 12px;}
+  .svc a,.svc button,.svc span{padding:12px 10px;font-size:var(--text-body);gap:5px;white-space:nowrap;}
+  .svc i{font-size:16px;}
+
+  /* ===== ボタン・ラベルの折り返し対策 =====
+     ボタンのラベルは絶対に折り返さない（「読み込ん / で作る」になる）。
+     代わりに余白と字送りを詰めて、幅の中に収める。 */
+  .content button,
+  .content a[class*="btn"],
+  .content [class*="btn"]{white-space:nowrap;}
+  .content .btn-p,.content .btn-o,.content .btn-g{padding:10px 14px;font-size:var(--text-label);gap:6px;}
+
+  /* ⚠️ 選択カード（.opt）は上の nowrap の対象外にする。
+     .opt は <button> だが「ラベル1行のボタン」ではなく、説明文と金額を持つカード。
+     nowrap を継ぐと min-content が max-content（本文まるごと385px）と同じになり、
+     grid の 1fr = minmax(auto,1fr) がそこまで膨らんで親（316px）から溢れ、右が切れる。
+     カードの中は折り返させ、トラックの下限も 0 にして親幅に閉じる。 */
+  .content .opt,.content .opt *{white-space:normal;}
+  /* 1fr は minmax(auto,1fr)＝中身の min-content が下限。カード側の min-content が
+     親より広いと、トラックごと親を突き破る（.g2 は320px幅で 288px の親に対して
+     334.7px のトラックになり、47pxはみ出していた）。下限を0に置き換える。
+     .opts と .g2 は同じ「選択カードを縦に並べる箱」なので同じ扱いにする。 */
+  .content .opts,.content .g2{grid-template-columns:minmax(0,1fr);}
+  .content .opts>*,.content .g2>*{min-width:0;}
+
+  /* 見出し + 件数 + ボタンを1行に詰めた行は、狭い幅で全部が折り返す。
+     行自体を折り返させて、見出しに1行を渡す。 */
+  .content .src-hd,
+  .content .card-h{flex-wrap:wrap;row-gap:8px;}
+  .content .src-hd .t,
+  .content .card-h .t{white-space:nowrap;}
+  /* 右端のボタン群は次の行に回して横いっぱいに使う */
+  .content .src-hd .sp,
+  .content .card-h .sp{margin-left:0;flex-basis:100%;}
+
+  /* 同じ形が他にもあった（2026-08-28）。
+     ・.fhead      … ドライブのフォルダ見出し。右のボタン群が424pxで358pxの枠を突き破る
+     ・.fox-alert  … キツネの注意カード。右のボタンが行に入りきらない
+     ボタン群を独立行に落とし、群の中でも折り返せるようにする。
+     ⚠️ .fhead は .content の外（.pane > .files の中）にあるので、
+     .content を前置きにすると当たらない。クラス名だけで指定する。 */
+  .fhead,.content .fox-alert{flex-wrap:wrap;}
+  .fhead .sp,.content .fox-alert .sp{margin-left:0;flex-basis:100%;flex-wrap:wrap;row-gap:8px;}
+  .fhead .sp>*{flex:none;}
+
+  /* 右スライドインのシートは幅固定（360〜400px）で390pxに収まらない。全画面にする
+     （DESIGN.md「詳細表示は PC = 右スライドインsheet / SP = 全画面遷移」）。 */
+  .sheet{width:100% !important;border-left:none;}
+
+  /* 生成トレイは下ナビの上に貼り付けて、スクロールに追従させる。
+     元は .app 基準の absolute で、SPの .app は height:auto のため
+     bottom:72px が「ページ末尾の72px上」になり、最後の2枚（チャット・NEWS）を
+     覆っていた。viewport 基準の fixed にすれば、常に帯の上に居て何も隠さない。
+     ⚠️ 開いた状態は255pxあり、844pxの画面の1/3を食う。SPでは既定で畳む
+     （見出しだけの44px）。畳む指定はページ側のJS（trayInitSP）が入れる。 */
+  .corner{position:fixed;left:0;right:0;bottom:68px;top:auto;z-index:99;align-items:stretch;padding:0 12px;}
+  .tray{width:auto;box-shadow:0 4px 16px rgb(0 0 0 / 0.16);}
+  /* 日付ポップオーバーは .app 基準の absolute。SPの .app は height:auto なので
+     bottom:68px が「ページ末尾の68px上」を指し、いま見ている位置と無関係な場所に、
+     しかも下ナビに切られた状態で出ていた。
+     DESIGN.md の「詳細表示は PC = 右スライドインsheet / SP = 全画面遷移」に合わせ、
+     SPでは画面いっぱいに開く。.pop-h の閉じるボタンがそのまま「戻る」になる。 */
+  .pop{position:fixed;left:0;right:0;top:0;bottom:0;width:auto;
+    border:none;border-radius:0;box-shadow:none;z-index:200;flex-direction:column;}
+  .pop.on{display:flex;}
+  .pop .pop-h{flex:none;}
+  /* 中身が画面より長いときは、本文だけスクロールさせる（ヘッダーは残す） */
+  .pop .pop-b{flex:1;min-height:0;overflow-y:auto;padding-bottom:24px;}
+}
