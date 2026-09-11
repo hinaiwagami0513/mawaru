@@ -527,7 +527,7 @@
   }
 
   /* ---------- 外に出すAPI ---------- */
-  window.IineTour = {
+  window.MawaruTour = {
     /* いまの画面の案内をもう一度出す。ヘルプから呼べるようにしてある */
     replay: function () {
       var steps = TOURS[pageKey()];
@@ -549,7 +549,7 @@
   /* ?tour=reset で「見た」と「今後出さない」を両方消して、その場でもう一度出す。
      最終ステップの「今後この案内を出さない」は off を立てるが、これは全ページ共通の
      フラグなので、一度押すとどの画面でも二度と出なくなる。戻すUIが画面上に無く、
-     コンソールで IineTour.on() / reset() を叩くしかなかった。確認用の入口を用意する。
+     コンソールで MawaruTour.on() / reset() を叩くしかなかった。確認用の入口を用意する。
      （onboarding.js の ?ob=finish と同じ考え方） */
   function resetByUrl() {
     if (new URLSearchParams(location.search).get('tour') !== 'reset') return;

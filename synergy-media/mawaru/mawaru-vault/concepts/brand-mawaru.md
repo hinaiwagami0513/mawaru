@@ -38,13 +38,25 @@
 
 **意図的に据え置き**:
 - `raw/` — 一次情報。会議タイトル「岩上さん×いいねAI」や当時の発言をそのまま保つ（vault ルール#4）。
-- ヘルプの公開URL `hinaiwagami0513.github.io/mawaru/` — GitHub Pages のリポジトリ名。
-  リポジトリを改名しない限り触ると全ヘルプリンクが死ぬ。
 - `superseded.md` の失効記録と、狐の腹の文字の記述 — 「旧名が何だったか」の記録なので残す。
+- `SYNERGY.md` の代理店フッター引用と旧ドメイン `iine-ai.com` — 改名前の観察記録。
 
-**未処理**: ディレクトリ名（`iine-ai/` `mawaru-vault/` `mawaru_board/` `iineAI/`）、
-画像ファイル名（`mawaru-fox-*.png` `logo-mawaru.png`）、ページ名 `[[mawaru]]`、
-機能名「マワルドライブ」、リポジトリ名、launchd ジョブ名 `jp.shipinc.iineai.worklog`。
+## 9/11に完了したぶん
+ディレクトリ名（`iine-ai/`→`mawaru/`）・画像ファイル名・ページ名 `[[mawaru]]` は 9/10 に済み。
+9/11 に残りを片付けた。
+
+- **GitHub リポジトリ名** `iineai` → `mawaru`。公開URLも `github.io/iineai/` → **`github.io/mawaru/`**。
+  Pages はプロジェクトサイトなので旧パスへのリダイレクトが張られない。**旧URLは404**。
+  `help-pages.yml` の `BASE_PATH` も `/mawaru/help` に追従済み。
+- **launchd ジョブ名** `jp.shipinc.iineai.worklog` → `jp.shipinc.mawaru.worklog`（`.catchup` も）。
+  マーカーも `~/Library/Logs/.mawaru-worklog-refreshed`。
+- **JS グローバル名** `IineOnboarding` → `MawaruOnboarding`、`IineTour` → `MawaruTour`
+  （`onboarding.js` `tour.js` と呼び出し側 HTML 3枚）。
+- ヘルプ用語集の見出しアンカー `id: 'iine'` → `'mawaru'`。
+
+**未処理**: `iineAI/` ディレクトリ（**別リポジトリ**。worktree が張られているので単独では動かせない）、
+`/iine-ai-cursor/`（`~/dev` 直下のローカル作業フォルダ）、
+`green-upcycle` 側の CSS クラス `.sns_iineAI`（別グループなので越境しない）。
 
 関連: [[mawaru]] / [[maneku]] / [[selling-the-unstopped-state]] / [[brand-rename-pending]] / [[design-tokens]] / [[service-website]]
 出典: [[raw/slide-2026-09-08-mawaru-naming]]

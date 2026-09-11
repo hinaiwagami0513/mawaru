@@ -712,7 +712,7 @@ export default {
           ],
         },
 
-        { t: 'h2', id: 'iine', text: 'マワル固有の言葉' },
+        { t: 'h2', id: 'mawaru', text: 'マワル固有の言葉' },
         {
           t: 'table',
           head: ['用語', '意味'],
