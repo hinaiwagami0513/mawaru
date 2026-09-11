@@ -122,6 +122,11 @@
   --radius-lg: 16px;
   --radius-xl: 20px;
   --radius-full: 9999px;
+  /* 影は3段（depth-and-rhythm）。カードは常時 card、ホバーで raised。
+     定義が無いと var() が解決できず box-shadow が無効になるので、使う画面には必ず置く。 */
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.06);
+  --shadow-raised: 0 2px 8px rgb(0 0 0 / 0.08);
+  --shadow-overlay: 0 8px 24px rgb(0 0 0 / 0.12);
   /* セカンダリ＝青系（primary橙＝押せる／secondary青＝情報・補助） */
   --color-secondary: #122651;
   --color-secondary-light: #7DABDE;

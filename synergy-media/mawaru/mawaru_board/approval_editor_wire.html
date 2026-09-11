@@ -19,6 +19,11 @@
   --color-info:#0B76B2;--color-info-subtle:#ECF6FD;
   --color-destructive:#D81028;
   --radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:20px;--radius-full:9999px;
+  /* 影は3段（depth-and-rhythm）。カードは常時 card、ホバーで raised。
+     定義が無いと var() が解決できず box-shadow が無効になるので、使う画面には必ず置く。 */
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.06);
+  --shadow-raised: 0 2px 8px rgb(0 0 0 / 0.08);
+  --shadow-overlay: 0 8px 24px rgb(0 0 0 / 0.12);
   --text-meta:10px;--text-label:12px;--text-body:14px;--text-h3:16px;--text-h2:20px;--text-h1:30px;
   --weight-body:400;--weight-strong:500;--weight-h3:700;--weight-h1:900;
   font-family:Inter, 'Noto Sans JP', 'Hiragino Sans', 'Meiryo', sans-serif;color:var(--color-foreground);
