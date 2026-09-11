@@ -9,7 +9,7 @@
 
 ## git は必ずパス明示
 
-`~/dev` が公開リポジトリ `iineai` の git ルート。SHIP など別グループが同じ作業ツリーに同居しているので
+`~/dev` が公開リポジトリ `mawaru` の git ルート。SHIP など別グループが同じ作業ツリーに同居しているので
 `git add -A` は使わない。**push = 公開配信**。詳細と守り方は [[ship-separation]]。
 
 ## ★PRベースの共同開発（8/21確定）
@@ -48,12 +48,12 @@
 
 | ジョブ | 発火 | やること |
 |---|---|---|
-| `jp.shipinc.iineai.worklog` | 毎日 23:00 | その日ぶんを書く |
-| `jp.shipinc.iineai.worklog.catchup` | **ログイン時**（`RunAtLoad`） | `--backfill`。md に無い過去の日を古い順に埋める |
+| `jp.shipinc.mawaru.worklog` | 毎日 23:00 | その日ぶんを書く |
+| `jp.shipinc.mawaru.worklog.catchup` | **ログイン時**（`RunAtLoad`） | `--backfill`。md に無い過去の日を古い順に埋める |
 
 - 下限は `BACKFILL_FLOOR=2026-08-22`（自動化の初日）。それ以前は掘り返さない。
 - **昨日ぶんだけは md にあっても1回書き直す**。23時より前に一度書いた日が途中の状態で固まるため。
-  1日1回に抑える印は `~/Library/Logs/.iineai-worklog-refreshed`。
+  1日1回に抑える印は `~/Library/Logs/.mawaru-worklog-refreshed`。
   ⚠️ 手で書いた日を上書きさせたくないときは、この印にその日付を先に入れておく。
 - 素材が無い日は `collect-worklog.sh` が `<!-- WORKLOG:NO-MATERIAL -->` を出して打ち切る（休んだ日は載らない）。
 - `insert-worklog.py` は**日付降順の正しい位置**に差し込む。以前は常に先頭に入れる作りで、

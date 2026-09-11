@@ -181,7 +181,7 @@
       '<div class="ob-bar"><i style="width:' + pct + '%"></i></div>' +
       (n === 0 ? '<div class="ob-fin">' + SVG_CHECK + 'すべて終了しました</div>' : '') +
       rows +
-      (n === 0 ? '<button class="ob-close" onclick="IineOnboarding.hide()">閉じる</button>' : '');
+      (n === 0 ? '<button class="ob-close" onclick="MawaruOnboarding.hide()">閉じる</button>' : '');
   }
 
   /* このチュートリアルを出していい画面か。サイドバーの .foot を唯一の目印にする。
@@ -225,8 +225,8 @@
       '<div class="t">はじめに、投稿の狙いを決めます</div>' +
       '<div class="d">AIは<b>ここで決めたこと</b>をもとに投稿を書きます。<br>' +
       '4つ決めるだけで、説明文ではなく狙いのある投稿になります。</div>' +
-      '<button class="go" onclick="IineOnboarding.start()">はじめる（残り' + left() + '）</button>' +
-      '<button class="later" onclick="IineOnboarding.later()">あとでやる</button>' +
+      '<button class="go" onclick="MawaruOnboarding.start()">はじめる（残り' + left() + '）</button>' +
+      '<button class="later" onclick="MawaruOnboarding.later()">あとでやる</button>' +
       '</div>';
     document.body.appendChild(ovl);
   }
@@ -244,13 +244,13 @@
       '<img src="./assets/mawaru-fox-celebrate.png" alt="">' +
       '<div class="t">すべてのチュートリアルタスクが<br>終了しました</div>' +
       '<div class="d">AIが<b>狙いのある投稿</b>を書けるようになりました。</div>' +
-      '<button class="go" onclick="IineOnboarding.closeFinish()">はじめる</button>' +
+      '<button class="go" onclick="MawaruOnboarding.closeFinish()">はじめる</button>' +
       '</div>';
     document.body.appendChild(ovl);
   }
 
   /* ---------- 外に出すAPI ---------- */
-  window.IineOnboarding = {
+  window.MawaruOnboarding = {
     /* 各画面の保存処理から呼ぶ。済みにして表示を更新する */
     complete: function (k) {
       if (!isDone(k)) { st.done.push(k); save(st); }
@@ -267,7 +267,7 @@
       if (!task) return;
       st.progress[k] = n;
       save(st);
-      if (task.sub && n >= task.sub) { window.IineOnboarding.complete(k); return; }
+      if (task.sub && n >= task.sub) { window.MawaruOnboarding.complete(k); return; }
       render();
     },
     /* いま何が残っているか。呼び出し側で分岐したいとき用 */

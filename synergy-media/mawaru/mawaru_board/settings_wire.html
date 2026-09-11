@@ -1994,7 +1994,7 @@ function openSnsAcc(row){
   document.getElementById('rowFb').style.display = (row.dataset.sns === 'Instagram') ? '' : 'none';
   buildRuleCopyMenu(row.dataset.sns);
   /* SNSの中まで入れたら「SNSをつなぐ」は覚えたと見なす（一覧を見ただけでは立てない） */
-  if(window.IineOnboarding) IineOnboarding.complete('sns');
+  if(window.MawaruOnboarding) MawaruOnboarding.complete('sns');
   document.getElementById('snsList').classList.remove('on');
   document.getElementById('snsDetail').classList.add('on');
   document.querySelector('.content').scrollTop = 0;
@@ -2150,13 +2150,13 @@ function cpCount(){
 /* サイドバーへ「コンセプトの何個目まで済んだか」を返す。
    引数が無いときは数え直す（読み込み直後もサイドバーと一致させる） */
 function cpReport(done){
-  if(!window.IineOnboarding) return;
+  if(!window.MawaruOnboarding) return;
   if(typeof done!=='number'){
     done = CP_KEYS.filter(function(k){
       return !document.getElementById('pj-'+k).classList.contains('must');
     }).length;
   }
-  IineOnboarding.progress('concept', done);
+  MawaruOnboarding.progress('concept', done);
 }
 /* 読み込み時にタブの数字を実態に合わせる（HTMLの書き置きと食い違わせない） */
 cpCount();

@@ -1954,7 +1954,7 @@ function openDone(){
     : 'いつでも予約・投稿できます。おつかれさまでした。';
   document.getElementById('doneOv').classList.add('on');
   /* ここまで来たら投稿を1本通せた。チュートリアルの「投稿を作ってみる」を済みに */
-  if(window.IineOnboarding) IineOnboarding.complete('post');
+  if(window.MawaruOnboarding) MawaruOnboarding.complete('post');
 }
 function closeDone(){ document.getElementById('doneOv').classList.remove('on'); }
 document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeDone(); });
