@@ -3,7 +3,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
 <title>設定 — マワル</title>
 <link rel="stylesheet" href="./tabler-icons-inline.css">
-<link rel="stylesheet" href="./fox-alert.css">
+<link rel="stylesheet" href="./hint.css">
+<link rel="stylesheet" href="./brand-ui.css">
 <style>
 /* このファイルで使うアイコンだけ定義する（フォント実体は tabler-icons-inline.css）。
    字形コードは同梱フォントで実物を描画して確認済み。 */
@@ -52,52 +53,55 @@
 
 :root {
   /* 新パレット（藍・水色）由来の追加トークン */
-  --color-navy: #00347a;
-  --color-navy-subtle: #f1f7ff;
-  --color-primary-deep: #d54101;
-  --color-primary: #fe7235;
-  --color-primary-hover: #d54101;
-  --color-primary-light: #fea735;
-  --color-primary-subtle: #fff5f1;
-  --color-on-primary: #ffffff;
-  --color-background: #fcf5ef;
-  --color-surface: #fffdfb;
-  --color-card: #ffffff;
-  --color-foreground: #2a2826;
-  --color-muted-foreground: #757575;
-  --color-border: #efe7df;
-  --color-border-strong: #ddd0c4;
-  --color-input: #ffffff;
-  --color-ring: #fe7235;
-  --color-success: #008a24; --color-success-vivid: #00ac2f;
-  --color-success-subtle: #f3fcf6;
-  --color-success-border: #cff4dc;
-  --color-warning: #ad6201;
-  --color-warning-border: #ffe6c4;
-  --color-warning-subtle: #fff9f1;
-  --color-info: #0070f0;
-  --color-info-subtle: #f1f7ff;
-  --color-destructive: #e90c2a;
-  --color-destructive-subtle: #feeef1;
-  --color-destructive-border: #ffd0d8;
-  --color-on-destructive: #ffffff;
-  --color-accent-purple: #9724ba;
-  --color-accent-purple-subtle: #f5e7f8;
+  --color-navy: #122651;
+  --color-navy-subtle: #EDF2FA;
+  --color-primary-deep: #1B3C7E;
+  --color-primary: #2E5AB0;
+  --color-primary-hover: #234A96;
+  --color-primary-light: #7DABDE;
+  --color-primary-subtle: #EDF2FA;
+  --color-on-primary: #FFFFFF;
+  --color-background: #F2F1F0;
+  --color-surface: #FBFAF8;
+  --color-card: #FFFFFF;
+  --color-foreground: #2A2826;
+  --color-muted-foreground: #6E6A66;
+  --color-border: #E9E8E6;
+  --color-border-strong: #CFCDC9;
+  --color-input: #FFFFFF;
+  --color-ring: #2E5AB0;
+  --color-tertiary: #7DABDE;
+  --color-tertiary-subtle: #DCE8F7;
+  --color-border-input: #99948C;
+  --color-success: #008623; --color-success-vivid: #00A62D;
+  --color-success-subtle: #F3FCF6;
+  --color-success-border: #CFF4DC;
+  --color-warning: #AB6101;
+  --color-warning-border: #FFE6C4;
+  --color-warning-subtle: #FFF9F1;
+  --color-info: #0B76B2;
+  --color-info-subtle: #ECF6FD;
+  --color-destructive: #D81028;
+  --color-destructive-subtle: #FDEEF0;
+  --color-destructive-border: #FFD0D8;
+  --color-on-destructive: #FFFFFF;
+  --color-accent-purple: #8B2FB8;
+  --color-accent-purple-subtle: #F5E9F9;
   /* グラフは primary 起点のオレンジ単一色相ランプ（DESIGN.md「グラフの色」/ [[chart-single-hue-ramp]]）。
      多い系列ほど濃い。意味色（success / warning）を系列色に流用しない。 */
-  --chart-1: #fe7235;
-  --chart-2: #fea735;
-  --chart-3: #febb6b;
-  --chart-4: #fdd0a0;
-  --chart-5: #fde4d6;
-  --color-sns-instagram: #b02a78;
-  --color-sns-instagram-subtle: #fce7f3;
-  --color-sns-x: #2a2826;
-  --color-sns-x-subtle: #fcf5ef;
-  --color-sns-tiktok: #0a6f66;
-  --color-sns-tiktok-subtle: #e5fbf7;
-  --color-sns-youtube: #c4302b;
-  --color-sns-youtube-subtle: #fcebeb;
+  --chart-1: #2E5AB0;
+  --chart-2: #7DABDE;
+  --chart-3: #7DABDE;
+  --chart-4: #A9C8E9;
+  --chart-5: #E9E8E6;
+  --color-sns-instagram: #B02A78;
+  --color-sns-instagram-subtle: #FCE7F3;
+  --color-sns-x: #2A2826;
+  --color-sns-x-subtle: #F2F1F0;
+  --color-sns-tiktok: #0A6F66;
+  --color-sns-tiktok-subtle: #E5FBF7;
+  --color-sns-youtube: #C4302B;
+  --color-sns-youtube-subtle: #FCEBEB;
   --font-body: Inter, "Noto Sans JP";
   --text-h1: 1.875rem;
   --text-h2: 1.25rem;
@@ -118,13 +122,13 @@
   --radius-xl: 20px;
   --radius-full: 9999px;
   /* セカンダリ＝青系（primary橙＝押せる／secondary青＝情報・補助） */
-  --color-secondary: #0077ff;
-  --color-secondary-light: #00c3ff;
-  --color-secondary-subtle: #f1f7ff;
-  --color-secondary-deep: #0070f0;
+  --color-secondary: #122651;
+  --color-secondary-light: #7DABDE;
+  --color-secondary-subtle: #EDF2FA;
+  --color-secondary-deep: #0B76B2;
 }
 *{box-sizing:border-box;margin:0;padding:0;font-family:var(--font-body),'Hiragino Sans','Meiryo',sans-serif;-webkit-font-smoothing:antialiased;}
-body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
+body {background:#F2F1F0;padding:0;color:var(--color-foreground);}
 .app{width:100%;background:var(--color-card);border-radius:0;overflow:hidden;display:flex;height:100vh;position:relative;}
 .ti{line-height:1;}
 
@@ -137,7 +141,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .create{text-decoration:none;width:100%;display:flex;align-items:center;justify-content:center;gap:7px;background:var(--color-primary);color:#fff;border:none;border-radius:var(--radius-md);padding:11px;font-family:inherit;font-size:var(--text-body);font-weight:var(--font-weight-body-strong);cursor:pointer;}
 .nav{padding:6px 10px;overflow-y:auto;flex:1;}
 .ni{display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:var(--radius-md);font-size:var(--text-body-lg);font-weight:var(--font-weight-body-strong);color:var(--color-foreground);cursor:pointer;text-decoration:none;}
-.ni .ti{font-size:18px;color:#6e655d;}
+.ni .ti{font-size:18px;color:#6E6A66;}
 .ni .cv{margin-left:auto;font-size:14px;color:#9a938c;}
 .ni.on{background:var(--color-primary-subtle);color:var(--color-primary);font-weight:var(--font-weight-body-strong);}
 .ni.on .ti{color:var(--color-primary);}
@@ -152,7 +156,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .nis.on{background:var(--color-primary-subtle);color:var(--color-primary);font-weight:var(--font-weight-body-strong);}
 .foot{border-top:1px solid var(--color-border);padding:12px;}
 .switcher{display:flex;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--color-border-strong);border-radius:var(--radius-md);background:var(--color-card);cursor:pointer;}
-.switcher .pic{width:34px;height:34px;flex:none;border-radius:var(--radius-md);background:#ffe6dc;color:var(--color-primary);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.switcher .pic{width:34px;height:34px;flex:none;border-radius:var(--radius-md);background:#EDF2FA;color:var(--color-primary);display:flex;align-items:center;justify-content:center;font-size:18px;}
 .switcher .pn{font-size:var(--text-body);font-weight:var(--font-weight-body-strong);}
 .switcher .an{font-size:var(--text-meta);color:#9a938c;}
 .switcher .cv{margin-left:auto;color:#9a938c;font-size:17px;}
@@ -482,7 +486,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 /* 読み込み中は「読み込んで作る」を押せなくする（二重起動を防ぐ） */
 .src.loading .src-hd .btn-p{opacity:.45;pointer-events:none;}
 /* ソナー：更新された箱の縁から波紋が1回広がる。中身の見た目は変えない */
-@keyframes sonar{from{box-shadow:0 0 0 0 rgba(239,97,8,.45);}to{box-shadow:0 0 0 14px rgba(239,97,8,0);}}
+@keyframes sonar{from{box-shadow:0 0 0 0 rgba(46,90,176,.45);}to{box-shadow:0 0 0 14px rgba(46,90,176,0);}}
 .sonar{animation:sonar 1.1s ease-out 2;border-color:var(--color-primary) !important;}
 @media(prefers-reduced-motion:reduce){.sonar{animation:none;}}
 /* もとになる資料。ここにURLやPDFを入れて「読み込んで作る」を押すと、AIが読んで下の内容を作る */
@@ -537,7 +541,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .pg-i.todo .yet{font-size:var(--text-meta);font-weight:var(--font-weight-body);opacity:.85;}
 .pg-d{font-size:var(--text-label);color:var(--color-muted-foreground);line-height:1.8;margin-top:12px;}
 /* 飛んだ先が分かるように、その項目を一瞬だけ光らせる */
-@keyframes pjflash{0%{box-shadow:0 0 0 0 rgba(239,97,8,.45);}100%{box-shadow:0 0 0 10px rgba(239,97,8,0);}}
+@keyframes pjflash{0%{box-shadow:0 0 0 0 rgba(46,90,176,.45);}100%{box-shadow:0 0 0 10px rgba(46,90,176,0);}}
 .pj.flash{animation:pjflash 1s ease-out;border-color:var(--color-primary);}
 
 /* 項目カード */
@@ -554,7 +558,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .ptabs button.on{color:var(--color-primary);border-bottom-color:var(--color-primary);font-weight:var(--font-weight-body-strong);}
 /* タブに残り件数を出す。開かないと未入力に気づけないのを防ぐ。
    必須の未入力なのでオレンジではなく destructive（§Do's: 必須・未入力は赤で一貫させる） */
-/* 淡い面（destructive-subtle #feeef1）＋枠線だと、地とほぼ同じ明るさでバッジに見えなかった。
+/* 淡い面（destructive-subtle #FDEEF0）＋枠線だと、地とほぼ同じ明るさでバッジに見えなかった。
    ベタ塗り＋白抜きにして数字を面で立たせる（2026-08-28。投稿一覧・承認フローと同じ扱い）。
    色の意味は変えない。ここは「あと4項目埋めてください」の督促なので destructive のまま。
    白文字で 4.61 あり、14px でも AA を満たす。 */
@@ -600,9 +604,9 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
    持ち込まず、末尾のリンクで送る。同じ情報を2箇所に置かない。
    読むだけで直せない。ズレていたら資料を足して「読み直す」を押す。 */
 
-/* 一言。ここは通知ではなく**カードの中身**なので、キツネアラートの箱にはしない
+/* 一言。ここは通知ではなく**カードの中身**なので、ヒントの箱にはしない
    （DESIGN.md §Alert の3変種は据え置きの通知・注意・結果用）。地色も枠も持たせず、
-   キツネと大きい文字だけで「AIはこう見ている」を1行で言い切る。 */
+   ⓘと大きい文字だけで「AIはこう見ている」を1行で言い切る。 */
 .ai-lead{display:flex;align-items:center;gap:14px;}
 .ai-lead > img{width:56px;height:56px;flex:none;object-fit:contain;}
 .ai-lead .tx{flex:1;min-width:0;}
@@ -625,11 +629,11 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
    2が1の理由になっているので、3のマスが何を指すかは説明しなくても読める。
 
    バナーを新しく作らない（DESIGN.md「.note のような自前バナーを増やさない」）ため、
-   キツネアラートの箱にも独自の色帯にもせず、**すぐ下の数値タイルと同じ面・同じ枠**で出す。
-   地を success-subtle にした版も作って見比べたが、状態色の帯はキツネアラートと見分けが付かず、
+   ヒントの箱にも独自の色帯にもせず、**すぐ下の数値タイルと同じ面・同じ枠**で出す。
+   地を success-subtle にした版も作って見比べたが、状態色の帯はヒントと見分けが付かず、
    アラートを自作したことになる。アイコンの丸とマスの色だけで十分読めるので地は中立のままにした。
    状態は色だけで表さない（アイコンと判定文が形を担う / [[state-color-plus-glyph]]）。
-   キツネを足さないのは、このカードの先頭にもう1匹いて2匹になるため。 */
+   ⓘを足さないのは、このカードの先頭にもう1匹いて2匹になるため。 */
 .ai-now{--now:var(--color-success);
   display:flex;align-items:flex-start;gap:11px;margin-bottom:10px;padding:14px 16px;
   background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);}
@@ -816,12 +820,12 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .corner{right:26px;bottom:26px;}
 
 /* ===== サイドバーの文字を白に =====
-   地の #fe7235 に白は 2.74 で、15px の本文には足りない。
+   地の #2E5AB0 に白は 2.74 で、15px の本文には足りない。
    文字を白にすると決めた以上、地の側を下げてコントラストを作る。
-   以前は縦グラデーション（#fe7235→#e85513→#d54101）で「上は鮮やかなまま」を
+   以前は縦グラデーション（#2E5AB0→#234A96→#234A96）で「上は鮮やかなまま」を
    残していたが、SPではサイドバーが高さ60pxの帯になるため、180度の階調が
    その中に圧縮されて帯状のムラに見え、古く見える原因になっていた（2026-08-28）。
-   ベタの primary-deep(#d54101) に統一。白文字で 4.58 なので本文でも AA を満たす。 */
+   ベタの primary-deep(#234A96) に統一。白文字で 4.58 なので本文でも AA を満たす。 */
 .sb{background:var(--color-primary-deep);}
 .sb .logo{filter:brightness(0) invert(1);opacity:.96;}
 .sb .ni{color:rgba(255,255,255,.88);}
@@ -835,8 +839,8 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 /* 選択中は「薄い白」の面に反転させる（2026-08-21）。
    もとは 24%白 + 白文字で、地のオレンジとの差が出ず沈んでいた（白文字は 2.67）。
    ベタ白だと「投稿作成」ボタンと同じ強さになって重いので 80% に落とす。
-   ただし 80%白の面（rgb(251,222,209)）に #d54101 は 3.59 で AA に足りないので、
-   文字だけ1段濃い #a33200 にして 5.47 を確保する。地を薄くしたぶんは文字で補う。 */
+   ただし 80%白の面（rgb(251,222,209)）に #234A96 は 3.59 で AA に足りないので、
+   文字だけ1段濃い #1B3C7E にして 5.47 を確保する。地を薄くしたぶんは文字で補う。 */
 .sb .ni.on{background:rgba(255,255,255,.22);color:#fff;}
 .sb .ni.on .ti{color:#fff;}
 .sb .ni.on .cv{color:#fff;}
@@ -850,12 +854,12 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .sb .switcher{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.30);}
 .sb .switcher .pn,.sb .switcher .nm{color:#fff;}
 .sb .switcher .an,.sb .switcher .cv{color:rgba(255,255,255,.72);}
-.sb .switcher .pic{background:#fff;color:#d54101;}
+.sb .switcher .pic{background:#fff;color:#234A96;}
 .sb .upg{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.30);}
 .sb .upg .ut{color:#fff;}
-.sb .upg .ub{background:#fff !important;color:#d54101 !important;}
+.sb .upg .ub{background:#fff !important;color:#234A96 !important;}
 .sb .upg .ub:hover{filter:brightness(.94);}
-.create{background:#fff !important;color:#d54101 !important;}
+.create{background:#fff !important;color:#234A96 !important;}
 .create:hover{background:#fff !important;filter:brightness(.96);}
 </style>
 <!-- SP対応。インラインCSSの後に置く（@media は詳細度を上げないので後勝ちにする） -->
@@ -909,8 +913,8 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 
       <!-- ============ 運用目的 ============ -->
       <div class="pane on" id="paProject">
-        <div class="fox-alert care">
-          <img src="./assets/mawaru-fox-worried.png" alt="">
+        <div class="hint">
+          <span class="info-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="7.6" r="1.1" fill="currentColor" stroke="none"/></svg></span>
           <div class="tx">
             <span class="lb">ATTENTION</span>
             <div class="t">ここに書いたことは、AIが投稿を作るとき毎回かならず読みます</div>
@@ -1217,7 +1221,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
           <div class="t">いまの情報だと、AIはこんな投稿を書きます</div>
           <div class="d">中身を直すと、書きぶりも変わります。試しに書かせただけなので、投稿はされません。</div>
           <div class="pj-sample">
-            <span class="sw" style="background:linear-gradient(135deg,#f7d9b0,#efc189)"></span>
+            <span class="sw" style="background:linear-gradient(135deg,#EAE8E5 0%,#D2CFCB 100%)"></span>
             <div class="bd">
               今日も看板犬のポチが店内でお待ちしていますよ🐕<br>
               手作りパフェは季節ごとに中身が変わります。今週は秋の新作が登場しました（890円・税込）。<br>
@@ -1284,8 +1288,8 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
           </div>
         </div>
 
-        <div class="fox-alert care">
-          <img src="./assets/mawaru-fox-worried.png" alt="">
+        <div class="hint">
+          <span class="info-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="7.6" r="1.1" fill="currentColor" stroke="none"/></svg></span>
           <div>
             <span class="lb">ATTENTION</span>
             <div class="t">連携できるSNSを増やすと、同じ投稿をまとめて出せます。<b>プランの変更</b>は左下のアカウントメニュー →「プラン・支払い」から。</div>
@@ -1619,7 +1623,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
           <div class="pj-bd">
 
             <div class="ai-lead">
-              <img src="./assets/mawaru-fox-happy.png" alt="">
+              <span class="ai-mark"><i class="ti ti-sparkles"></i></span>
               <div class="tx">
                 <div class="t">わんちゃんと過ごす時間を見せる、コミュニティ型のアカウント</div>
                 <!-- 成熟度バッジ（「育ちはじめ」）は置かない（2026-08-30 陽菜判断）。
@@ -1720,28 +1724,28 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
             <span class="sp"><button class="btn-o" onclick="openInvite()"><i class="ti ti-plus"></i>メンバーを招く</button></span>
           </div>
           <div class="mem">
-            <span class="av" style="background:#fe7235">田</span>
+            <span class="av" style="background:#2E5AB0">田</span>
             <div class="tx"><div class="nm">田中 陽菜（自分）</div><div class="ml">hina@inucafe-one.example.com</div></div>
             <span class="last">いま</span>
             <select class="role" disabled><option>オーナー</option></select>
             <button class="iconbtn" disabled style="opacity:.3" aria-label="メニュー"><i class="ti ti-dots-vertical"></i></button>
           </div>
           <div class="mem">
-            <span class="av" style="background:#0070f0">佐</span>
+            <span class="av" style="background:#0B76B2">佐</span>
             <div class="tx"><div class="nm">佐藤 正太郎</div><div class="ml">sato@inucafe-one.example.com</div></div>
             <span class="last">3時間前</span>
             <select class="role"><option>オーナー</option><option selected>承認者</option><option>作成者</option></select>
             <button class="iconbtn" aria-label="メニュー"><i class="ti ti-dots-vertical"></i></button>
           </div>
           <div class="mem">
-            <span class="av" style="background:#ef3a58">奥</span>
+            <span class="av" style="background:#D7213D">奥</span>
             <div class="tx"><div class="nm">奥澤 汐莉</div><div class="ml">okuzawa@inucafe-one.example.com</div></div>
             <span class="last">昨日</span>
             <select class="role"><option>オーナー</option><option>承認者</option><option selected>作成者</option></select>
             <button class="iconbtn" aria-label="メニュー"><i class="ti ti-dots-vertical"></i></button>
           </div>
           <div class="mem">
-            <span class="av" style="background:#9724ba">岩</span>
+            <span class="av" style="background:#8B2FB8">岩</span>
             <div class="tx"><div class="nm">岩上 陽菜</div><div class="ml">iwagami@inucafe-one.example.com・<span style="color:var(--color-warning);font-weight:var(--font-weight-body-strong)">招待中（まだ参加していません）</span></div></div>
             <span class="last">—</span>
             <select class="role"><option>オーナー</option><option>承認者</option><option selected>作成者</option></select>
@@ -2347,5 +2351,5 @@ function snsCount(){
 }
 </script>
 <script src="./tour.js"></script>
-<script src="./fox-alert.js"></script>
+<script src="./hint.js"></script>
 </body></html>

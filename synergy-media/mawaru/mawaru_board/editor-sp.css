@@ -46,11 +46,10 @@
      --sp-foot-h は editor-sp.js が実測して入れる。JSが動かなくても
      67px（実測値）で成立するようフォールバックを置く。 */
   .ai-panel-closed{right:16px;bottom:calc(var(--sp-foot-h,67px) + 16px);left:auto;top:auto;}
-  /* きつねの顔は 1049x892（横長）。32px 32px と正方形で指定すると縦に伸びるので、
-     幅だけ決めて高さは auto に任せる。イラストの比率は変えない。 */
+  /* キャラクターは置かない。AIアシストの入口はインフォメーションマークで示す。 */
   .ai-collapsed{
     position:relative;width:56px;height:56px;border-radius:var(--radius-full);
-    background:var(--color-card) url(./assets/mawaru-fox-face.png) center/34px auto no-repeat;
+    background:var(--color-card) url("data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%232E5AB0" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="7.6" r="1.1" fill="%232E5AB0" stroke="none"/></svg>") center/26px 26px no-repeat;
     border:1.5px solid var(--color-primary);box-shadow:0 6px 18px rgba(0,0,0,.22);}
   /* 「«」と「AIアシスト」の文字は56pxの丸に入らない。見た目からは外すが、
      読み上げには残したいので display:none ではなく視覚的にだけ隠す。 */

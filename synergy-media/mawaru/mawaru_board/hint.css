@@ -1,0 +1,83 @@
+/* hint.css — 情報の提示。吹き出しは廃止し、カードで出す。
+   基底＝primary（水色の面＋青の縁）。意味を持つときだけ変種を足す。
+   色は4変数から引くので、面・縁・アイコン・ラベルがずれない。 */
+
+.hint{
+  /* 基底＝情報／注意喚起。primary（青）。 */
+  --hb-bg: var(--color-primary-subtle);
+  --hb-bd: color-mix(in srgb, var(--color-primary) 28%, transparent);
+  --hb-ic: var(--color-primary);
+  --hb-lb: color-mix(in srgb, var(--color-primary) 78%, #000);
+
+  display:flex; align-items:flex-start; gap:10px;
+  margin:16px 0 20px; padding:14px 16px;
+  background:var(--hb-bg);
+  border:1px solid var(--hb-bd);
+  border-radius:var(--radius-lg);
+  font-size:var(--text-body); line-height:1.6;
+  color:var(--color-foreground);
+}
+
+/* ⓘ はカードの中。外に立たせない（吹き出し廃止） */
+.hint > .info-mark{ width:20px; height:20px; flex:none; margin-top:2px; color:var(--hb-ic); }
+
+/* 本文ブロック。地・枠・しっぽは親カードが持つので、ここは素通し */
+.hint > div, .hint > p{
+  flex:1; min-width:0; margin:0; padding:0;
+  background:none; border:0; border-radius:0;
+}
+
+.hint b, .hint strong{ font-weight:var(--font-weight-body-strong); }
+
+/* 右端に置くボタン（「予算を決める」等） */
+.hint .sp{ flex:none; align-self:center; }
+
+/* 閉じる×。カード直下のフレックス要素として右上に置く。
+   本文の中に入れると先頭に流れ込むので、必ず .hint の直下に置くこと（hint.js も同じ前提）。 */
+.hint > .x{
+  flex:none; order:99; align-self:flex-start;
+  margin:-4px -6px 0 6px;
+  display:inline-flex; align-items:center; justify-content:center;
+  width:26px; height:26px; padding:0; border:none; background:transparent;
+  color:var(--color-muted-foreground); border-radius:var(--radius-sm);
+  cursor:pointer; line-height:1;
+}
+.hint > .x svg{ width:15px; height:15px; display:block; }
+.hint > .x:hover{ background:rgb(0 0 0 / .05); color:var(--color-foreground); }
+.hint > .x:focus-visible{ outline:2px solid var(--color-primary); outline-offset:1px; }
+
+/* 小さい英字ラベル。DONE / GOOD / POINT / ATTENTION / CHECK / ADVICE の6語だけ。
+   地は変種の色を 78% に暗くして作る。生の色に白文字だと 4.5:1 を割るため。 */
+.hint .lb{
+  display:inline-block; margin-bottom:6px; padding:4px 9px;
+  background:var(--hb-lb); color:#fff;
+  font-size:var(--text-meta); font-weight:var(--font-weight-body-strong);
+  letter-spacing:.09em; line-height:1; border-radius:var(--radius-full);
+}
+
+/* ---- 変種。意味を持つときだけ付ける ---- */
+/* できた・うまくいっている */
+.hint.ok{
+  --hb-bg: var(--color-success-subtle);
+  --hb-bd: color-mix(in srgb, var(--color-success) 28%, transparent);
+  --hb-ic: var(--color-success);
+  --hb-lb: color-mix(in srgb, var(--color-success) 78%, #000);
+}
+/* 気をつけて・確認して */
+.hint.care{
+  --hb-bg: var(--color-warning-subtle);
+  --hb-bd: color-mix(in srgb, var(--color-warning) 28%, transparent);
+  --hb-ic: var(--color-warning);
+  --hb-lb: color-mix(in srgb, var(--color-warning) 78%, #000);
+}
+/* 失敗した・エラー */
+.hint.err{
+  --hb-bg: var(--color-destructive-subtle);
+  --hb-bd: color-mix(in srgb, var(--color-destructive) 28%, transparent);
+  --hb-ic: var(--color-destructive);
+  --hb-lb: color-mix(in srgb, var(--color-destructive) 78%, #000);
+}
+
+/* 密なカード内・シート内で使う小さい版 */
+.hint.sm{ gap:8px; margin:8px 0 0; padding:10px 13px; font-size:var(--text-label); }
+.hint.sm > .info-mark{ width:17px; height:17px; margin-top:1px; }

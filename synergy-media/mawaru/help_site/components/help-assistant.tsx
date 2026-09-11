@@ -1,6 +1,7 @@
 'use client';
 
-import Image from 'next/image';
+import { InfoMark } from './info-mark';
+import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import {
@@ -25,7 +26,6 @@ import {
   type SolveResult,
   type Suggestion,
 } from '@/lib/assistant';
-import { asset, cn } from '@/lib/utils';
 
 /* -------------------------------------------------------------- 吹き出し */
 
@@ -41,13 +41,7 @@ function Bubble({ children, mine = false }: { children: React.ReactNode; mine?: 
   }
   return (
     <div className="flex gap-2.5">
-      <Image
-        src={asset('/img/fox-support.png')}
-        alt=""
-        width={32}
-        height={32}
-        className="mt-0.5 size-8 flex-none rounded-full bg-card object-contain"
-      />
+      <InfoMark className="mt-1 size-5 flex-none text-primary" />
       <div className="min-w-0 flex-1 space-y-2.5 text-[15px] leading-relaxed">{children}</div>
     </div>
   );
@@ -180,13 +174,7 @@ export function HelpAssistant() {
         className="flex h-[min(600px,70svh)] w-[calc(100vw-2rem)] flex-col gap-0 overflow-hidden p-0 shadow-xl sm:w-[400px]"
       >
         <div className="flex flex-none items-center gap-2.5 border-b px-4 py-3">
-          <Image
-            src={asset('/img/fox-support.png')}
-            alt=""
-            width={30}
-            height={30}
-            className="size-7.5 object-contain"
-          />
+          <InfoMark className="size-5 flex-none text-primary" />
           <p className="flex-1 text-[15px] font-bold">わからないことを聞く</p>
           <Button
             variant="ghost"

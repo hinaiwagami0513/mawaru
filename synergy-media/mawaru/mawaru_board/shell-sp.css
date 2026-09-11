@@ -147,10 +147,10 @@
   .content .ad .acts{flex-direction:row;justify-content:flex-start;gap:8px;}
   /* 広告カードの金額行「6,000円 / 14,000円 つかいました」+「1日あたり…」は
      196pxの列に3つ並ぶと各50〜76pxになる。日割りの補足を次の行へ落とす。
-     .fox-alert の中のラベルピル（同名の .lb）に当たらないよう .ad 配下に限定する。 */
+     .hint の中のラベルピル（同名の .lb）に当たらないよう .ad 配下に限定する。 */
   .content .ad .lb{flex-wrap:wrap;}
   .content .ad .lb .rest{flex-basis:100%;margin-top:2px;}
-  /* サムネは112pxのままだと情報列が196pxしか残らず、中のキツネアラートの本文が
+  /* サムネは112pxのままだと情報列が196pxしか残らず、中のヒントの本文が
      130px（12pxフォントで10文字）になる。SPではサムネを縮めて情報側に幅を回す。 */
   .content .ad .thumb{width:72px;height:72px;flex:none;}
 
@@ -209,12 +209,12 @@
 
   /* 同じ形が他にもあった（2026-08-28）。
      ・.fhead      … ドライブのフォルダ見出し。右のボタン群が424pxで358pxの枠を突き破る
-     ・.fox-alert  … キツネの注意カード。右のボタンが行に入りきらない
+     ・.hint  … ⓘの注意カード。右のボタンが行に入りきらない
      ボタン群を独立行に落とし、群の中でも折り返せるようにする。
      ⚠️ .fhead は .content の外（.pane > .files の中）にあるので、
      .content を前置きにすると当たらない。クラス名だけで指定する。 */
-  .fhead,.content .fox-alert{flex-wrap:wrap;}
-  .fhead .sp,.content .fox-alert .sp{margin-left:0;flex-basis:100%;flex-wrap:wrap;row-gap:8px;}
+  .fhead,.content .hint{flex-wrap:wrap;}
+  .fhead .sp,.content .hint .sp{margin-left:0;flex-basis:100%;flex-wrap:wrap;row-gap:8px;}
   .fhead .sp>*{flex:none;}
 
   /* 右スライドインのシートは幅固定（360〜400px）で390pxに収まらない。全画面にする

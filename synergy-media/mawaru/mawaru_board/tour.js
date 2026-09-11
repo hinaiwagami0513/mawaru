@@ -264,11 +264,11 @@
       '.tr-dim{position:fixed;background:rgb(0 0 0 / .62);z-index:' + Z + ';}',
       /* 光っている枠。見せるだけなので絶対にクリックを奪わない */
       '.tr-ring{position:fixed;z-index:' + (Z + 1) + ';pointer-events:none;border-radius:var(--radius-md, 10px);',
-      '  box-shadow:0 0 0 2px var(--color-primary, #fe7235), 0 0 0 7px rgb(254 114 53 / .3);}',
+      '  box-shadow:0 0 0 2px var(--color-primary, #2E5AB0), 0 0 0 7px rgb(254 114 53 / .3);}',
       '.tr-ring.pulse{animation:tr-pulse 1.7s ease-out infinite;}',
-      '@keyframes tr-pulse{0%{box-shadow:0 0 0 2px var(--color-primary, #fe7235), 0 0 0 4px rgb(254 114 53 / .45);}',
-      '  70%{box-shadow:0 0 0 2px var(--color-primary, #fe7235), 0 0 0 13px rgb(254 114 53 / 0);}',
-      '  100%{box-shadow:0 0 0 2px var(--color-primary, #fe7235), 0 0 0 4px rgb(254 114 53 / 0);}}',
+      '@keyframes tr-pulse{0%{box-shadow:0 0 0 2px var(--color-primary, #2E5AB0), 0 0 0 4px rgb(254 114 53 / .45);}',
+      '  70%{box-shadow:0 0 0 2px var(--color-primary, #2E5AB0), 0 0 0 13px rgb(254 114 53 / 0);}',
+      '  100%{box-shadow:0 0 0 2px var(--color-primary, #2E5AB0), 0 0 0 4px rgb(254 114 53 / 0);}}',
       /* 動きを減らす設定の人には光らせない。点滅は負担になる */
       '@media (prefers-reduced-motion: reduce){.tr-ring.pulse{animation:none;}}',
 
@@ -287,19 +287,19 @@
       '  font-weight:var(--font-weight-body-strong, 700);}',
       /* 何ステップ中の何番目か。終わりが見えないと押す気にならない */
       '.tr-tip .tr-ct{flex:none;margin-left:auto;padding-left:6px;font-size:var(--text-meta, 12px);',
-      '  color:var(--color-muted-foreground, #757575);font-weight:var(--font-weight-body-strong, 700);}',
-      '.tr-tip .tr-d{font-size:var(--text-meta, 12px);line-height:1.85;color:var(--color-muted-foreground, #757575);}',
+      '  color:var(--color-muted-foreground, #6E6A66);font-weight:var(--font-weight-body-strong, 700);}',
+      '.tr-tip .tr-d{font-size:var(--text-meta, 12px);line-height:1.85;color:var(--color-muted-foreground, #6E6A66);}',
       '.tr-tip .tr-d b{color:var(--color-foreground, #2a2826);}',
       '.tr-tip .tr-ft{display:flex;align-items:center;gap:10px;margin-top:12px;}',
       /* 押して進む箇所では「次へ」を出さない。ボタンがあるとそっちを押して、
          本物の操作を覚えないまま終わる。代わりに何をすればいいかを書く */
       '.tr-tip .tr-hint{display:flex;align-items:center;gap:5px;font-size:var(--text-meta, 12px);',
-      '  font-weight:var(--font-weight-body-strong, 700);color:var(--color-primary, #fe7235);}',
+      '  font-weight:var(--font-weight-body-strong, 700);color:var(--color-primary, #2E5AB0);}',
       '.tr-tip .tr-go{margin-left:auto;display:flex;align-items:center;gap:4px;padding:7px 13px;border:none;',
-      '  background:var(--color-primary, #fe7235);color:#fff;border-radius:var(--radius-sm, 8px);',
+      '  background:var(--color-primary, #2E5AB0);color:#fff;border-radius:var(--radius-sm, 8px);',
       '  font-family:inherit;font-size:var(--text-meta, 12px);font-weight:var(--font-weight-body-strong, 700);cursor:pointer;}',
       '.tr-tip .tr-skip{background:none;border:none;padding:0;font-family:inherit;font-size:var(--text-meta, 12px);',
-      '  color:var(--color-muted-foreground, #757575);cursor:pointer;text-decoration:underline;}',
+      '  color:var(--color-muted-foreground, #6E6A66);cursor:pointer;text-decoration:underline;}',
       '.tr-tip .tr-skip.r{margin-left:auto;}',
       /* 吹き出しの尻尾。向きは JS が class で決める */
       '.tr-tip .tr-ar{position:absolute;width:12px;height:12px;background:var(--color-card, #ffffff);transform:rotate(45deg);}',
@@ -309,7 +309,7 @@
       '.tr-tip.at-left .tr-ar{right:-6px;}',
       /* 案内そのものを止める導線。最後のステップだけ出す */
       '.tr-tip .tr-off{display:block;margin-top:9px;background:none;border:none;padding:0;font-family:inherit;',
-      '  font-size:var(--text-meta, 12px);color:var(--color-muted-foreground, #757575);cursor:pointer;text-decoration:underline;}'
+      '  font-size:var(--text-meta, 12px);color:var(--color-muted-foreground, #6E6A66);cursor:pointer;text-decoration:underline;}'
     ].join('\n');
     var s = document.createElement('style');
     s.id = 'tr-css';

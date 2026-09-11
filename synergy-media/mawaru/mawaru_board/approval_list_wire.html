@@ -5,32 +5,32 @@
 <style>
 :root {
   /* 新パレット（藍・水色）由来の追加トークン */
-  --color-navy: #00347a;
-  --color-navy-subtle: #f1f7ff;
-  --color-primary-deep: #d54101;
-  --color-primary: #fe7235;
-  --color-primary-hover: #d54101;
-  --color-primary-subtle: #fff5f1;
-  --color-on-primary: #ffffff;
-  --color-background: #fcf5ef;
-  --color-surface: #fffdfb;
-  --color-card: #ffffff;
-  --color-foreground: #2a2826;
-  --color-muted-foreground: #757575;
-  --color-border: #efe7df;
-  --color-border-strong: #ddd0c4;
-  --color-success: #008a24; --color-success-vivid: #00ac2f;
-  --color-success-subtle: #f3fcf6;
-  --color-warning: #ad6201;
-  --color-warning-border: #ffe6c4;
-  --color-warning-subtle: #fff9f1;
-  --color-info: #0070f0;
-  --color-info-subtle: #f1f7ff;
-  --color-destructive: #e90c2a;
-  --color-sns-instagram: #b02a78;
-  --color-sns-instagram-subtle: #fce7f3;
-  --color-sns-x: #2a2826;
-  --color-sns-x-subtle: #fcf5ef;
+  --color-navy: #122651;
+  --color-navy-subtle: #EDF2FA;
+  --color-primary-deep: #1B3C7E;
+  --color-primary: #2E5AB0;
+  --color-primary-hover: #234A96;
+  --color-primary-subtle: #EDF2FA;
+  --color-on-primary: #FFFFFF;
+  --color-background: #F2F1F0;
+  --color-surface: #FBFAF8;
+  --color-card: #FFFFFF;
+  --color-foreground: #2A2826;
+  --color-muted-foreground: #6E6A66;
+  --color-border: #E9E8E6;
+  --color-border-strong: #CFCDC9;
+  --color-success: #008623; --color-success-vivid: #00A62D;
+  --color-success-subtle: #F3FCF6;
+  --color-warning: #AB6101;
+  --color-warning-border: #FFE6C4;
+  --color-warning-subtle: #FFF9F1;
+  --color-info: #0B76B2;
+  --color-info-subtle: #ECF6FD;
+  --color-destructive: #D81028;
+  --color-sns-instagram: #B02A78;
+  --color-sns-instagram-subtle: #FCE7F3;
+  --color-sns-x: #2A2826;
+  --color-sns-x-subtle: #F2F1F0;
   --font-body: Inter, "Noto Sans JP";
   --text-display: 2.25rem;
   --text-h1: 1.875rem;
@@ -53,13 +53,13 @@
   --radius-xl: 20px;
   --radius-full: 9999px;
   /* セカンダリ＝青系（primary橙＝押せる／secondary青＝情報・補助） */
-  --color-secondary: #0077ff;
-  --color-secondary-light: #00c3ff;
-  --color-secondary-subtle: #f1f7ff;
-  --color-secondary-deep: #0070f0;
+  --color-secondary: #122651;
+  --color-secondary-light: #7DABDE;
+  --color-secondary-subtle: #EDF2FA;
+  --color-secondary-deep: #0B76B2;
 }
 *{box-sizing:border-box;margin:0;padding:0;font-family:var(--font-body),'Hiragino Sans','Meiryo',sans-serif;-webkit-font-smoothing:antialiased;}
-body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
+body {background:#F2F1F0;padding:0;color:var(--color-foreground);}
 
 /* Demo switcher */
 /* ロール切替のスイッチは画面から外した（2026-08-28）。どちらを出すかは URL の ?view=。
@@ -78,7 +78,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .logo{height:24px;display:block;}
 .nav{padding:6px 10px;overflow-y:auto;flex:1;}
 .ni{display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:var(--radius-md);font-size:var(--text-body-lg);font-weight:var(--font-weight-body-strong);color:var(--color-foreground);cursor:pointer;}
-.ni .ti{font-size:18px;color:#6e655d;}
+.ni .ti{font-size:18px;color:#6E6A66;}
 .ni .cv{margin-left:auto;font-size:14px;color:#9a938c;}
 .ni.on{background:var(--color-primary-subtle);color:var(--color-primary);font-weight:var(--font-weight-body-strong);}
 .ni.on .ti{color:var(--color-primary);}
@@ -106,11 +106,11 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .tab:hover{color:var(--color-foreground);}
 .tab.on{color:var(--color-primary);border-bottom-color:var(--color-primary);font-weight:var(--font-weight-body-strong);}
 .tab .cnt{font-size:var(--text-label);font-weight:var(--font-weight-body-strong);color:var(--color-muted-foreground);background:var(--color-background);border-radius:var(--radius-full);padding:2px 9px;margin-left:8px;min-width:20px;text-align:center;display:inline-block;}
-/* 件数バッジは淡い面（非選択=background / 選択中=primary-subtle #fff5f1）で、
+/* 件数バッジは淡い面（非選択=background / 選択中=primary-subtle #EDF2FA）で、
    地のカードとほぼ同じ明るさになり、丸があること自体が見えていなかった。
    ベタ塗り＋白抜きにして、数字を面で立たせる（2026-08-28）。
-   選択中は primary-deep(#d54101)。白文字で 4.58 あり 14px でも AA を満たす
-   （primary #fe7235 は 2.74 で足りないので使わない）。
+   選択中は primary-deep(#234A96)。白文字で 4.58 あり 14px でも AA を満たす
+   （primary #2E5AB0 は 2.74 で足りないので使わない）。
    1桁のときに円になるよう、min-width と height を揃える。 */
 .tab .cnt{color:#fff;background:var(--color-muted-foreground);
   min-width:22px;height:22px;padding:0 7px;box-sizing:border-box;
@@ -147,10 +147,10 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .pcard-date{font-size:var(--text-label);color:var(--color-muted-foreground);margin-left:auto;}
 
 /* Placeholder thumbnails */
-.ph1{background:linear-gradient(135deg,#f0e6d3 0%,#d4c5a9 100%);}
-.ph2{background:linear-gradient(135deg,#d6e5f0 0%,#a8c5d9 100%);}
-.ph3{background:linear-gradient(135deg,#e6d9f0 0%,#c5a9d4 100%);}
-.ph4{background:linear-gradient(135deg,#f0d9d6 0%,#d4a9a5 100%);}
+.ph1{background:linear-gradient(135deg,#F2F1EF 0%,#DFDDD9 100%);}
+.ph2{background:linear-gradient(135deg,#E4E2DE 0%,#CAC7C2 100%);}
+.ph3{background:linear-gradient(135deg,#F0EFED 0%,#DBD9D5 100%);}
+.ph4{background:linear-gradient(135deg,#EAE8E5 0%,#D2CFCB 100%);}
 
 /* Sheet */
 .sheet{position:absolute;top:0;right:0;width:400px;height:100%;background:var(--color-card);border-left:1px solid var(--color-border);box-shadow:-4px 0 24px rgba(0,0,0,.08);transform:translateX(100%);transition:transform .25s ease;z-index:10;display:flex;flex-direction:column;}
@@ -185,14 +185,14 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 
 /* ===== ヘッダー右側（全画面共通） =====
    現在のプラン（押せないので枠線のみ）+ ToDo + チャット。ヘルプの左に置く。 */
-.planchip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--color-border-strong,#ddd0c4);border-radius:var(--radius-full,9999px);padding:5px 12px;font-size:var(--text-label,.75rem);font-weight:700;color:var(--color-muted-foreground,#757575);white-space:nowrap;}
-.planchip i{font-size:15px;color:var(--color-primary,#fe7235);}
+.planchip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--color-border-strong,#CFCDC9);border-radius:var(--radius-full,9999px);padding:5px 12px;font-size:var(--text-label,.75rem);font-weight:700;color:var(--color-muted-foreground,#6E6A66);white-space:nowrap;}
+.planchip i{font-size:15px;color:var(--color-primary,#2E5AB0);}
 .planchip{text-decoration:none;transition:border-color .15s,color .15s;}
 .planchip[href]:hover{border-color:var(--color-primary);color:var(--color-foreground);}
 .planchip.is-here{cursor:default;}
-.hdbtn{position:relative;width:38px;height:38px;flex:none;border:1px solid var(--color-border-strong,#ddd0c4);background:var(--color-card,#fff);color:var(--color-foreground,#2a2826);border-radius:var(--radius-full,9999px);display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer;padding:0;text-decoration:none;}
-.hdbtn:hover{border-color:var(--color-primary,#fe7235);color:var(--color-primary,#fe7235);}
-.hdbadge{position:absolute;top:-4px;right:-4px;min-width:19px;height:19px;padding:0 5px;border-radius:var(--radius-full,9999px);background:var(--color-primary,#fe7235);color:#fff;font-size:var(--text-meta,.625rem);font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid var(--color-card,#fff);}
+.hdbtn{position:relative;width:38px;height:38px;flex:none;border:1px solid var(--color-border-strong,#CFCDC9);background:var(--color-card,#fff);color:var(--color-foreground,#2a2826);border-radius:var(--radius-full,9999px);display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer;padding:0;text-decoration:none;}
+.hdbtn:hover{border-color:var(--color-primary,#2E5AB0);color:var(--color-primary,#2E5AB0);}
+.hdbadge{position:absolute;top:-4px;right:-4px;min-width:19px;height:19px;padding:0 5px;border-radius:var(--radius-full,9999px);background:var(--color-primary,#2E5AB0);color:#fff;font-size:var(--text-meta,.625rem);font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid var(--color-card,#fff);}
 /* ===== シェル：ヘッダーとサイドバーを角丸のカードにする =====
    全面ベタ（角丸0・隙間0）だと面が窓枠に貼り付いて古く見える。
    .app に余白と gap を持たせて、サイドバー / ヘッダー / 本文を
@@ -208,12 +208,12 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .corner{right:26px;bottom:26px;}
 
 /* ===== サイドバーの文字を白に =====
-   地の #fe7235 に白は 2.74 で、15px の本文には足りない。
+   地の #2E5AB0 に白は 2.74 で、15px の本文には足りない。
    文字を白にすると決めた以上、地の側を下げてコントラストを作る。
-   以前は縦グラデーション（#fe7235→#e85513→#d54101）で「上は鮮やかなまま」を
+   以前は縦グラデーション（#2E5AB0→#234A96→#234A96）で「上は鮮やかなまま」を
    残していたが、SPではサイドバーが高さ60pxの帯になるため、180度の階調が
    その中に圧縮されて帯状のムラに見え、古く見える原因になっていた（2026-08-28）。
-   ベタの primary-deep(#d54101) に統一。白文字で 4.58 なので本文でも AA を満たす。 */
+   ベタの primary-deep(#234A96) に統一。白文字で 4.58 なので本文でも AA を満たす。 */
 .sb{background:var(--color-primary-deep);}
 .sb .logo{height:24px;margin-bottom:14px;display:block;}
 .sb .ni{color:rgba(255,255,255,.88);}
@@ -227,8 +227,8 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 /* 選択中は「薄い白」の面に反転させる（2026-08-21）。
    もとは 24%白 + 白文字で、地のオレンジとの差が出ず沈んでいた（白文字は 2.67）。
    ベタ白だと「投稿作成」ボタンと同じ強さになって重いので 80% に落とす。
-   ただし 80%白の面（rgb(251,222,209)）に #d54101 は 3.59 で AA に足りないので、
-   文字だけ1段濃い #a33200 にして 5.47 を確保する。地を薄くしたぶんは文字で補う。 */
+   ただし 80%白の面（rgb(251,222,209)）に #234A96 は 3.59 で AA に足りないので、
+   文字だけ1段濃い #1B3C7E にして 5.47 を確保する。地を薄くしたぶんは文字で補う。 */
 .sb .ni.on{background:rgba(255,255,255,.22);color:#fff;}
 .sb .ni.on .ti{color:#fff;}
 .sb .ni.on .cv{color:#fff;}
@@ -242,12 +242,12 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .sb .switcher{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.30);}
 .sb .switcher .pn,.sb .switcher .nm{color:#fff;}
 .sb .switcher .an,.sb .switcher .cv{color:rgba(255,255,255,.72);}
-.sb .switcher .pic{background:#fff;color:#d54101;}
+.sb .switcher .pic{background:#fff;color:#234A96;}
 .sb .upg{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.30);}
 .sb .upg .ut{color:#fff;}
-.sb .upg .ub{background:#fff !important;color:#d54101 !important;}
+.sb .upg .ub{background:#fff !important;color:#234A96 !important;}
 .sb .upg .ub:hover{filter:brightness(.94);}
-.create{background:#fff !important;color:#d54101 !important;}
+.create{background:#fff !important;color:#234A96 !important;}
 .create:hover{background:#fff !important;filter:brightness(.96);}
 
 

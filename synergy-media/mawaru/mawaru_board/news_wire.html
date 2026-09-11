@@ -41,33 +41,36 @@
 
 :root {
   /* 新パレット（藍・水色）由来の追加トークン */
-  --color-navy: #00347a;
-  --color-navy-subtle: #f1f7ff;
-  --color-primary-deep: #d54101;
-  --color-primary: #fe7235;
-  --color-primary-hover: #d54101;
-  --color-primary-light: #fea735;
-  --color-primary-subtle: #fff5f1;
-  --color-on-primary: #ffffff;
-  --color-background: #fcf5ef;
-  --color-surface: #fffdfb;
-  --color-card: #ffffff;
-  --color-foreground: #2a2826;
-  --color-muted-foreground: #757575;
-  --color-border: #efe7df;
-  --color-border-strong: #ddd0c4;
-  --color-input: #ffffff;
-  --color-ring: #fe7235;
-  --color-success: #008a24; --color-success-vivid: #00ac2f;
-  --color-success-subtle: #f3fcf6;
-  --color-warning: #ad6201;
-  --color-warning-subtle: #fff9f1;
-  --color-info: #0070f0;
-  --color-info-subtle: #f1f7ff;
-  --color-destructive: #e90c2a;
-  --color-destructive-subtle: #feeef1;
-  --color-accent-purple: #9724ba;
-  --color-accent-purple-subtle: #f5e7f8;
+  --color-navy: #122651;
+  --color-navy-subtle: #EDF2FA;
+  --color-primary-deep: #1B3C7E;
+  --color-primary: #2E5AB0;
+  --color-primary-hover: #234A96;
+  --color-primary-light: #7DABDE;
+  --color-primary-subtle: #EDF2FA;
+  --color-on-primary: #FFFFFF;
+  --color-background: #F2F1F0;
+  --color-surface: #FBFAF8;
+  --color-card: #FFFFFF;
+  --color-foreground: #2A2826;
+  --color-muted-foreground: #6E6A66;
+  --color-border: #E9E8E6;
+  --color-border-strong: #CFCDC9;
+  --color-input: #FFFFFF;
+  --color-ring: #2E5AB0;
+  --color-tertiary: #7DABDE;
+  --color-tertiary-subtle: #DCE8F7;
+  --color-border-input: #99948C;
+  --color-success: #008623; --color-success-vivid: #00A62D;
+  --color-success-subtle: #F3FCF6;
+  --color-warning: #AB6101;
+  --color-warning-subtle: #FFF9F1;
+  --color-info: #0B76B2;
+  --color-info-subtle: #ECF6FD;
+  --color-destructive: #D81028;
+  --color-destructive-subtle: #FDEEF0;
+  --color-accent-purple: #8B2FB8;
+  --color-accent-purple-subtle: #F5E9F9;
   --font-body: Inter, "Noto Sans JP";
   --text-h1: 1.875rem;
   --text-h2: 1.25rem;
@@ -88,13 +91,13 @@
   --radius-xl: 20px;
   --radius-full: 9999px;
   /* セカンダリ＝青系（primary橙＝押せる／secondary青＝情報・補助） */
-  --color-secondary: #0077ff;
-  --color-secondary-light: #00c3ff;
-  --color-secondary-subtle: #f1f7ff;
-  --color-secondary-deep: #0070f0;
+  --color-secondary: #122651;
+  --color-secondary-light: #7DABDE;
+  --color-secondary-subtle: #EDF2FA;
+  --color-secondary-deep: #0B76B2;
 }
 *{box-sizing:border-box;margin:0;padding:0;font-family:var(--font-body),'Hiragino Sans','Meiryo',sans-serif;-webkit-font-smoothing:antialiased;}
-body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
+body {background:#F2F1F0;padding:0;color:var(--color-foreground);}
 .app{width:100%;background:var(--color-card);border-radius:0;overflow:hidden;display:flex;height:100vh;position:relative;}
 .ti{line-height:1;}
 
@@ -105,7 +108,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .create{text-decoration:none;width:100%;display:flex;align-items:center;justify-content:center;gap:7px;background:var(--color-primary);color:#fff;border:none;border-radius:var(--radius-md);padding:11px;font-family:inherit;font-size:var(--text-body);font-weight:var(--font-weight-body-strong);cursor:pointer;}
 .nav{padding:6px 10px;overflow-y:auto;flex:1;}
 .ni{display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:var(--radius-md);font-size:var(--text-body-lg);font-weight:var(--font-weight-body-strong);color:var(--color-foreground);cursor:pointer;text-decoration:none;}
-.ni .ti{font-size:18px;color:#6e655d;}
+.ni .ti{font-size:18px;color:#6E6A66;}
 .ni .cv{margin-left:auto;font-size:14px;color:#9a938c;}
 .ni.on{background:var(--color-primary-subtle);color:var(--color-primary);font-weight:var(--font-weight-body-strong);}
 .ni.on .ti{color:var(--color-primary);}
@@ -120,7 +123,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .nis.on{background:var(--color-primary-subtle);color:var(--color-primary);font-weight:var(--font-weight-body-strong);}
 .foot{border-top:1px solid var(--color-border);padding:12px;}
 .switcher{display:flex;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--color-border-strong);border-radius:var(--radius-md);background:var(--color-card);cursor:pointer;}
-.switcher .pic{width:34px;height:34px;flex:none;border-radius:var(--radius-md);background:#ffe6dc;color:var(--color-primary);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.switcher .pic{width:34px;height:34px;flex:none;border-radius:var(--radius-md);background:#EDF2FA;color:var(--color-primary);display:flex;align-items:center;justify-content:center;font-size:18px;}
 .switcher .pn{font-size:var(--text-body);font-weight:var(--font-weight-body-strong);}
 .switcher .an{font-size:var(--text-meta);color:#9a938c;}
 .switcher .cv{margin-left:auto;color:#9a938c;font-size:17px;}
@@ -218,7 +221,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .nw-item:hover{background:var(--color-surface);}
 /* 未読は「点」だけだと気づけないので、行の背景も薄いオレンジにする */
 .nw-entry.unread .nw-item{background:var(--color-primary-subtle);}
-.nw-entry.unread .nw-item:hover{background:#ffefe6;}
+.nw-entry.unread .nw-item:hover{background:#EDF2FA;}
 /* サムネイルは TIPS（読みもの）だけ。お知らせ・メンテナンスには付けない */
 .nw-thumb{width:152px;height:86px;flex:none;border-radius:var(--radius-md);object-fit:cover;border:1px solid var(--color-border);background:var(--color-surface);display:block;}
 .nw-tx{flex:1;min-width:0;}
@@ -288,12 +291,12 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .corner{right:26px;bottom:26px;}
 
 /* ===== サイドバーの文字を白に =====
-   地の #fe7235 に白は 2.74 で、15px の本文には足りない。
+   地の #2E5AB0 に白は 2.74 で、15px の本文には足りない。
    文字を白にすると決めた以上、地の側を下げてコントラストを作る。
-   以前は縦グラデーション（#fe7235→#e85513→#d54101）で「上は鮮やかなまま」を
+   以前は縦グラデーション（#2E5AB0→#234A96→#234A96）で「上は鮮やかなまま」を
    残していたが、SPではサイドバーが高さ60pxの帯になるため、180度の階調が
    その中に圧縮されて帯状のムラに見え、古く見える原因になっていた（2026-08-28）。
-   ベタの primary-deep(#d54101) に統一。白文字で 4.58 なので本文でも AA を満たす。 */
+   ベタの primary-deep(#234A96) に統一。白文字で 4.58 なので本文でも AA を満たす。 */
 .sb{background:var(--color-primary-deep);}
 .sb .logo{filter:brightness(0) invert(1);opacity:.96;}
 .sb .ni{color:rgba(255,255,255,.88);}
@@ -307,8 +310,8 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 /* 選択中は「薄い白」の面に反転させる（2026-08-21）。
    もとは 24%白 + 白文字で、地のオレンジとの差が出ず沈んでいた（白文字は 2.67）。
    ベタ白だと「投稿作成」ボタンと同じ強さになって重いので 80% に落とす。
-   ただし 80%白の面（rgb(251,222,209)）に #d54101 は 3.59 で AA に足りないので、
-   文字だけ1段濃い #a33200 にして 5.47 を確保する。地を薄くしたぶんは文字で補う。 */
+   ただし 80%白の面（rgb(251,222,209)）に #234A96 は 3.59 で AA に足りないので、
+   文字だけ1段濃い #1B3C7E にして 5.47 を確保する。地を薄くしたぶんは文字で補う。 */
 .sb .ni.on{background:rgba(255,255,255,.22);color:#fff;}
 .sb .ni.on .ti{color:#fff;}
 .sb .ni.on .cv{color:#fff;}
@@ -322,12 +325,12 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .sb .switcher{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.30);}
 .sb .switcher .pn,.sb .switcher .nm{color:#fff;}
 .sb .switcher .an,.sb .switcher .cv{color:rgba(255,255,255,.72);}
-.sb .switcher .pic{background:#fff;color:#d54101;}
+.sb .switcher .pic{background:#fff;color:#234A96;}
 .sb .upg{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.30);}
 .sb .upg .ut{color:#fff;}
-.sb .upg .ub{background:#fff !important;color:#d54101 !important;}
+.sb .upg .ub{background:#fff !important;color:#234A96 !important;}
 .sb .upg .ub:hover{filter:brightness(.94);}
-.create{background:#fff !important;color:#d54101 !important;}
+.create{background:#fff !important;color:#234A96 !important;}
 .create:hover{background:#fff !important;filter:brightness(.96);}
 </style>
 <!-- SP対応。インラインCSSの後に置く（@media は詳細度を上げないので、後勝ちにしないと基本ルールに負ける） -->

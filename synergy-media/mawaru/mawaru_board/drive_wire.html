@@ -3,7 +3,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
 <title>マワルドライブ — マワル</title>
 <link rel="stylesheet" href="./tabler-icons-inline.css">
-<link rel="stylesheet" href="./fox-alert.css">
+<link rel="stylesheet" href="./hint.css">
+<link rel="stylesheet" href="./brand-ui.css">
 <style>
 /* このファイルで使うアイコンだけ定義する（フォント実体は tabler-icons-inline.css）。
    字形コードは同梱フォントで実物を描画して確認済み。 */
@@ -51,33 +52,36 @@
 
 :root {
   /* 新パレット（藍・水色）由来の追加トークン */
-  --color-navy: #00347a;
-  --color-navy-subtle: #f1f7ff;
-  --color-primary-deep: #d54101;
-  --color-primary: #fe7235;
-  --color-primary-hover: #d54101;
-  --color-primary-light: #fea735;
-  --color-primary-subtle: #fff5f1;
-  --color-on-primary: #ffffff;
-  --color-background: #fcf5ef;
-  --color-surface: #fffdfb;
-  --color-card: #ffffff;
-  --color-foreground: #2a2826;
-  --color-muted-foreground: #757575;
-  --color-border: #efe7df;
-  --color-border-strong: #ddd0c4;
-  --color-input: #ffffff;
-  --color-ring: #fe7235;
-  --color-success: #008a24; --color-success-vivid: #00ac2f;
-  --color-success-subtle: #f3fcf6;
-  --color-warning: #ad6201;
-  --color-warning-subtle: #fff9f1;
-  --color-info: #0070f0;
-  --color-info-subtle: #f1f7ff;
-  --color-destructive: #e90c2a;
-  --color-destructive-subtle: #feeef1;
-  --color-accent-purple: #9724ba;
-  --color-accent-purple-subtle: #f5e7f8;
+  --color-navy: #122651;
+  --color-navy-subtle: #EDF2FA;
+  --color-primary-deep: #1B3C7E;
+  --color-primary: #2E5AB0;
+  --color-primary-hover: #234A96;
+  --color-primary-light: #7DABDE;
+  --color-primary-subtle: #EDF2FA;
+  --color-on-primary: #FFFFFF;
+  --color-background: #F2F1F0;
+  --color-surface: #FBFAF8;
+  --color-card: #FFFFFF;
+  --color-foreground: #2A2826;
+  --color-muted-foreground: #6E6A66;
+  --color-border: #E9E8E6;
+  --color-border-strong: #CFCDC9;
+  --color-input: #FFFFFF;
+  --color-ring: #2E5AB0;
+  --color-tertiary: #7DABDE;
+  --color-tertiary-subtle: #DCE8F7;
+  --color-border-input: #99948C;
+  --color-success: #008623; --color-success-vivid: #00A62D;
+  --color-success-subtle: #F3FCF6;
+  --color-warning: #AB6101;
+  --color-warning-subtle: #FFF9F1;
+  --color-info: #0B76B2;
+  --color-info-subtle: #ECF6FD;
+  --color-destructive: #D81028;
+  --color-destructive-subtle: #FDEEF0;
+  --color-accent-purple: #8B2FB8;
+  --color-accent-purple-subtle: #F5E9F9;
   --font-body: Inter, "Noto Sans JP";
   --text-h1: 1.875rem;
   --text-h2: 1.25rem;
@@ -98,13 +102,13 @@
   --radius-xl: 20px;
   --radius-full: 9999px;
   /* セカンダリ＝青系（primary橙＝押せる／secondary青＝情報・補助） */
-  --color-secondary: #0077ff;
-  --color-secondary-light: #00c3ff;
-  --color-secondary-subtle: #f1f7ff;
-  --color-secondary-deep: #0070f0;
+  --color-secondary: #122651;
+  --color-secondary-light: #7DABDE;
+  --color-secondary-subtle: #EDF2FA;
+  --color-secondary-deep: #0B76B2;
 }
 *{box-sizing:border-box;margin:0;padding:0;font-family:var(--font-body),'Hiragino Sans','Meiryo',sans-serif;-webkit-font-smoothing:antialiased;}
-body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
+body {background:#F2F1F0;padding:0;color:var(--color-foreground);}
 .app{width:100%;background:var(--color-card);border-radius:0;overflow:hidden;display:flex;height:100vh;position:relative;}
 .ti{line-height:1;}
 
@@ -115,7 +119,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .create{text-decoration:none;width:100%;display:flex;align-items:center;justify-content:center;gap:7px;background:var(--color-primary);color:#fff;border:none;border-radius:var(--radius-md);padding:11px;font-family:inherit;font-size:var(--text-body);font-weight:var(--font-weight-body-strong);cursor:pointer;}
 .nav{padding:6px 10px;overflow-y:auto;flex:1;}
 .ni{display:flex;align-items:center;gap:11px;padding:9px 10px;border-radius:var(--radius-md);font-size:var(--text-body-lg);font-weight:var(--font-weight-body-strong);color:var(--color-foreground);cursor:pointer;text-decoration:none;}
-.ni .ti{font-size:18px;color:#6e655d;}
+.ni .ti{font-size:18px;color:#6E6A66;}
 .ni .cv{margin-left:auto;font-size:14px;color:#9a938c;}
 .ni.on{background:var(--color-primary-subtle);color:var(--color-primary);font-weight:var(--font-weight-body-strong);}
 .ni.on .ti{color:var(--color-primary);}
@@ -129,7 +133,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .nis:hover{background:var(--color-primary-subtle);color:var(--color-primary);}
 .foot{border-top:1px solid var(--color-border);padding:12px;}
 .switcher{display:flex;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--color-border-strong);border-radius:var(--radius-md);background:var(--color-card);cursor:pointer;}
-.switcher .pic{width:34px;height:34px;flex:none;border-radius:var(--radius-md);background:#ffe6dc;color:var(--color-primary);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.switcher .pic{width:34px;height:34px;flex:none;border-radius:var(--radius-md);background:#EDF2FA;color:var(--color-primary);display:flex;align-items:center;justify-content:center;font-size:18px;}
 .switcher .pn{font-size:var(--text-body);font-weight:var(--font-weight-body-strong);}
 .switcher .an{font-size:var(--text-meta);color:#9a938c;}
 .switcher .cv{margin-left:auto;color:#9a938c;font-size:17px;}
@@ -169,7 +173,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .tr{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:var(--radius-md);font-size:var(--text-body);color:var(--color-foreground);cursor:pointer;}
 .tr:hover{background:var(--color-primary-subtle);}
 .tr.on{background:var(--color-primary-subtle);color:var(--color-primary);font-weight:var(--font-weight-body-strong);}
-.tr .ti{font-size:17px;color:#6e655d;flex:none;}
+.tr .ti{font-size:17px;color:#6E6A66;flex:none;}
 .tr.on .ti{color:var(--color-primary);}
 .tr .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .tr .num{font-size:var(--text-meta);color:var(--color-muted-foreground);font-weight:var(--font-weight-body-strong);}
@@ -223,7 +227,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .file.on{border:2px solid var(--color-primary);}
 .file .th{aspect-ratio:1;display:flex;align-items:center;justify-content:center;position:relative;}
 .file .th .kind{position:absolute;top:7px;left:7px;width:24px;height:24px;border-radius:var(--radius-full);background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--color-foreground);}
-.file .th .fav{position:absolute;top:7px;right:7px;font-size:15px;color:#ffb020;}
+.file .th .fav{position:absolute;top:7px;right:7px;font-size:15px;color:#7DABDE;}
 .file .bd{padding:9px 10px 11px;border-top:1px solid var(--color-border);}
 .file .nm{font-size:var(--text-label);font-weight:var(--font-weight-body-strong);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .file .mt{font-size:var(--text-meta);color:var(--color-muted-foreground);margin-top:3px;}
@@ -336,12 +340,12 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .corner{right:26px;bottom:26px;}
 
 /* ===== サイドバーの文字を白に =====
-   地の #fe7235 に白は 2.74 で、15px の本文には足りない。
+   地の #2E5AB0 に白は 2.74 で、15px の本文には足りない。
    文字を白にすると決めた以上、地の側を下げてコントラストを作る。
-   以前は縦グラデーション（#fe7235→#e85513→#d54101）で「上は鮮やかなまま」を
+   以前は縦グラデーション（#2E5AB0→#234A96→#234A96）で「上は鮮やかなまま」を
    残していたが、SPではサイドバーが高さ60pxの帯になるため、180度の階調が
    その中に圧縮されて帯状のムラに見え、古く見える原因になっていた（2026-08-28）。
-   ベタの primary-deep(#d54101) に統一。白文字で 4.58 なので本文でも AA を満たす。 */
+   ベタの primary-deep(#234A96) に統一。白文字で 4.58 なので本文でも AA を満たす。 */
 .sb{background:var(--color-primary-deep);}
 .sb .logo{filter:brightness(0) invert(1);opacity:.96;}
 .sb .ni{color:rgba(255,255,255,.88);}
@@ -355,8 +359,8 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 /* 選択中は「薄い白」の面に反転させる（2026-08-21）。
    もとは 24%白 + 白文字で、地のオレンジとの差が出ず沈んでいた（白文字は 2.67）。
    ベタ白だと「投稿作成」ボタンと同じ強さになって重いので 80% に落とす。
-   ただし 80%白の面（rgb(251,222,209)）に #d54101 は 3.59 で AA に足りないので、
-   文字だけ1段濃い #a33200 にして 5.47 を確保する。地を薄くしたぶんは文字で補う。 */
+   ただし 80%白の面（rgb(251,222,209)）に #234A96 は 3.59 で AA に足りないので、
+   文字だけ1段濃い #1B3C7E にして 5.47 を確保する。地を薄くしたぶんは文字で補う。 */
 .sb .ni.on{background:rgba(255,255,255,.22);color:#fff;}
 .sb .ni.on .ti{color:#fff;}
 .sb .ni.on .cv{color:#fff;}
@@ -370,12 +374,12 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .sb .switcher{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.30);}
 .sb .switcher .pn,.sb .switcher .nm{color:#fff;}
 .sb .switcher .an,.sb .switcher .cv{color:rgba(255,255,255,.72);}
-.sb .switcher .pic{background:#fff;color:#d54101;}
+.sb .switcher .pic{background:#fff;color:#234A96;}
 .sb .upg{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.30);}
 .sb .upg .ut{color:#fff;}
-.sb .upg .ub{background:#fff !important;color:#d54101 !important;}
+.sb .upg .ub{background:#fff !important;color:#234A96 !important;}
 .sb .upg .ub:hover{filter:brightness(.94);}
-.create{background:#fff !important;color:#d54101 !important;}
+.create{background:#fff !important;color:#234A96 !important;}
 .create:hover{background:#fff !important;filter:brightness(.96);}
 
 /* ===== ドライブのツリーもカードへ（縁無し） =====
@@ -495,8 +499,8 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
         </div>
 
         <!-- 何を入れてもいい入れ物にしたぶん、使われ方の違いは最初に言い切る -->
-        <div class="fox-alert care" style="margin-bottom:16px">
-          <img src="./assets/mawaru-fox-worried.png" alt="">
+        <div class="hint" style="margin-bottom:16px">
+          <span class="info-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="7.6" r="1.1" fill="currentColor" stroke="none"/></svg></span>
           <div>
             <span class="lb">ATTENTION</span>
             <div class="t">写真も動画も、PDFやお店のサイトも、ぜんぶここに入れて大丈夫です。</div>
@@ -525,58 +529,58 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
         <div class="sec-t">ファイル（13）</div>
         <div class="grid" id="fileGrid">
           <div class="file" data-k="img" data-ai="0" data-nm="看板犬ポチ_01.jpg" data-fmt="JPG・2048×2048" data-sz="2.4 MB" data-made="2026/08/12" data-edit="3日前" data-fav="1" data-g="linear-gradient(135deg,#f7d9b0,#efc189)" onclick="openFile(this)">
-            <div class="th" style="background:linear-gradient(135deg,#f7d9b0,#efc189)"><span class="kind"><i class="ti ti-photo"></i></span><span class="fav"><i class="ti ti-star"></i></span></div>
+            <div class="th" style="background:linear-gradient(135deg,#F2F1EF 0%,#DFDDD9 100%)"><span class="kind"><i class="ti ti-photo"></i></span><span class="fav"><i class="ti ti-star"></i></span></div>
             <div class="bd"><div class="nm">看板犬ポチ_01.jpg</div><div class="mt">2.4 MB・3日前</div></div>
           </div>
           <div class="file" data-k="img" data-ai="1" data-nm="パフェ_新作_AI.png" data-fmt="PNG・1080×1080" data-sz="1.2 MB" data-made="2026/08/12" data-edit="3日前" data-fav="0" data-g="linear-gradient(135deg,#eec3d8,#e0a5c4)" onclick="openFile(this)">
-            <div class="th" style="background:linear-gradient(135deg,#eec3d8,#e0a5c4)"><span class="kind"><i class="ti ti-sparkles"></i></span></div>
+            <div class="th" style="background:linear-gradient(135deg,#E4E2DE 0%,#CAC7C2 100%)"><span class="kind"><i class="ti ti-sparkles"></i></span></div>
             <div class="bd"><div class="nm">パフェ_新作_AI.png</div><div class="mt">1.2 MB・3日前</div></div>
           </div>
-          <div class="file" data-k="img" data-ai="0" data-nm="店内_カウンター.jpg" data-fmt="JPG・4032×3024" data-sz="3.1 MB" data-made="2026/08/10" data-edit="5日前" data-fav="0" data-g="linear-gradient(135deg,#d9c7ae,#b9a288)" onclick="openFile(this)">
-            <div class="th" style="background:linear-gradient(135deg,#d9c7ae,#b9a288)"><span class="kind"><i class="ti ti-photo"></i></span></div>
+          <div class="file" data-k="img" data-ai="0" data-nm="店内_カウンター.jpg" data-fmt="JPG・4032×3024" data-sz="3.1 MB" data-made="2026/08/10" data-edit="5日前" data-fav="0" data-g="linear-gradient(135deg,#CFCDC9,#A8A29E)" onclick="openFile(this)">
+            <div class="th" style="background:linear-gradient(135deg,#F0EFED 0%,#DBD9D5 100%)"><span class="kind"><i class="ti ti-photo"></i></span></div>
             <div class="bd"><div class="nm">店内_カウンター.jpg</div><div class="mt">3.1 MB・5日前</div></div>
           </div>
           <div class="file" data-k="vid" data-ai="0" data-nm="ポチの朝ルーティン.mp4" data-fmt="MP4・1080×1920" data-sz="48.2 MB" data-made="2026/08/09" data-edit="6日前" data-fav="1" data-g="linear-gradient(135deg,#b9dcc0,#93c8a0)" onclick="openFile(this)">
-            <div class="th" style="background:linear-gradient(135deg,#b9dcc0,#93c8a0)"><span class="kind"><i class="ti ti-video"></i></span><span class="fav"><i class="ti ti-star"></i></span></div>
+            <div class="th" style="background:linear-gradient(135deg,#EAE8E5 0%,#D2CFCB 100%)"><span class="kind"><i class="ti ti-video"></i></span><span class="fav"><i class="ti ti-star"></i></span></div>
             <div class="bd"><div class="nm">ポチの朝ルーティン.mp4</div><div class="mt">48.2 MB・6日前</div></div>
           </div>
-          <div class="file" data-k="img" data-ai="1" data-nm="夏フェス_バナー_AI.png" data-fmt="PNG・1200×628" data-sz="880 KB" data-made="2026/08/08" data-edit="1週間前" data-fav="0" data-g="linear-gradient(135deg,#f6c99a,#ef9f5c)" onclick="openFile(this)">
-            <div class="th" style="background:linear-gradient(135deg,#f6c99a,#ef9f5c)"><span class="kind"><i class="ti ti-sparkles"></i></span></div>
+          <div class="file" data-k="img" data-ai="1" data-nm="夏フェス_バナー_AI.png" data-fmt="PNG・1200×628" data-sz="880 KB" data-made="2026/08/08" data-edit="1週間前" data-fav="0" data-g="linear-gradient(135deg,#7DABDE,#7DABDE)" onclick="openFile(this)">
+            <div class="th" style="background:linear-gradient(135deg,#EDECEA 0%,#D8D5D1 100%)"><span class="kind"><i class="ti ti-sparkles"></i></span></div>
             <div class="bd"><div class="nm">夏フェス_バナー_AI.png</div><div class="mt">880 KB・1週間前</div></div>
           </div>
           <div class="file" data-k="img" data-ai="0" data-nm="新作メニュー表.jpg" data-fmt="JPG・3024×4032" data-sz="2.8 MB" data-made="2026/08/06" data-edit="1週間前" data-fav="0" data-g="linear-gradient(135deg,#cfe0f2,#9fc0e0)" onclick="openFile(this)">
-            <div class="th" style="background:linear-gradient(135deg,#cfe0f2,#9fc0e0)"><span class="kind"><i class="ti ti-photo"></i></span></div>
+            <div class="th" style="background:linear-gradient(135deg,#E7E5E1 0%,#CECBC6 100%)"><span class="kind"><i class="ti ti-photo"></i></span></div>
             <div class="bd"><div class="nm">新作メニュー表.jpg</div><div class="mt">2.8 MB・1週間前</div></div>
           </div>
           <div class="file" data-k="aud" data-ai="0" data-nm="店内BGM_やさしい朝.mp3" data-fmt="MP3・2分14秒" data-sz="3.4 MB" data-made="2026/07/30" data-edit="2週間前" data-fav="0" data-g="linear-gradient(135deg,#e3d6f2,#c6b0e8)" onclick="openFile(this)">
-            <div class="th" style="background:linear-gradient(135deg,#e3d6f2,#c6b0e8)"><span class="kind"><i class="ti ti-music"></i></span></div>
+            <div class="th" style="background:linear-gradient(135deg,#F2F1EF 0%,#DFDDD9 100%)"><span class="kind"><i class="ti ti-music"></i></span></div>
             <div class="bd"><div class="nm">店内BGM_やさしい朝.mp3</div><div class="mt">3.4 MB・2週間前</div></div>
           </div>
-          <div class="file" data-k="vid" data-ai="0" data-nm="新人スタッフ紹介.mov" data-fmt="MOV・1920×1080" data-sz="122 MB" data-made="2026/07/28" data-edit="3週間前" data-fav="0" data-g="linear-gradient(135deg,#f2d4d4,#dfa8a8)" onclick="openFile(this)">
-            <div class="th" style="background:linear-gradient(135deg,#f2d4d4,#dfa8a8)"><span class="kind"><i class="ti ti-video"></i></span></div>
+          <div class="file" data-k="vid" data-ai="0" data-nm="新人スタッフ紹介.mov" data-fmt="MOV・1920×1080" data-sz="122 MB" data-made="2026/07/28" data-edit="3週間前" data-fav="0" data-g="linear-gradient(135deg,#FFD0D8,#FFD0D8)" onclick="openFile(this)">
+            <div class="th" style="background:linear-gradient(135deg,#E4E2DE 0%,#CAC7C2 100%)"><span class="kind"><i class="ti ti-video"></i></span></div>
             <div class="bd"><div class="nm">新人スタッフ紹介.mov</div><div class="mt">122 MB・3週間前</div></div>
           </div>
 
           <!-- ここから資料・URL。素材と同じ一覧に混ぜる（2026-08-21）。
                data-ld = AIの読み込み状態（ok / run / ng）。素材側は持たない -->
-          <div class="file" data-k="doc" data-ai="0" data-ld="ok" data-nm="ブランドガイドライン_2026.pdf" data-fmt="PDF・24ページ" data-sz="4.2 MB" data-made="2026/07/02" data-edit="2026/07/02" data-fav="0" data-g="linear-gradient(135deg,#f4cfc7,#e6a89c)" onclick="openFile(this)">
-            <div class="th" style="background:linear-gradient(135deg,#f4cfc7,#e6a89c)"><span class="kind"><i class="ti ti-file-text"></i></span><span class="ld ok"><i class="ti ti-check"></i>読み込み済み</span></div>
+          <div class="file" data-k="doc" data-ai="0" data-ld="ok" data-nm="ブランドガイドライン_2026.pdf" data-fmt="PDF・24ページ" data-sz="4.2 MB" data-made="2026/07/02" data-edit="2026/07/02" data-fav="0" data-g="linear-gradient(135deg,#A9C8E9,#FFD0D8)" onclick="openFile(this)">
+            <div class="th" style="background:linear-gradient(135deg,#F0EFED 0%,#DBD9D5 100%)"><span class="kind"><i class="ti ti-file-text"></i></span><span class="ld ok"><i class="ti ti-check"></i>読み込み済み</span></div>
             <div class="bd"><div class="nm">ブランドガイドライン_2026.pdf</div><div class="mt">4.2 MB・2026/07/02</div></div>
           </div>
           <div class="file" data-k="doc" data-ai="0" data-ld="ok" data-nm="犬カフェOne 公式サイト" data-fmt="ウェブページ" data-sz="—" data-made="2026/07/02" data-edit="2026/07/02" data-fav="0" data-url="https://inucafe-one.example.com" data-g="linear-gradient(135deg,#cfe0f2,#9fc0e0)" onclick="openFile(this)">
-            <div class="th" style="background:linear-gradient(135deg,#cfe0f2,#9fc0e0)"><span class="kind"><i class="ti ti-world"></i></span><span class="ld ok"><i class="ti ti-check"></i>読み込み済み</span></div>
+            <div class="th" style="background:linear-gradient(135deg,#EAE8E5 0%,#D2CFCB 100%)"><span class="kind"><i class="ti ti-world"></i></span><span class="ld ok"><i class="ti ti-check"></i>読み込み済み</span></div>
             <div class="bd"><div class="nm">犬カフェOne 公式サイト</div><div class="mt">inucafe-one.example.com</div></div>
           </div>
           <div class="file" data-k="doc" data-ai="0" data-ld="run" data-nm="メニュー表_秋冬.xlsx" data-fmt="Excel" data-sz="620 KB" data-made="きょう" data-edit="きょう" data-fav="0" data-g="linear-gradient(135deg,#cfe8d4,#a3cfae)" onclick="openFile(this)">
-            <div class="th" style="background:linear-gradient(135deg,#cfe8d4,#a3cfae)"><span class="kind"><i class="ti ti-file"></i></span><span class="ld run"><i class="ti ti-refresh"></i>読み込み中</span></div>
+            <div class="th" style="background:linear-gradient(135deg,#EDECEA 0%,#D8D5D1 100%)"><span class="kind"><i class="ti ti-file"></i></span><span class="ld run"><i class="ti ti-refresh"></i>読み込み中</span></div>
             <div class="bd"><div class="nm">メニュー表_秋冬.xlsx</div><div class="mt">620 KB・きょう</div></div>
           </div>
-          <div class="file" data-k="doc" data-ai="0" data-ld="ok" data-nm="過去の人気投稿まとめ.pptx" data-fmt="PowerPoint・18ページ" data-sz="8.1 MB" data-made="2026/06/18" data-edit="2026/06/18" data-fav="0" data-g="linear-gradient(135deg,#f6d9bd,#e8b489)" onclick="openFile(this)">
-            <div class="th" style="background:linear-gradient(135deg,#f6d9bd,#e8b489)"><span class="kind"><i class="ti ti-file-text"></i></span><span class="ld ok"><i class="ti ti-check"></i>読み込み済み</span></div>
+          <div class="file" data-k="doc" data-ai="0" data-ld="ok" data-nm="過去の人気投稿まとめ.pptx" data-fmt="PowerPoint・18ページ" data-sz="8.1 MB" data-made="2026/06/18" data-edit="2026/06/18" data-fav="0" data-g="linear-gradient(135deg,#A9C8E9,#7DABDE)" onclick="openFile(this)">
+            <div class="th" style="background:linear-gradient(135deg,#E7E5E1 0%,#CECBC6 100%)"><span class="kind"><i class="ti ti-file-text"></i></span><span class="ld ok"><i class="ti ti-check"></i>読み込み済み</span></div>
             <div class="bd"><div class="nm">過去の人気投稿まとめ.pptx</div><div class="mt">8.1 MB・2026/06/18</div></div>
           </div>
-          <div class="file" data-k="doc" data-ai="0" data-ld="ng" data-nm="店舗紹介の記事（外部メディア）" data-fmt="ウェブページ" data-sz="—" data-made="2026/06/10" data-edit="2026/06/10" data-fav="0" data-url="https://example.com/inucafe-one" data-g="linear-gradient(135deg,#e6dcd2,#c7b7a6)" onclick="openFile(this)">
-            <div class="th" style="background:linear-gradient(135deg,#e6dcd2,#c7b7a6)"><span class="kind"><i class="ti ti-world"></i></span><span class="ld ng"><i class="ti ti-alert-triangle"></i>読み込み失敗</span></div>
+          <div class="file" data-k="doc" data-ai="0" data-ld="ng" data-nm="店舗紹介の記事（外部メディア）" data-fmt="ウェブページ" data-sz="—" data-made="2026/06/10" data-edit="2026/06/10" data-fav="0" data-url="https://example.com/inucafe-one" data-g="linear-gradient(135deg,#E9E8E6,#A8A29E)" onclick="openFile(this)">
+            <div class="th" style="background:linear-gradient(135deg,#F2F1EF 0%,#DFDDD9 100%)"><span class="kind"><i class="ti ti-world"></i></span><span class="ld ng"><i class="ti ti-alert-triangle"></i>読み込み失敗</span></div>
             <div class="bd"><div class="nm">店舗紹介の記事（外部メディア）</div><div class="mt">ページを開けませんでした</div></div>
           </div>
         </div>
@@ -634,8 +638,8 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 
       <div class="dr-used" id="drUsed">
         <div class="t">この素材を使った投稿</div>
-        <div class="dr-post"><span class="sw" style="background:linear-gradient(135deg,#f7d9b0,#efc189)"></span><div class="tx"><div class="pt">夏の新メニュー トロピカルスムージー</div><div class="pd">Instagram・8月10日に投稿</div></div><i class="ti ti-arrow-right" style="color:var(--color-muted-foreground);font-size:15px"></i></div>
-        <div class="dr-post"><span class="sw" style="background:linear-gradient(135deg,#b9dcc0,#93c8a0)"></span><div class="tx"><div class="pt">看板犬ポチの朝ルーティン</div><div class="pd">TikTok・8月3日に投稿</div></div><i class="ti ti-arrow-right" style="color:var(--color-muted-foreground);font-size:15px"></i></div>
+        <div class="dr-post"><span class="sw" style="background:linear-gradient(135deg,#E4E2DE 0%,#CAC7C2 100%)"></span><div class="tx"><div class="pt">夏の新メニュー トロピカルスムージー</div><div class="pd">Instagram・8月10日に投稿</div></div><i class="ti ti-arrow-right" style="color:var(--color-muted-foreground);font-size:15px"></i></div>
+        <div class="dr-post"><span class="sw" style="background:linear-gradient(135deg,#F0EFED 0%,#DBD9D5 100%)"></span><div class="tx"><div class="pt">看板犬ポチの朝ルーティン</div><div class="pd">TikTok・8月3日に投稿</div></div><i class="ti ti-arrow-right" style="color:var(--color-muted-foreground);font-size:15px"></i></div>
       </div>
     </div>
   </div>
@@ -817,5 +821,5 @@ document.addEventListener('click', function(e){
 });
 </script>
 <script src="./tour.js"></script>
-<script src="./fox-alert.js"></script>
+<script src="./hint.js"></script>
 </body></html>

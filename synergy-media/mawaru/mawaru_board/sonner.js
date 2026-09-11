@@ -28,10 +28,10 @@
      区別は色だけ = オレンジ(既定) / 赤(エラー)。
      文字は foreground のまま。色を持つのは背景・枠・アイコンだけにして読みやすさを守る。 */
   var ORANGE = {
-    bg:     'var(--color-primary-subtle, #fff2e2)',
-    border: 'rgba(239,97,8,0.30)',
+    bg:     'var(--color-primary-subtle, #EDF2FA)',
+    border: 'rgba(46,90,176,0.30)',
     text:   'var(--color-foreground, #2a2826)',
-    icon:   'var(--color-primary, #ef6108)',
+    icon:   'var(--color-primary, #2E5AB0)',
   };
   var RED = {
     bg:     'var(--color-destructive-subtle, #fee2e2)',
@@ -279,7 +279,7 @@
       '<div style="display:flex;align-items:flex-start;gap:9px;font-size:1rem;font-weight:700;line-height:1.5;color:var(--color-foreground,#2a2826);">' +
         icon + '<span>' + escapeHtml(title) + '</span>' +
       '</div>' +
-      (description ? '<div style="font-size:0.875rem;line-height:1.7;color:var(--color-muted-foreground,#757575);">' + escapeHtml(description) + '</div>' : '') +
+      (description ? '<div style="font-size:0.875rem;line-height:1.7;color:var(--color-muted-foreground,#6E6A66);">' + escapeHtml(description) + '</div>' : '') +
       '</div>';
 
     /* points: 「何が起きるか」の箇条書き。これが無いと各画面が独自の詳細ブロックを作り始める */
@@ -307,7 +307,7 @@
     var cancelBtn = '<button data-cancel style="' + btnBase + 'background:transparent;border:1px solid var(--color-border,#e9e8e6);color:var(--color-foreground,#2a2826);">'+escapeHtml(cancelLabel)+'</button>';
     var actionColor = destructive
       ? 'background:var(--color-destructive,#dc2626);border:none;color:var(--color-on-destructive,#fff);'
-      : 'background:var(--color-primary,#ef6108);border:none;color:var(--color-on-primary,#fff);';
+      : 'background:var(--color-primary,#2E5AB0);border:none;color:var(--color-on-primary,#fff);';
     var actionBtn = '<button data-action style="' + btnBase + actionColor + '">'+escapeHtml(actionLabel)+'</button>';
     var footer = '<div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px;">' + cancelBtn + actionBtn + '</div>';
 

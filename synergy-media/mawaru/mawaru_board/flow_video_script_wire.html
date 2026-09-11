@@ -58,52 +58,55 @@
 
 :root {
   /* 新パレット（藍・水色）由来の追加トークン */
-  --color-navy: #00347a;
-  --color-navy-subtle: #f1f7ff;
-  --color-primary-deep: #d54101;
-  --color-primary: #fe7235;
-  --color-primary-hover: #d54101;
-  --color-primary-light: #fea735;
-  --color-primary-subtle: #fff5f1;
-  --color-on-primary: #ffffff;
-  --color-background: #fcf5ef;
-  --color-surface: #fffdfb;
-  --color-card: #ffffff;
-  --color-foreground: #2a2826;
-  --color-muted-foreground: #757575;
-  --color-border: #efe7df;
-  --color-border-strong: #ddd0c4;
-  --color-input: #ffffff;
-  --color-ring: #fe7235;
-  --color-success: #008a24; --color-success-vivid: #00ac2f;
-  --color-success-subtle: #f3fcf6;
-  --color-warning: #ad6201;
-  --color-warning-border: #ffe6c4;
-  --color-warning-subtle: #fff9f1;
-  --color-info: #0070f0;
-  --color-info-subtle: #f1f7ff;
-  --color-destructive: #e90c2a;
-  --color-on-destructive: #ffffff;
-  --color-destructive-subtle: #feeef1;
-  --color-like: #ef3a58;
-  --color-like-subtle: #feeef1;
-  --color-accent-purple: #9724ba;
-  --color-accent-purple-subtle: #f5e7f8;
-  --color-sns-instagram: #b02a78;
-  --color-sns-instagram-subtle: #fce7f3;
-  --color-sns-x: #2a2826;
-  --color-sns-x-subtle: #fcf5ef;
-  --color-sns-tiktok: #0a6f66;
-  --color-sns-tiktok-subtle: #e5fbf7;
-  --color-sns-youtube: #c4302b;
-  --color-sns-youtube-subtle: #fcebeb;
-  --color-editor-bg: #1e1a17;
+  --color-navy: #122651;
+  --color-navy-subtle: #EDF2FA;
+  --color-primary-deep: #1B3C7E;
+  --color-primary: #2E5AB0;
+  --color-primary-hover: #234A96;
+  --color-primary-light: #7DABDE;
+  --color-primary-subtle: #EDF2FA;
+  --color-on-primary: #FFFFFF;
+  --color-background: #F2F1F0;
+  --color-surface: #FBFAF8;
+  --color-card: #FFFFFF;
+  --color-foreground: #2A2826;
+  --color-muted-foreground: #6E6A66;
+  --color-border: #E9E8E6;
+  --color-border-strong: #CFCDC9;
+  --color-input: #FFFFFF;
+  --color-ring: #2E5AB0;
+  --color-tertiary: #7DABDE;
+  --color-tertiary-subtle: #DCE8F7;
+  --color-border-input: #99948C;
+  --color-success: #008623; --color-success-vivid: #00A62D;
+  --color-success-subtle: #F3FCF6;
+  --color-warning: #AB6101;
+  --color-warning-border: #FFE6C4;
+  --color-warning-subtle: #FFF9F1;
+  --color-info: #0B76B2;
+  --color-info-subtle: #ECF6FD;
+  --color-destructive: #D81028;
+  --color-on-destructive: #FFFFFF;
+  --color-destructive-subtle: #FDEEF0;
+  --color-like: #D7213D;
+  --color-like-subtle: #FDEFF1;
+  --color-accent-purple: #8B2FB8;
+  --color-accent-purple-subtle: #F5E9F9;
+  --color-sns-instagram: #B02A78;
+  --color-sns-instagram-subtle: #FCE7F3;
+  --color-sns-x: #2A2826;
+  --color-sns-x-subtle: #F2F1F0;
+  --color-sns-tiktok: #0A6F66;
+  --color-sns-tiktok-subtle: #E5FBF7;
+  --color-sns-youtube: #C4302B;
+  --color-sns-youtube-subtle: #FCEBEB;
+  --color-editor-bg: #1E1A17;
   --color-editor-surface: #272320;
-  --color-editor-elevated: #3a3530;
+  --color-editor-elevated: #3A3530;
   --color-editor-stage: #000000;
-  --color-editor-foreground: #f5f3f0;
-  --color-editor-muted: #a8a29e;
-  --color-editor-border: #403a34;
+  --color-editor-foreground: #F5F3F0;
+  --color-editor-muted: #A8A29E;
+  --color-editor-border: #403A34;
   --font-display: "Noto Sans JP";
   --font-h1: "Noto Sans JP";
   --font-h2: "Noto Sans JP";
@@ -144,13 +147,13 @@
   --spacing-2xl: 32px;
   --spacing-3xl: 48px;
   /* セカンダリ＝青系（primary橙＝押せる／secondary青＝情報・補助） */
-  --color-secondary: #0077ff;
-  --color-secondary-light: #00c3ff;
-  --color-secondary-subtle: #f1f7ff;
-  --color-secondary-deep: #0070f0;
+  --color-secondary: #122651;
+  --color-secondary-light: #7DABDE;
+  --color-secondary-subtle: #EDF2FA;
+  --color-secondary-deep: #0B76B2;
 }
 *{box-sizing:border-box;margin:0;padding:0;font-family:var(--font-body),'Hiragino Sans','Meiryo',sans-serif;-webkit-font-smoothing:antialiased;}
-body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
+body {background:#F2F1F0;padding:0;color:var(--color-foreground);}
 .app{width:100%;background:var(--color-card);border-radius:0;overflow:hidden;display:flex;flex-direction:column;height:100vh;}
 .ti{line-height:1;}
 .grad{background:linear-gradient(135deg,var(--color-primary),var(--color-primary-light))!important;color:#fff!important;}
@@ -254,7 +257,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .zsplit{display:flex;align-items:center;gap:14px;margin:16px 0;color:var(--color-muted-foreground);font-size:var(--text-label);font-weight:var(--font-weight-body-strong);}
 .zsplit::before,.zsplit::after{content:"";flex:1;height:1px;background:var(--color-border);}
 /* 予測変換チャット（固定高さ） */
-.booth{background:#f7f2ec;border:1px solid var(--color-border);border-radius:var(--radius-lg);height:520px;display:flex;flex-direction:column;overflow:hidden;}
+.booth{background:#F5F3F0;border:1px solid var(--color-border);border-radius:var(--radius-lg);height:520px;display:flex;flex-direction:column;overflow:hidden;}
 .booth-hd{display:flex;align-items:center;gap:9px;padding:11px 14px;border-bottom:1px solid var(--color-border);background:var(--color-card);}
 .booth-hd img{width:34px;height:34px;border-radius:var(--radius-md);object-fit:contain;background:var(--color-primary-subtle);}
 .booth-hd .bt{font-size:var(--text-body);font-weight:var(--font-weight-body-strong);} .booth-hd .bs{font-size:var(--text-meta);color:var(--color-success);font-weight:var(--font-weight-body-strong);margin-top:1px;}
@@ -299,7 +302,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .donemsg{align-self:center;display:flex;align-items:center;gap:7px;font-size:var(--text-label);font-weight:var(--font-weight-body-strong);color:var(--color-success);background:var(--color-success-subtle);border-radius:var(--radius-full);padding:8px 15px;}
 #sugbox{border-top:1px solid var(--color-border);background:var(--color-card);padding:10px 13px 10px;display:flex;flex-wrap:wrap;gap:7px;}
 .suglabel{width:100%;font-size:var(--text-meta);font-weight:var(--font-weight-body-strong);color:var(--color-muted-foreground);display:flex;align-items:center;gap:5px;margin-bottom:2px;} .suglabel .ti{color:var(--color-primary);font-size:14px;}
-.sug{display:inline-flex;align-items:center;border:1.5px solid #ffd6c4;background:var(--color-primary-subtle);color:var(--color-primary);border-radius:var(--radius-full);padding:8px 13px;font-size:var(--text-label);font-weight:var(--font-weight-body-strong);cursor:pointer;}
+.sug{display:inline-flex;align-items:center;border:1.5px solid #A9C8E9;background:var(--color-primary-subtle);color:var(--color-primary);border-radius:var(--radius-full);padding:8px 13px;font-size:var(--text-label);font-weight:var(--font-weight-body-strong);cursor:pointer;}
 .sug:hover{background:var(--color-primary);color:#fff;border-color:var(--color-primary);}
 .sug:disabled{opacity:.4;cursor:not-allowed;pointer-events:none;}
 .confirm-sug{background:var(--color-primary);color:#fff;border-color:var(--color-primary);}
@@ -388,8 +391,8 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
 .ai-col-text{writing-mode:vertical-rl;font-size:var(--text-label);font-weight:var(--font-weight-body-strong);color:var(--color-primary);letter-spacing:2px;}
 .ai-expanded{flex:1;border:1px solid var(--color-border);border-radius:var(--radius-lg);background:var(--color-surface);display:flex;flex-direction:column;overflow:hidden;}
 .ai-ex-hd{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--color-border);background:var(--color-card);}
-.ai-fox{width:30px;height:30px;object-fit:contain;background:var(--color-primary-subtle);border-radius:var(--radius-md);padding:2px;}
-.ai-fox-sm{width:28px;height:28px;object-fit:contain;background:var(--color-primary-subtle);border-radius:var(--radius-md);padding:2px;flex:none;}
+.ai-hint,.ai-hint.info-mark,.ai-hint .info-mark{width:30px;height:30px;object-fit:contain;background:var(--color-primary-subtle);border-radius:var(--radius-md);padding:2px;}
+.ai-hint-sm,.ai-hint-sm.info-mark,.ai-hint-sm .info-mark{width:28px;height:28px;object-fit:contain;background:var(--color-primary-subtle);border-radius:var(--radius-md);padding:2px;flex:none;}
 .ai-ex-close{margin-left:auto;width:28px;height:28px;border:1px solid var(--color-border);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--color-muted-foreground);font-size:14px;background:var(--color-card);}
 .ai-ex-close:hover{border-color:var(--color-primary);color:var(--color-primary);}
 /* やりとりが伸びるとパネルごと縦に伸びて、押してほしい確認カードが画面の外に
@@ -777,7 +780,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
    文字を「動画の幅に対する割合」で置くため、コンテナクエリの基準にする。
    ⚠️ font-size:% は親のフォントサイズ基準なので幅には連動しない。
    cqw なら .mk-canvas の幅に対する割合になり、実機との倍率が一致する。 */
-.mk-canvas{container-type:inline-size;position:relative;background:linear-gradient(160deg,#3f3a33,#26221d);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.mk-canvas{container-type:inline-size;position:relative;background:linear-gradient(160deg,#403A34,#272320);display:flex;align-items:center;justify-content:center;overflow:hidden;}
 .mk-canvas .ph{font-size:34px;color:var(--color-primary);opacity:.5;}
 /* テロップ。実機と同じく下寄せ・白抜き・縁取り */
 /* 左右の余白は点線の幅(15%)と同じにする。7%のままだと点線の外に文字がはみ出て、
@@ -858,7 +861,8 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
   border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);}
 .rev-chk:focus-visible{outline:2px solid var(--color-ring);outline-offset:2px;}
 </style>
-<link rel="stylesheet" href="./fox-alert.css"><link rel="stylesheet" href="./editor-sp.css"></head><body>
+<link rel="stylesheet" href="./hint.css">
+<link rel="stylesheet" href="./brand-ui.css"><link rel="stylesheet" href="./editor-sp.css"></head><body>
 <div class="app">
   <div class="topbar"><div class="hdr-left"><span class="hdr-page" onclick="goFlowStart()" role="button" tabindex="0" title="最初の画面に戻る" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();goFlowStart();}"><i class="ti ti-template"></i>投稿作成</span><span class="tag" id="flowtag" style="display:none"></span></div><div class="hdr-right"><a class="helpbtn" href="https://hinaiwagami0513.github.io/mawaru/help/create/video/" target="_blank" rel="noopener" title="このページのヘルプ（投稿作成 > 動画を作成）" aria-label="このページのヘルプ">?</a><button class="close"><i class="ti ti-list"></i></button></div></div>
   <div style="border-bottom:1px solid var(--color-border);background:var(--color-card);"><div class="stepbar" id="stepbar"></div></div>
@@ -916,7 +920,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
         </div>
         <div id="m_kw" style="border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;">
             <div class="booth" style="border:none;border-radius:0;">
-              <div class="booth-hd"><img src="./assets/mawaru-fox-face.png" alt="AIアシスト"><div style="flex:1;"><div class="bt">AIアシスタント</div><div class="bs">● オンライン</div></div><div class="tpl-drop-wrap"><button onclick="toggleTplDrop(event)" class="tpl-drop-btn"><i class="ti ti-layout-grid"></i></button><div class="tpl-drop-menu" id="tplDropMenu"><div class="tpl-drop-label">テンプレから作る</div><div class="tpl-drop-item" onclick="pickTemplate('物件紹介カルーセル');closeTplDrop()"><i class="ti ti-layout-grid"></i>物件紹介カルーセル</div><div class="tpl-drop-item" onclick="pickTemplate('ビフォーアフター');closeTplDrop()"><i class="ti ti-photo"></i>ビフォーアフター</div><div class="tpl-drop-item" onclick="pickTemplate('スペック訴求');closeTplDrop()"><i class="ti ti-businessplan"></i>スペック訴求</div><div class="tpl-drop-divider"></div><div class="tpl-drop-item" onclick="closeTplDrop()"><i class="ti ti-template"></i>テンプレ一覧・新規作成</div></div></div></div>
+              <div class="booth-hd"><span class="ai-mark"><i class="ti ti-sparkles"></i></span><div style="flex:1;"><div class="bt">AIアシスタント</div><div class="bs">● オンライン</div></div><div class="tpl-drop-wrap"><button onclick="toggleTplDrop(event)" class="tpl-drop-btn"><i class="ti ti-layout-grid"></i></button><div class="tpl-drop-menu" id="tplDropMenu"><div class="tpl-drop-label">テンプレから作る</div><div class="tpl-drop-item" onclick="pickTemplate('物件紹介カルーセル');closeTplDrop()"><i class="ti ti-layout-grid"></i>物件紹介カルーセル</div><div class="tpl-drop-item" onclick="pickTemplate('ビフォーアフター');closeTplDrop()"><i class="ti ti-photo"></i>ビフォーアフター</div><div class="tpl-drop-item" onclick="pickTemplate('スペック訴求');closeTplDrop()"><i class="ti ti-businessplan"></i>スペック訴求</div><div class="tpl-drop-divider"></div><div class="tpl-drop-item" onclick="closeTplDrop()"><i class="ti ti-template"></i>テンプレ一覧・新規作成</div></div></div></div>
               <div id="stream"><div class="bmsg">保存した企画内容を使用しますか？</div></div>
               <div id="sugbox"></div>
             </div>
@@ -985,9 +989,9 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
               </div>
 
               <!-- 総評（primary-subtle背景） -->
-              <!-- レビューの総評はキツネが喋る（fox-alert）。色付きの箱だけだと
+              <!-- レビューの総評はヒントとして出す（hint）。色付きの箱だけだと
                  「システムの定型文」に見え、AIが読んで言っていることが伝わらない。 -->
-              <div class="fox-alert ok" style="margin:0 0 16px;"><img src="./assets/mawaru-fox-happy.png" alt="" style="width:40px;height:40px;flex:none;object-fit:contain;"><div>駅近・即入居の訴求が明確で、一人暮らし層に刺さる構成です。冒頭フックの最適化でさらにリーチを伸ばせます。</div></div>
+              <div class="hint ok" style="margin:0 0 16px;"><span class="info-mark lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="7.6" r="1.1" fill="currentColor" stroke="none"/></svg></span><div>駅近・即入居の訴求が明確で、一人暮らし層に刺さる構成です。冒頭フックの最適化でさらにリーチを伸ばせます。</div></div>
 
               <div style="display:flex;gap:8px;margin-bottom:16px;">
                 <button onclick="applyAll()" class="grad" style="display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border:none;border-radius:var(--radius-md);font-size:var(--text-label);font-weight:var(--font-weight-body-strong);cursor:pointer;color:#fff;"><i class="ti ti-sparkles"></i>反映可能なレビューを全て反映</button>
@@ -1019,7 +1023,7 @@ body {background:#fcf5ef;padding:0;color:var(--color-foreground);}
             </div>
             <!-- Expanded panel -->
             <div id="aiExpanded" class="ai-expanded">
-              <div class="ai-ex-hd"><img src="./assets/mawaru-fox-face.png" alt="AIアシスト" style="width:36px;height:36px;flex:none;border-radius:var(--radius-md);object-fit:contain;"><div style="flex:1;"><div style="font-size:var(--text-body);font-weight:var(--font-weight-body-strong);">AIアシスト</div><div style="font-size:var(--text-label);color:var(--color-muted-foreground);">何でも相談してください</div></div><button onclick="resetChat(this)" style="border:none;background:transparent;color:var(--color-muted-foreground);font-size:16px;cursor:pointer;"><i class="ti ti-refresh"></i></button><span class="ai-ex-close" onclick="toggleAI()">&raquo;</span></div>
+              <div class="ai-ex-hd"><span class="ai-mark lg"><i class="ti ti-sparkles"></i></span><div style="flex:1;"><div style="font-size:var(--text-body);font-weight:var(--font-weight-body-strong);">AIアシスト</div><div style="font-size:var(--text-label);color:var(--color-muted-foreground);">何でも相談してください</div></div><button onclick="resetChat(this)" style="border:none;background:transparent;color:var(--color-muted-foreground);font-size:16px;cursor:pointer;"><i class="ti ti-refresh"></i></button><span class="ai-ex-close" onclick="toggleAI()">&raquo;</span></div>
               <div id="aiStream" class="ai-ex-stream">
                 <div class="ai-msg-row"><div class="ai-bub">この動画の編集、何でも相談してな。「2シーン目もっと長く」もOKや。</div></div>
                 <div class="ai-quick-wrap">
@@ -1797,7 +1801,7 @@ function chatScroll(){var s=document.getElementById('stream');if(s)s.scrollTop=s
 (function(){var h=location.hash;if(h){var m=h.match(/step=(\w+)/);if(m){var idx=SCR.indexOf(m[1]);if(idx>=0)i=idx;}}})();
 show();chatRender();
 
-/* Fix: Add fox to AI headers */document.querySelectorAll(".booth-hd,.ai-ex-hd,.aihd").forEach(function(h){if(h.querySelector("img"))return;var f=document.querySelector(".bmsg img,.airow img,.ai-msg-row img");if(!f)return;var i=f.cloneNode();i.style.cssText="width:32px;height:32px;border-radius:var(--radius-md);object-fit:cover;background:var(--color-primary-subtle);flex:none;";h.insertBefore(i,h.firstChild);});
+/* AIの見出しにはAIの印を付ける（ⓘ＝情報とは別物） */document.querySelectorAll(".booth-hd,.ai-ex-hd,.aihd").forEach(function(h){if(h.querySelector(".ai-mark"))return;var w=document.createElement("span");w.className="ai-mark lg";w.innerHTML="<i class=\"ti ti-sparkles\"></i>";h.insertBefore(w,h.firstChild);});
 function toggleTplDrop(e){e.stopPropagation();document.getElementById('tplDropMenu').classList.toggle('show');}
 function closeTplDrop(){document.getElementById('tplDropMenu').classList.remove('show');}
 function toggleChatPlusMenu(e){e.stopPropagation();document.getElementById('chatPlusMenu').classList.toggle('show');}
@@ -1894,7 +1898,7 @@ function sendChatMsg(){
 <!-- ===== 完了モーダル（2026-08-21）===== -->
 <div class="doneov" id="doneOv" role="dialog" aria-modal="true" aria-label="完了">
   <div class="donebox">
-    <img src="./assets/mawaru-fox-celebrate.png" alt="">
+    
     <div class="t" id="doneTtl">投稿の準備ができました！</div>
     <div class="d" id="doneSub">いつでも予約・投稿できます。おつかれさまでした。</div>
     <div class="f">
@@ -2185,15 +2189,15 @@ var BULK=1;
 })();
 
 var BULK_SAMPLES=[
-  {t:'駅徒歩5分・南向き1LDK 新着物件', g:'linear-gradient(135deg,#fde1c4,#e8a063)',
+  {t:'駅徒歩5分・南向き1LDK 新着物件', g:'linear-gradient(135deg,#F2F1EF 0%,#DFDDD9 100%)',
    body:'駅から歩いて5分。南向きで日当たりのいい1LDKが空きました。\n即入居OK・内見はプロフィールから。', tags:['新着物件','駅近','4シーン']},
-  {t:'角部屋・浴室乾燥つき 2LDKのご紹介', g:'linear-gradient(135deg,#d4e8d0,#7ab07e)',
+  {t:'角部屋・浴室乾燥つき 2LDKのご紹介', g:'linear-gradient(135deg,#E4E2DE 0%,#CAC7C2 100%)',
    body:'両面採光の角部屋。浴室乾燥つきで雨の日も洗濯に困りません。\nファミリー向けの2LDKです。', tags:['角部屋','設備','3シーン']},
-  {t:'ペット可・築浅マンションまとめ', g:'linear-gradient(135deg,#fce7f3,#d87aa8)',
+  {t:'ペット可・築浅マンションまとめ', g:'linear-gradient(135deg,#F0EFED 0%,#DBD9D5 100%)',
    body:'ワンちゃん・ネコちゃんと暮らせる築浅物件を集めました。\n足洗い場つきの物件もあります。', tags:['ペット可','まとめ','5シーン']},
-  {t:'初期費用をおさえたい方へ 3選', g:'linear-gradient(135deg,#e6f1fb,#6da8d0)',
+  {t:'初期費用をおさえたい方へ 3選', g:'linear-gradient(135deg,#EAE8E5 0%,#D2CFCB 100%)',
    body:'敷金・礼金ゼロの物件を3つ選びました。\n引っ越し費用をおさえたい方はぜひ。', tags:['初期費用','3選','4シーン']},
-  {t:'在宅ワーク向け 書斎スペースのある部屋', g:'linear-gradient(135deg,#f5e7f8,#a070b8)',
+  {t:'在宅ワーク向け 書斎スペースのある部屋', g:'linear-gradient(135deg,#EDECEA 0%,#D8D5D1 100%)',
    body:'仕事に集中できる小部屋つきのお部屋。\nネット無料・宅配ボックスありです。', tags:['在宅ワーク','設備','4シーン']}
 ];
 
@@ -2682,7 +2686,7 @@ document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeMocku
 </div>
 <script src="./onboarding.js"></script>
 <script src="./tour.js"></script>
-<script src="./fox-alert.js"></script>
+<script src="./hint.js"></script>
 <script src="./editor-sp.js" defer></script>
 <script src="./flow-quit.js" defer></script>
 </body></html>
