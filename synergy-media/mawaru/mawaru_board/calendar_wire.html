@@ -429,6 +429,22 @@ body {background:#F2F1F0;padding:0;color:var(--color-foreground);}
     box-shadow:var(--shadow-card);padding:0 22px;}
 .content{border-radius:var(--radius-xl);background:var(--color-card);
     box-shadow:var(--shadow-card);}
+/* この画面には .content がなく、本文が .tb ＋ .work の素の面だったので、
+   カレンダーだけ角丸0のベタ面が地に貼り付いて浮いていた。
+   本文のカードは .work が担う（中の .cal と .tray は角で切り落とす）。 */
+.work{border-radius:var(--radius-xl);background:var(--color-card);
+    box-shadow:var(--shadow-card);overflow:hidden;}
+/* カードの中に地の色が残ると欠けて見えるので、スクロール面も白にする */
+.cal{background:var(--color-card);}
+/* 最終週の下の罫線は、カードの底までは届かず宙に浮くので引かない */
+.m-grid .d:nth-last-child(-n+7){border-bottom:none;}
+/* 週の行をカードの高さまで伸ばす。伸ばさないと最終週の下に白い余りが残り、
+   カードが途中で終わって見える。1週は 104px を下限にして、
+   余白があるぶんだけ各行で等分に分ける（5週の月は1行が高くなる）。 */
+.view.on{display:flex;flex-direction:column;min-height:100%;}
+.m-grid{flex:1;grid-auto-rows:minmax(104px,1fr);}
+/* .tb はカードの外（地の上）に出るので、下の罫線は地に浮いた1本になる */
+.tb{border-bottom:none;}
 /* トレイは .app の余白ぶん内側に寄せる */
 .corner{right:26px;bottom:26px;}
 
