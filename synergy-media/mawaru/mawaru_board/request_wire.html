@@ -26,10 +26,10 @@
 .ti-message-dots:before{content:"\eaee"}
 .ti-message-circle:before{content:"\eaed"}
 .ti-camera:before{content:"\ea54"}
-.ti-clock:before{content:"\ea70"}
 .ti-check:before{content:"\ea5e"}
 .ti-x:before{content:"\eb55"}
 .ti-arrow-right:before{content:"\ea1f"}
+.ti-arrow-left:before{content:"\ea19"}
 .ti-photo:before{content:"\eb0a"}
 .ti-video:before{content:"\ed22"}
 .ti-users:before{content:"\ebf2"}
@@ -162,16 +162,19 @@ body {background:#F2F1F0;padding:0;color:var(--color-foreground);}
 .content{flex:1;overflow-y:auto;padding:24px 30px 40px;background:var(--color-background);}
 .view{display:none;max-width:840px;}
 .view.on{display:block;}
-.btn-p{display:inline-flex;align-items:center;gap:8px;background:var(--color-primary);color:var(--color-on-primary);border:none;border-radius:var(--radius-md);padding:0 22px;height:44px;font-family:inherit;font-size:var(--text-body);font-weight:var(--font-weight-body-strong);cursor:pointer;}
+.btn-p{display:inline-flex;align-items:center;gap:8px;background:var(--color-primary);color:var(--color-on-primary);border:none;border-radius:var(--radius-md);padding:0 22px;height:44px;font-family:inherit;font-size:var(--text-body);font-weight:var(--font-weight-body-strong);cursor:pointer;text-decoration:none;}
 .btn-p:hover{background:var(--color-primary-hover);}
 .btn-o{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--color-primary);color:var(--color-primary);background:transparent;border-radius:var(--radius-md);padding:0 16px;height:40px;font-family:inherit;font-size:var(--text-label);font-weight:var(--font-weight-body-strong);cursor:pointer;text-decoration:none;}
 .btn-o:hover{background:var(--color-primary);color:var(--color-on-primary);}
 .btn-g{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--color-border-strong);color:var(--color-muted-foreground);background:var(--color-card);border-radius:var(--radius-md);padding:0 16px;height:40px;font-family:inherit;font-size:var(--text-label);font-weight:var(--font-weight-label);cursor:pointer;}
 .btn-g:hover{border-color:var(--color-foreground);color:var(--color-foreground);}
 
-/* 何が起きるかを先に見せる。相談だけで料金は発生しない、を最初に言う */
-/* 送ったあとの流れ */
-.flow{display:flex;align-items:center;gap:0;background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:16px 18px;margin-bottom:18px;}
+/* 送ったあとの流れ。
+   もとはフォームより上に置いていたが、そこだと「下の入力欄が
+   この4ステップで進む」ように見える（入力は1画面で完結する）。
+   送信ボタンの直前に移して、1の「送る」が真下のボタンと隣り合う形にした。 */
+.flow-h{font-size:var(--text-label);font-weight:var(--font-weight-body-strong);color:var(--color-muted-foreground);margin:22px 0 9px;}
+.flow{display:flex;align-items:center;gap:0;background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:16px 18px;}
 .fstep{display:flex;align-items:center;gap:9px;font-size:var(--text-label);}
 .fstep .n{width:24px;height:24px;flex:none;border-radius:var(--radius-full);background:var(--color-primary-subtle);color:var(--color-primary);display:flex;align-items:center;justify-content:center;font-size:var(--text-meta);font-weight:var(--font-weight-body-strong);}
 .fstep .tx b{font-weight:var(--font-weight-body-strong);}
@@ -217,20 +220,13 @@ body {background:#F2F1F0;padding:0;color:var(--color-foreground);}
 .navrow .n{font-size:var(--text-label);color:var(--color-muted-foreground);}
 .navrow .sp{margin-left:auto;}
 
-/* 過去の相談。送って終わりの画面にしない */
-.hist{margin-top:26px;}
-.hist .h{font-size:var(--text-body-lg);font-weight:var(--font-weight-body-strong);margin-bottom:11px;}
-.hrow{display:flex;align-items:center;gap:13px;background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:13px 15px;margin-bottom:9px;}
-.hrow .tx{flex:1;min-width:0;}
-.hrow .t{font-size:var(--text-body);font-weight:var(--font-weight-body-strong);}
-.hrow .m{font-size:var(--text-meta);color:var(--color-muted-foreground);margin-top:3px;}
-.st{display:inline-flex;align-items:center;gap:5px;flex:none;font-size:var(--text-meta);font-weight:var(--font-weight-body-strong);border-radius:var(--radius-full);padding:4px 11px;}
-.st.wait{background:var(--color-warning-subtle);color:var(--color-warning);}
-.st.ok{background:var(--color-success-subtle);color:var(--color-success);}
-.st.done{background:var(--color-surface);color:var(--color-muted-foreground);border:1px solid var(--color-border);}
+/* 「今までの相談 / 今までの撮影」は廃止（2026-09-15）。
+   この画面は依頼を出す場所で、過去の履歴はチャットとドライブで追える。
+   出す情報を増やすほど、いま何をすればいいかが埋もれる。
+   .hist / .hrow / .st の指定も使い手がいなくなったので消した。 */
 
 /* 送ったあと */
-.sent{background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:26px 28px;max-width:640px;}
+.sent{background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:26px 28px;}
 .sent .sum{border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden;margin-bottom:18px;}
 .sent .srow{display:flex;gap:12px;padding:11px 14px;border-bottom:1px solid var(--color-border);font-size:var(--text-body);}
 .sent .srow:last-child{border-bottom:none;}
@@ -382,16 +378,6 @@ body {background:#F2F1F0;padding:0;color:var(--color-foreground);}
           </div>
         </div>
 
-        <div class="flow">
-          <span class="fstep"><span class="n">1</span><span class="tx"><b>相談を送る</b></span></span>
-          <span class="ar"><i class="ti ti-arrow-right"></i></span>
-          <span class="fstep"><span class="n">2</span><span class="tx"><b>見積りが届く</b></span></span>
-          <span class="ar"><i class="ti ti-arrow-right"></i></span>
-          <span class="fstep"><span class="n">3</span><span class="tx"><b>OKしたら制作開始</b></span></span>
-          <span class="ar"><i class="ti ti-arrow-right"></i></span>
-          <span class="fstep"><span class="n">4</span><span class="tx"><b>ドライブに納品</b></span></span>
-        </div>
-
         <div class="card">
           <div class="card-t">なにをお願いしますか</div>
           <div class="opts">
@@ -471,23 +457,20 @@ body {background:#F2F1F0;padding:0;color:var(--color-foreground);}
           </div>
         </div>
 
+        <div class="flow-h">送ったあとの流れ</div>
+        <div class="flow">
+          <span class="fstep"><span class="n">1</span><span class="tx"><b>相談を送る</b></span></span>
+          <span class="ar"><i class="ti ti-arrow-right"></i></span>
+          <span class="fstep"><span class="n">2</span><span class="tx"><b>見積りが届く</b></span></span>
+          <span class="ar"><i class="ti ti-arrow-right"></i></span>
+          <span class="fstep"><span class="n">3</span><span class="tx"><b>OKしたら制作開始</b></span></span>
+          <span class="ar"><i class="ti ti-arrow-right"></i></span>
+          <span class="fstep"><span class="n">4</span><span class="tx"><b>ドライブに納品</b></span></span>
+        </div>
+
         <div class="navrow">
           <span class="n">この時点ではお金はかかりません。</span>
           <span class="sp"><button class="btn-p" onclick="send('order')"><i class="ti ti-message-circle"></i>相談を送る</button></span>
-        </div>
-
-        <div class="hist">
-          <div class="h">今までの相談</div>
-          <div class="hrow">
-            <div class="tx"><div class="t">夏フェスのバナー 2点</div><div class="m">8月2日に相談・16,000円でお願いしました</div></div>
-            <span class="st done">納品ずみ</span>
-            <a class="btn-o" href="./chat_wire.html">やりとりを見る</a>
-          </div>
-          <div class="hrow">
-            <div class="tx"><div class="t">動画編集 1本（新人スタッフ紹介）</div><div class="m">8月14日に相談・見積り待ち</div></div>
-            <span class="st wait"><i class="ti ti-clock"></i>返事待ち</span>
-            <a class="btn-o" href="./chat_wire.html">やりとりを見る</a>
-          </div>
         </div>
       </div>
 
@@ -499,16 +482,6 @@ body {background:#F2F1F0;padding:0;color:var(--color-foreground);}
             <span class="lb">POINT</span>
             <div class="t">カメラマンがお店に行って、撮ってきます</div>
           </div>
-        </div>
-
-        <div class="flow">
-          <span class="fstep"><span class="n">1</span><span class="tx"><b>希望を送る</b></span></span>
-          <span class="ar"><i class="ti ti-arrow-right"></i></span>
-          <span class="fstep"><span class="n">2</span><span class="tx"><b>日程を決める</b></span></span>
-          <span class="ar"><i class="ti ti-arrow-right"></i></span>
-          <span class="fstep"><span class="n">3</span><span class="tx"><b>撮影</b></span></span>
-          <span class="ar"><i class="ti ti-arrow-right"></i></span>
-          <span class="fstep"><span class="n">4</span><span class="tx"><b>ドライブに納品</b></span></span>
         </div>
 
         <div class="card">
@@ -590,18 +563,20 @@ body {background:#F2F1F0;padding:0;color:var(--color-foreground);}
           </div>
         </div>
 
+        <div class="flow-h">送ったあとの流れ</div>
+        <div class="flow">
+          <span class="fstep"><span class="n">1</span><span class="tx"><b>希望を送る</b></span></span>
+          <span class="ar"><i class="ti ti-arrow-right"></i></span>
+          <span class="fstep"><span class="n">2</span><span class="tx"><b>日程を決める</b></span></span>
+          <span class="ar"><i class="ti ti-arrow-right"></i></span>
+          <span class="fstep"><span class="n">3</span><span class="tx"><b>撮影</b></span></span>
+          <span class="ar"><i class="ti ti-arrow-right"></i></span>
+          <span class="fstep"><span class="n">4</span><span class="tx"><b>ドライブに納品</b></span></span>
+        </div>
+
         <div class="navrow">
           <span class="n">この時点ではお金はかかりません。</span>
           <span class="sp"><button class="btn-p" onclick="send('shoot')"><i class="ti ti-camera"></i>撮影をお願いする</button></span>
-        </div>
-
-        <div class="hist">
-          <div class="h">今までの撮影</div>
-          <div class="hrow">
-            <div class="tx"><div class="t">夏メニューの撮影（2時間）</div><div class="m">7月18日に撮影・写真48枚をドライブに納品</div></div>
-            <span class="st done">納品ずみ</span>
-            <a class="btn-o" href="./drive_wire.html">写真を見る</a>
-          </div>
         </div>
       </div>
 
@@ -613,9 +588,11 @@ body {background:#F2F1F0;padding:0;color:var(--color-foreground);}
             <span id="sentBody">1〜2営業日でお見積りをお返しします。やりとりはチャットに届きます。</span></div>
           </div>
           <div class="sum" id="sentSum"></div>
+          <!-- 右のプライマリーは「次に進む先」。ここでの次はチャット（やりとりが届く場所）で、
+               もどるは元の画面に戻るだけの副次動作。前は逆に置いていた。 -->
           <div class="navrow">
-            <a class="btn-o" href="./chat_wire.html"><i class="ti ti-message-dots"></i>チャットで見る</a>
-            <span class="sp"><button class="btn-p" onclick="setMode(lastMode)">この画面にもどる<i class="ti ti-arrow-right"></i></button></span>
+            <button class="btn-g" onclick="setMode(lastMode)"><i class="ti ti-arrow-left"></i>この画面にもどる</button>
+            <span class="sp"><a class="btn-p" href="./chat_wire.html"><i class="ti ti-message-dots"></i>チャットで見る</a></span>
           </div>
         </div>
       </div>
