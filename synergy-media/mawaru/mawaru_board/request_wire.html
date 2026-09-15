@@ -629,10 +629,33 @@ function setMode(m){
   document.getElementById('content').scrollTop = 0;
   if(location.hash !== '#' + m) history.replaceState(null, '', '#' + m);
 }
-if(location.hash && MODES[location.hash.slice(1)]) setMode(location.hash.slice(1));
+/* 送信後は #order-sent / #shoot-sent を履歴に1つ積む。
+   もとは send() が .view を差し替えるだけで URL が #order のまま動かず、
+   ブラウザの戻る（トラックパッドの右スワイプ）を押しても「送りました」から
+   抜けられなかった。送信直後は「1件書き忘れた」と思う瞬間で、そこで反射的に
+   出る動作が戻るなので、効かないと画面が固まったように見える。
+   さらに履歴が無いぶん、戻るを続けるとこの画面ごと抜けてしまっていた。 */
+function showSent(m){
+  lastMode = m;
+  Object.keys(MODES).forEach(function(k){ document.getElementById(MODES[k].view).classList.remove('on'); });
+  document.getElementById('vSent').classList.add('on');
+  document.getElementById('pgnm').textContent = MODES[m].name + '（送りました）';
+  document.getElementById('pgic').className = 'ti ' + MODES[m].icon + ' pgic';
+  document.getElementById('content').scrollTop = 0;
+}
+
+/* 直リンクで #order-sent に来ても、送った中身が無いので「送りました」は出せない。
+   フォームを出して、URLも setMode 側の replaceState で #order に正す。 */
+var initMode = location.hash.slice(1).replace(/-sent$/, '');
+if(MODES[initMode]) setMode(initMode);
+
 window.addEventListener('hashchange', function(){
   var k = location.hash.slice(1);
-  if(MODES[k]) setMode(k);
+  if(MODES[k]) { setMode(k); return; }              // 戻る → フォームへ。入力はDOMに残っている
+  var base = k.replace(/-sent$/, '');
+  if(!MODES[base]) return;
+  // 進むで戻ってきた時だけ「送りました」を復元する（中身が残っている場合）
+  if(document.getElementById('sentSum').innerHTML) showSent(base); else setMode(base);
 });
 
 function pickOne(el){
@@ -670,10 +693,8 @@ function send(m){
   document.getElementById('sentSum').innerHTML = sum.map(function(r){
     return '<div class="srow"><span class="k">' + r[0] + '</span><span class="v">' + r[1] + '</span></div>';
   }).join('');
-  Object.keys(MODES).forEach(function(k){ document.getElementById(MODES[k].view).classList.remove('on'); });
-  document.getElementById('vSent').classList.add('on');
-  document.getElementById('pgnm').textContent = MODES[m].name + '（送りました）';
-  document.getElementById('content').scrollTop = 0;
+  showSent(m);
+  if(location.hash !== '#' + m + '-sent') history.pushState(null, '', '#' + m + '-sent');
 }
 </script>
 <script src="./tour.js"></script>
